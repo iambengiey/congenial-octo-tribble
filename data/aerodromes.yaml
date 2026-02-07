@@ -1,0 +1,75 @@
+thresholds:
+  crosswind_high_kt: 15
+  tailwind_kt: 5
+  high_da_ft: 8000
+  low_vis_m: 2000
+  low_ceiling_ft: 1000
+
+aerodromes:
+  - ident: FAOR
+    name: OR Tambo Intl
+    elevation_m: 1694
+    latitude_deg: -26.1392
+    longitude_deg: 28.2460
+    runways:
+      - designator: "03L"
+        magnetic_heading_deg: 034
+        length_m: 4400
+        surface: ASPH
+      - designator: "03R"
+        magnetic_heading_deg: 034
+        length_m: 3400
+        surface: ASPH
+      - designator: "21L"
+        magnetic_heading_deg: 214
+        length_m: 3400
+        surface: ASPH
+      - designator: "21R"
+        magnetic_heading_deg: 214
+        length_m: 4400
+        surface: ASPH
+
+  - ident: FALA
+    name: Lanseria
+    elevation_m: 1377
+    latitude_deg: -25.9385
+    longitude_deg: 27.9261
+    runways:
+      - designator: "07"
+        magnetic_heading_deg: 074
+        length_m: 2990
+        surface: ASPH
+      - designator: "25"
+        magnetic_heading_deg: 254
+        length_m: 2990
+        surface: ASPH
+
+  - ident: FABB
+    name: Brakpan
+    elevation_m: 1641
+    latitude_deg: -26.2544
+    longitude_deg: 28.3442
+    runways:
+      - designator: "18"
+        magnetic_heading_deg: 182
+        length_m: 900
+        surface: TAR
+      - designator: "36"
+        magnetic_heading_deg: 002
+        length_m: 900
+        surface: TAR
+
+  - ident: FAPN
+    name: Pilanesberg Intl
+    elevation_m: 1033
+    latitude_deg: -25.3336
+    longitude_deg: 27.1734
+    runways:
+      - designator: "05"
+        magnetic_heading_deg: 050
+        length_m: 3600
+        surface: ASPH
+      - designator: "23"
+        magnetic_heading_deg: 230
+        length_m: 3600
+        surface: ASPH
