@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base-path" content="../" />
+  <title>FAOR briefing</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>METAR.oncloud.africa</h1>
+    <p class="disclaimer">Training/augmentation only. Not an official briefing source.</p>
+    <nav>
+      <a class="active" href="../index.html">Airfields</a>
+      <a class="" href="../routes.html">Routes</a>
+      <a class="" href="../tools/index.html">Tools</a>
+    </nav>
+  </header>
+  <main class="container">
+    
+    <section class="summary">
+      <h2>FAOR — OR Tambo Intl</h2>
+      <p><strong>Raw METAR:</strong> FAOR 121100Z 03012G20KT 8000 -RA FEW020 BKN035 18/12 Q1016 NOSIG</p>
+      <p>Observed: 2026-02-12T11:00:00Z (SAMPLE)</p>
+    </section>
+
+    <section class="section">
+      <h3>Decoded METAR</h3>
+      <table class="table">
+        <tr><th>Wind</th><td>30° 12 kt</td></tr>
+        <tr><th>Gust</th><td>20 kt</td></tr>
+        <tr><th>Variable wind</th><td>--</td></tr>
+        <tr><th>Visibility</th><td>8000 m</td></tr>
+        <tr><th>Weather</th><td>-RA</td></tr>
+        <tr><th>Clouds</th><td>[{'cover': 'FEW', 'base_ft': 2000}, {'cover': 'BKN', 'base_ft': 3500}]</td></tr>
+        <tr><th>Ceiling</th><td>3500 ft</td></tr>
+        <tr><th>Temperature</th><td>18 °C</td></tr>
+        <tr><th>Dewpoint</th><td>12 °C</td></tr>
+        <tr><th>QNH</th><td>1016 hPa</td></tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <h3>TAF summary</h3>
+      <p><strong>Raw TAF:</strong> TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030</p>
+      <p>Valid: 1212 → 1318</p>
+      <p>Key changes: TEMPO, BECMG</p>
+    </section>
+
+    <section class="section">
+      <h3>Runway wind components</h3>
+      <p class="note">Why it matters: Crosswind, tailwind, and gust spread affect handling and performance. Headwind is generally helpful but not a limit.</p>
+      <table class="table">
+        <tr><th>Runway</th><th>Headwind (kt)</th><th>Crosswind (kt)</th><th>Tailwind (kt)</th></tr>
+        <tr><td>03L</td><td>12.0</td><td>0.8 (L)</td><td>0.0</td></tr><tr><td>03R</td><td>12.0</td><td>0.8 (L)</td><td>0.0</td></tr><tr><td>21L</td><td>0.0</td><td>0.8 (R)</td><td>12.0</td></tr><tr><td>21R</td><td>0.0</td><td>0.8 (R)</td><td>12.0</td></tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <h3>Night operations</h3>
+      <ul>
+        <li>Night ops allowed: yes</li>
+        <li>Lighting: RWY edge yes, threshold yes, taxiway yes, apron yes</li>
+        <li>PPR required: no</li>
+        <li>Ops hours: H24</li>
+        <li>Notes: Reference only.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h3>Trends</h3>
+      <div class="trend" data-trend='{'wind_speed': [12, 12, 12, 12], 'qnh': [1016, 1016, 1016, 1016], 'temp': [18, 18, 18, 18]}'></div>
+    </section>
+
+    <section class="section">
+      <h3>Flags</h3>
+      <ul class="flag-list"><li>TAILWIND</li></ul>
+    </section>
+    
+  </main>
+  <footer>
+    <p>Training/augmentation only. Verify with SAWS/ATC/AIP/NOTAM office and POH/AFM.</p>
+    <p>Computed values are approximations.</p>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

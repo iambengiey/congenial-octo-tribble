@@ -1,14 +1,15 @@
 # METAR.oncloud.africa
 
-Static aviation briefing site for PPL and ATPL training. This repository builds a GitHub Pages site and JSON API with METAR/TAF decoding, runway wind components, density altitude, and ATPL route briefing packs.
+Static aviation briefing and training toolkit for PPL → ATPL. This repository builds a GitHub Pages site and JSON API that decode METAR/TAF, compute runway wind components and density altitude, generate route packs, and provide interactive training tools (ISA, TAS, hypoxia, pressurisation, scenario builder).
 
-> **Training/augmentation only. Not an official briefing source.** Always obtain official briefings from SAWS/ATC.
+> **Training/augmentation only. Not an official briefing source.** Always verify with SAWS/ATC/AIP/NOTAM office and POH/AFM.
 
 ## Features
 
-- **PPL mode (Airfields):** METAR/TAF decode, runway wind components, density altitude, and safety flags.
-- **ATPL route packs:** METAR/TAF for dep/dest/alternates, NOTAM highlights, upper winds/temps, SIGMET/AIRMET, SIGWX charts, and training-only risk flags.
-- **Static output:** `/site` for GitHub Pages + `/site/api` for JSON API.
+- **Airfields:** METAR/TAF decode, runway wind components, density altitude, night ops badges, and flags tied to training profiles.
+- **Routes:** ATPL-style briefing packs with METAR/TAF, NOTAM highlights, SIGMET/AIRMET, winds/temps aloft, and SIGWX charts.
+- **Tools:** ISA, altimetry, DA, IAS→TAS, gas laws/hypoxia, pressurisation, aircraft reference, scenario builder.
+- **Static output:** `/site` for GitHub Pages and `/site/api` JSON files.
 
 ## Quick start
 
@@ -16,41 +17,34 @@ Static aviation briefing site for PPL and ATPL training. This repository builds 
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python -m src.build_site
+python -m src.build.build_site --mode sample
 python -m http.server --directory site 8000
 ```
 
-Then open `http://localhost:8000`.
+Open `http://localhost:8000`.
 
 ## Makefile shortcuts
 
 ```bash
-make build   # builds site
-make test    # runs unit tests
-make serve   # serves /site
-make sample  # rebuilds using sample data
+make build   # build site (auto mode)
+make sample  # build site (sample mode)
+make test    # unit tests
+make lint    # ruff
+make serve   # serve /site
 ```
 
-## Adding aerodromes
+## Data packs
 
-Edit `data/aerodromes.yaml`:
+Country packs live in `data/packs/<COUNTRY>/`. The build merges all pack aerodromes/routes.
 
-- `ident`, `name`, `elevation_m`
-- `latitude_deg`, `longitude_deg` (for route bearings)
-- Runway list with `designator`, `magnetic_heading_deg`, `length_m`, `surface`
+- `data/packs/ZA/aerodromes.yaml`
+- `data/packs/ZA/routes.yaml`
 
-## Adding routes (ATPL packs)
+## Profiles and aircraft
 
-Edit `data/routes.yaml`:
-
-- `route_id`, `dep`, `dest`, `alternates[]`
-- `corridor_nm`, `cruise_levels_ft[]`
-- Optional `waypoints[]` can be added later
-
-## Data sources
-
-See [docs/SOURCES.md](docs/SOURCES.md). Sample data is stored under `/data/samples` so the site works immediately.
+- `data/profiles.yaml` defines Student PPL / PPL / CPL / ATPL minima.
+- `data/aircraft.yaml` includes demonstrated crosswind and notes.
 
 ## Disclaimers
 
-See [docs/DISCLAIMER.md](docs/DISCLAIMER.md) for legal and training use guidance.
+See [docs/DISCLAIMER.md](docs/DISCLAIMER.md). Data sources are described in [docs/SOURCES.md](docs/SOURCES.md).

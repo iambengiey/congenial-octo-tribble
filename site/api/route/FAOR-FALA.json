@@ -15,196 +15,314 @@
     24000,
     30000
   ],
-  "dep_data": {
-    "ident": "FAOR",
-    "name": "OR Tambo Intl",
-    "elevation_m": 1694,
-    "latitude_deg": -26.1392,
-    "longitude_deg": 28.246,
-    "runways": [
-      {
-        "designator": "03L",
-        "magnetic_heading_deg": 34,
-        "length_m": 4400,
-        "surface": "ASPH"
+  "airfields": [
+    {
+      "ident": "FAOR",
+      "name": "OR Tambo Intl",
+      "elevation_m": 1694,
+      "latitude_deg": -26.1392,
+      "longitude_deg": 28.246,
+      "night_ops_allowed": "yes",
+      "lighting": {
+        "runway_edge": "yes",
+        "threshold": "yes",
+        "taxiway": "yes",
+        "apron": "yes"
       },
-      {
-        "designator": "03R",
-        "magnetic_heading_deg": 34,
-        "length_m": 3400,
-        "surface": "ASPH"
+      "ppr_required": "no",
+      "ops_hours": "H24",
+      "notes": "Reference only.",
+      "runways": [
+        {
+          "designator": "03L",
+          "magnetic_heading_deg": 34,
+          "length_m": 4400,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "03R",
+          "magnetic_heading_deg": 34,
+          "length_m": 3400,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "21L",
+          "magnetic_heading_deg": 214,
+          "length_m": 3400,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "21R",
+          "magnetic_heading_deg": 214,
+          "length_m": 4400,
+          "surface": "ASPH"
+        }
+      ],
+      "night_ops": {
+        "night_ops_allowed": "yes",
+        "lighting": {
+          "runway_edge": "yes",
+          "threshold": "yes",
+          "taxiway": "yes",
+          "apron": "yes"
+        },
+        "ppr_required": "no",
+        "ops_hours": "H24",
+        "notes": "Reference only."
       },
-      {
-        "designator": "21L",
-        "magnetic_heading_deg": 214,
-        "length_m": 3400,
-        "surface": "ASPH"
+      "night_ready": true,
+      "metar": {
+        "raw": "FAOR 121100Z 03012G20KT 8000 -RA FEW020 BKN035 18/12 Q1016 NOSIG",
+        "observed_time_utc": "2026-02-12T11:00:00Z",
+        "wind_dir_deg": 30,
+        "wind_speed_kt": 12,
+        "gust_kt": 20,
+        "variable_wind": null,
+        "visibility_m": 8000,
+        "weather_codes": [
+          "-RA"
+        ],
+        "cloud_layers": [
+          {
+            "cover": "FEW",
+            "base_ft": 2000
+          },
+          {
+            "cover": "BKN",
+            "base_ft": 3500
+          }
+        ],
+        "ceiling_ft": 3500,
+        "temp_c": 18,
+        "dewpoint_c": 12,
+        "qnh_hpa": 1016,
+        "remarks": "",
+        "source": "SAMPLE"
       },
-      {
-        "designator": "21R",
-        "magnetic_heading_deg": 214,
-        "length_m": 4400,
-        "surface": "ASPH"
+      "taf": {
+        "raw": "TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030",
+        "summary": {
+          "valid_from": "1212",
+          "valid_to": "1318",
+          "key_changes": [
+            "TEMPO",
+            "BECMG"
+          ]
+        },
+        "source": "SAMPLE"
+      },
+      "computed": {
+        "wind_components_per_runway": [
+          {
+            "runway": "03L",
+            "headwind_kt": 12.0,
+            "crosswind_kt": 0.8,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          },
+          {
+            "runway": "03R",
+            "headwind_kt": 12.0,
+            "crosswind_kt": 0.8,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          },
+          {
+            "runway": "21L",
+            "headwind_kt": 0.0,
+            "crosswind_kt": 0.8,
+            "tailwind_kt": 12.0,
+            "crosswind_side": "R"
+          },
+          {
+            "runway": "21R",
+            "headwind_kt": 0.0,
+            "crosswind_kt": 0.8,
+            "tailwind_kt": 12.0,
+            "crosswind_side": "R"
+          }
+        ],
+        "density_altitude": {
+          "da_ft": 7155,
+          "da_m": 2181
+        },
+        "qnh_trend": "steady",
+        "flags": [
+          "TAILWIND"
+        ],
+        "severity": {
+          "level": "CAUTION",
+          "flags": [
+            "TAILWIND"
+          ]
+        },
+        "trends": {
+          "wind_speed": [
+            12,
+            12,
+            12,
+            12
+          ],
+          "qnh": [
+            1016,
+            1016,
+            1016,
+            1016
+          ],
+          "temp": [
+            18,
+            18,
+            18,
+            18
+          ]
+        }
       }
-    ],
-    "metar": {
-      "raw": "FAOR 121100Z 03012G20KT 8000 -RA FEW020 BKN035 18/12 Q1016 NOSIG",
-      "wind_dir": 30,
-      "wind_speed_kt": 12,
-      "gust_kt": 20,
-      "vis_m": 1211,
-      "cloud_layers": [
+    },
+    {
+      "ident": "FALA",
+      "name": "Lanseria",
+      "elevation_m": 1377,
+      "latitude_deg": -25.9385,
+      "longitude_deg": 27.9261,
+      "night_ops_allowed": "yes",
+      "lighting": {
+        "runway_edge": "yes",
+        "threshold": "yes",
+        "taxiway": "yes",
+        "apron": "yes"
+      },
+      "ppr_required": "no",
+      "ops_hours": "H24",
+      "notes": "Reference only.",
+      "runways": [
         {
-          "cover": "FEW",
-          "base_ft": 2000
+          "designator": "07",
+          "magnetic_heading_deg": 74,
+          "length_m": 2990,
+          "surface": "ASPH"
         },
         {
-          "cover": "BKN",
-          "base_ft": 3500
+          "designator": "25",
+          "magnetic_heading_deg": 254,
+          "length_m": 2990,
+          "surface": "ASPH"
         }
       ],
-      "temp_c": 18,
-      "dewpoint_c": 12,
-      "qnh_hpa": 1016,
-      "remarks": "",
-      "observed_time_utc": "2026-02-12T11:00:00Z",
-      "source": "SAMPLE"
-    },
-    "taf": {
-      "raw": "TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030",
-      "summary": {
-        "valid_from": "1212",
-        "valid_to": "1318",
-        "key_changes": [
-          "TEMPO",
-          "BECMG"
-        ]
+      "night_ops": {
+        "night_ops_allowed": "yes",
+        "lighting": {
+          "runway_edge": "yes",
+          "threshold": "yes",
+          "taxiway": "yes",
+          "apron": "yes"
+        },
+        "ppr_required": "no",
+        "ops_hours": "H24",
+        "notes": "Reference only."
       },
-      "source": "SAMPLE"
-    },
-    "computed": {
-      "wind_components_per_runway": [
-        {
-          "runway": "03L",
-          "headwind_kt": 12.0,
-          "crosswind_kt": 0.8,
-          "tailwind_kt": 0.0,
-          "crosswind_direction": "left"
+      "night_ready": true,
+      "metar": {
+        "raw": "FALA 121100Z 05008KT 9999 FEW015 20/10 Q1018 NOSIG",
+        "observed_time_utc": "2026-02-12T11:00:00Z",
+        "wind_dir_deg": 50,
+        "wind_speed_kt": 8,
+        "gust_kt": null,
+        "variable_wind": null,
+        "visibility_m": 9999,
+        "weather_codes": [],
+        "cloud_layers": [
+          {
+            "cover": "FEW",
+            "base_ft": 1500
+          }
+        ],
+        "ceiling_ft": null,
+        "temp_c": 20,
+        "dewpoint_c": 10,
+        "qnh_hpa": 1018,
+        "remarks": "",
+        "source": "SAMPLE"
+      },
+      "taf": {
+        "raw": "TAF FALA 121100Z 1212/1312 06008KT 9999 SCT020 BECMG 1302/1304 09012KT 7000 BKN020",
+        "summary": {
+          "valid_from": "1212",
+          "valid_to": "1312",
+          "key_changes": [
+            "BECMG"
+          ]
         },
-        {
-          "runway": "03R",
-          "headwind_kt": 12.0,
-          "crosswind_kt": 0.8,
-          "tailwind_kt": 0.0,
-          "crosswind_direction": "left"
+        "source": "SAMPLE"
+      },
+      "computed": {
+        "wind_components_per_runway": [
+          {
+            "runway": "07",
+            "headwind_kt": 7.3,
+            "crosswind_kt": 3.3,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          },
+          {
+            "runway": "25",
+            "headwind_kt": 0.0,
+            "crosswind_kt": 3.3,
+            "tailwind_kt": 7.3,
+            "crosswind_side": "R"
+          }
+        ],
+        "density_altitude": {
+          "da_ft": 6031,
+          "da_m": 1838
         },
-        {
-          "runway": "21L",
-          "headwind_kt": 0.0,
-          "crosswind_kt": 0.8,
-          "tailwind_kt": 12.0,
-          "crosswind_direction": "right"
+        "qnh_trend": "steady",
+        "flags": [
+          "TAILWIND"
+        ],
+        "severity": {
+          "level": "CAUTION",
+          "flags": [
+            "TAILWIND"
+          ]
         },
-        {
-          "runway": "21R",
-          "headwind_kt": 0.0,
-          "crosswind_kt": 0.8,
-          "tailwind_kt": 12.0,
-          "crosswind_direction": "right"
+        "trends": {
+          "wind_speed": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "qnh": [
+            1018,
+            1018,
+            1018,
+            1018
+          ],
+          "temp": [
+            20,
+            20,
+            20,
+            20
+          ]
         }
-      ],
-      "density_altitude_ft": 7156,
-      "density_altitude_m": 2181,
-      "qnh_trend": "steady",
-      "flags": [
-        "TAILWIND",
-        "LOW_VIS"
-      ]
-    }
-  },
-  "dest_data": {
-    "ident": "FALA",
-    "name": "Lanseria",
-    "elevation_m": 1377,
-    "latitude_deg": -25.9385,
-    "longitude_deg": 27.9261,
-    "runways": [
-      {
-        "designator": "07",
-        "magnetic_heading_deg": 74,
-        "length_m": 2990,
-        "surface": "ASPH"
-      },
-      {
-        "designator": "25",
-        "magnetic_heading_deg": 254,
-        "length_m": 2990,
-        "surface": "ASPH"
       }
-    ],
-    "metar": {
-      "raw": "FALA 121100Z 05008KT 9999 FEW015 20/10 Q1018 NOSIG",
-      "wind_dir": 50,
-      "wind_speed_kt": 8,
-      "gust_kt": null,
-      "vis_m": 1211,
-      "cloud_layers": [
-        {
-          "cover": "FEW",
-          "base_ft": 1500
-        }
-      ],
-      "temp_c": 20,
-      "dewpoint_c": 10,
-      "qnh_hpa": 1018,
-      "remarks": "",
-      "observed_time_utc": "2026-02-12T11:00:00Z",
-      "source": "SAMPLE"
     },
-    "taf": {
-      "raw": "TAF FALA 121100Z 1212/1312 06008KT 9999 SCT020 BECMG 1302/1304 09012KT 7000 BKN020",
-      "summary": {
-        "valid_from": "1212",
-        "valid_to": "1312",
-        "key_changes": [
-          "BECMG"
-        ]
-      },
-      "source": "SAMPLE"
-    },
-    "computed": {
-      "wind_components_per_runway": [
-        {
-          "runway": "07",
-          "headwind_kt": 7.3,
-          "crosswind_kt": 3.3,
-          "tailwind_kt": 0.0,
-          "crosswind_direction": "left"
-        },
-        {
-          "runway": "25",
-          "headwind_kt": 0.0,
-          "crosswind_kt": 3.3,
-          "tailwind_kt": 7.3,
-          "crosswind_direction": "right"
-        }
-      ],
-      "density_altitude_ft": 6049,
-      "density_altitude_m": 1844,
-      "qnh_trend": "steady",
-      "flags": [
-        "TAILWIND",
-        "LOW_VIS"
-      ]
-    }
-  },
-  "alternate_data": [
     {
       "ident": "FABB",
       "name": "Brakpan",
       "elevation_m": 1641,
       "latitude_deg": -26.2544,
       "longitude_deg": 28.3442,
+      "night_ops_allowed": "no",
+      "lighting": {
+        "runway_edge": "no",
+        "threshold": "no",
+        "taxiway": "no",
+        "apron": "no"
+      },
+      "ppr_required": "yes",
+      "ops_hours": "Daylight",
+      "notes": "Reference only.",
       "runways": [
         {
           "designator": "18",
@@ -219,23 +337,41 @@
           "surface": "TAR"
         }
       ],
+      "night_ops": {
+        "night_ops_allowed": "no",
+        "lighting": {
+          "runway_edge": "no",
+          "threshold": "no",
+          "taxiway": "no",
+          "apron": "no"
+        },
+        "ppr_required": "yes",
+        "ops_hours": "Daylight",
+        "notes": "Reference only."
+      },
+      "night_ready": false,
       "metar": {
         "raw": "FABB 121100Z VRB03KT 5000 BR SCT008 16/14 Q1017",
-        "wind_dir": null,
+        "observed_time_utc": "2026-02-12T11:00:00Z",
+        "wind_dir_deg": null,
         "wind_speed_kt": 3,
         "gust_kt": null,
-        "vis_m": 1211,
+        "variable_wind": null,
+        "visibility_m": 5000,
+        "weather_codes": [
+          "BR"
+        ],
         "cloud_layers": [
           {
             "cover": "SCT",
             "base_ft": 800
           }
         ],
+        "ceiling_ft": null,
         "temp_c": 16,
         "dewpoint_c": 14,
         "qnh_hpa": 1017,
         "remarks": "",
-        "observed_time_utc": "2026-02-12T11:00:00Z",
         "source": "SAMPLE"
       },
       "taf": {
@@ -256,74 +392,50 @@
             "headwind_kt": null,
             "crosswind_kt": null,
             "tailwind_kt": null,
-            "crosswind_direction": null
+            "crosswind_side": null
           },
           {
             "runway": "36",
             "headwind_kt": null,
             "crosswind_kt": null,
             "tailwind_kt": null,
-            "crosswind_direction": null
+            "crosswind_side": null
           }
         ],
-        "density_altitude_ft": 6671,
-        "density_altitude_m": 2033,
+        "density_altitude": {
+          "da_ft": 6651,
+          "da_m": 2027
+        },
         "qnh_trend": "steady",
-        "flags": [
-          "LOW_VIS",
-          "LOW_CEILING"
-        ]
+        "flags": [],
+        "severity": {
+          "level": "OK",
+          "flags": []
+        },
+        "trends": {
+          "wind_speed": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "qnh": [
+            1017,
+            1017,
+            1017,
+            1017
+          ],
+          "temp": [
+            16,
+            16,
+            16,
+            16
+          ]
+        }
       }
     }
   ],
-  "notams": {
-    "dep": {
-      "ident": "FAOR",
-      "lines": [
-        "A1234/24 FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP.",
-        "A5678/24 FAOR TWY B CLSD BETWEEN B3-B7."
-      ],
-      "source": "SAMPLE"
-    },
-    "dest": {
-      "ident": "FALA",
-      "lines": [
-        "B1234/24 FALA RWY 07/25 WIP. EXPECT DELAYS."
-      ],
-      "source": "SAMPLE"
-    }
-  },
-  "sigmets": [
-    {
-      "id": "SIGMET-01",
-      "type": "TURB",
-      "valid_from": "2024-12-12T10:00Z",
-      "valid_to": "2024-12-12T16:00Z",
-      "area": "Johannesburg FIR",
-      "details": "MOD TURB FL080-FL180",
-      "source": "SAMPLE"
-    },
-    {
-      "id": "SIGMET-02",
-      "type": "TS",
-      "valid_from": "2024-12-12T12:00Z",
-      "valid_to": "2024-12-12T18:00Z",
-      "area": "Johannesburg FIR",
-      "details": "ISOL TS MOV NE",
-      "source": "SAMPLE"
-    }
-  ],
-  "airmets": [
-    {
-      "id": "AIRMET-01",
-      "type": "ICE",
-      "valid_from": "2024-12-12T09:00Z",
-      "valid_to": "2024-12-12T15:00Z",
-      "area": "Johannesburg FIR",
-      "details": "ICE MOD FL090-FL150",
-      "source": "SAMPLE"
-    }
-  ],
+  "track_deg": 304.8547285093442,
   "upper_winds": [
     {
       "level_ft": 3000,
@@ -382,12 +494,34 @@
       "ground_speed_kt": 174.3
     }
   ],
-  "upper_winds_source": "SAMPLE",
-  "track_deg": 304.8547285093442,
   "freezing_level_ft": 18000,
-  "route_flags": [
-    "ICING_POSSIBLE (TRAINING)",
-    "TURB_POSSIBLE (TRAINING)",
-    "CONVECTIVE_RISK_HIGH"
-  ]
+  "sigmet_lines": [
+    "SIGMET 1 ZFWG JOHANNESBURG FIR MOD TURB FL080-FL180 MOV NE",
+    "SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE",
+    "AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150"
+  ],
+  "notams": {
+    "FAOR": [
+      "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP.",
+      "FAOR TWY B CLSD BETWEEN B3-B7."
+    ],
+    "FALA": [
+      "FALA RWY 07/25 WIP. EXPECT DELAYS."
+    ]
+  },
+  "summary": {
+    "flags": [
+      "CONVECTIVE_RISK_HIGH",
+      "TURB_POSSIBLE (TRAINING)",
+      "ICING_POSSIBLE (TRAINING)"
+    ],
+    "severity": {
+      "level": "OK",
+      "flags": [
+        "CONVECTIVE_RISK_HIGH",
+        "TURB_POSSIBLE (TRAINING)",
+        "ICING_POSSIBLE (TRAINING)"
+      ]
+    }
+  }
 }

@@ -1,0 +1,127 @@
+{
+  "ident": "FABB",
+  "name": "Brakpan",
+  "elevation_m": 1641,
+  "latitude_deg": -26.2544,
+  "longitude_deg": 28.3442,
+  "night_ops_allowed": "no",
+  "lighting": {
+    "runway_edge": "no",
+    "threshold": "no",
+    "taxiway": "no",
+    "apron": "no"
+  },
+  "ppr_required": "yes",
+  "ops_hours": "Daylight",
+  "notes": "Reference only.",
+  "runways": [
+    {
+      "designator": "18",
+      "magnetic_heading_deg": 182,
+      "length_m": 900,
+      "surface": "TAR"
+    },
+    {
+      "designator": "36",
+      "magnetic_heading_deg": 2,
+      "length_m": 900,
+      "surface": "TAR"
+    }
+  ],
+  "night_ops": {
+    "night_ops_allowed": "no",
+    "lighting": {
+      "runway_edge": "no",
+      "threshold": "no",
+      "taxiway": "no",
+      "apron": "no"
+    },
+    "ppr_required": "yes",
+    "ops_hours": "Daylight",
+    "notes": "Reference only."
+  },
+  "night_ready": false,
+  "metar": {
+    "raw": "FABB 121100Z VRB03KT 5000 BR SCT008 16/14 Q1017",
+    "observed_time_utc": "2026-02-12T11:00:00Z",
+    "wind_dir_deg": null,
+    "wind_speed_kt": 3,
+    "gust_kt": null,
+    "variable_wind": null,
+    "visibility_m": 5000,
+    "weather_codes": [
+      "BR"
+    ],
+    "cloud_layers": [
+      {
+        "cover": "SCT",
+        "base_ft": 800
+      }
+    ],
+    "ceiling_ft": null,
+    "temp_c": 16,
+    "dewpoint_c": 14,
+    "qnh_hpa": 1017,
+    "remarks": "",
+    "source": "SAMPLE"
+  },
+  "taf": {
+    "raw": "TAF FABB 121100Z 1212/1312 VRB05KT 6000 BR BKN010 TEMPO 1218/1222 3000 DZ BKN008",
+    "summary": {
+      "valid_from": "1212",
+      "valid_to": "1312",
+      "key_changes": [
+        "TEMPO"
+      ]
+    },
+    "source": "SAMPLE"
+  },
+  "computed": {
+    "wind_components_per_runway": [
+      {
+        "runway": "18",
+        "headwind_kt": null,
+        "crosswind_kt": null,
+        "tailwind_kt": null,
+        "crosswind_side": null
+      },
+      {
+        "runway": "36",
+        "headwind_kt": null,
+        "crosswind_kt": null,
+        "tailwind_kt": null,
+        "crosswind_side": null
+      }
+    ],
+    "density_altitude": {
+      "da_ft": 6651,
+      "da_m": 2027
+    },
+    "qnh_trend": "steady",
+    "flags": [],
+    "severity": {
+      "level": "OK",
+      "flags": []
+    },
+    "trends": {
+      "wind_speed": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "qnh": [
+        1017,
+        1017,
+        1017,
+        1017
+      ],
+      "temp": [
+        16,
+        16,
+        16,
+        16
+      ]
+    }
+  }
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "name": "Student PPL",
+    "licence_tier": "StudentPPL",
+    "ratings": [],
+    "operation_context": "Training",
+    "thresholds": {
+      "max_crosswind_kt": 10,
+      "max_tailwind_kt": 2,
+      "max_gust_spread_kt": 8,
+      "max_da_ft": 6500,
+      "min_vis_m": 5000,
+      "min_ceiling_ft": 2000,
+      "qnh_fall_fast_hpa_per_hr": 2
+    },
+    "severity": {
+      "ok": [
+        "LOW_RISK"
+      ],
+      "caution": [
+        "CROSSWIND_HIGH",
+        "TAILWIND",
+        "GUSTY",
+        "HIGH_DA"
+      ],
+      "warning": [
+        "LOW_VIS",
+        "LOW_CEILING",
+        "TS_RISK",
+        "QNH_FALLING_FAST"
+      ]
+    }
+  },
+  {
+    "name": "PPL",
+    "licence_tier": "PPL",
+    "ratings": [
+      "Night"
+    ],
+    "operation_context": "Training",
+    "thresholds": {
+      "max_crosswind_kt": 15,
+      "max_tailwind_kt": 5,
+      "max_gust_spread_kt": 12,
+      "max_da_ft": 8000,
+      "min_vis_m": 3000,
+      "min_ceiling_ft": 1500,
+      "qnh_fall_fast_hpa_per_hr": 3
+    },
+    "severity": {
+      "ok": [
+        "LOW_RISK"
+      ],
+      "caution": [
+        "CROSSWIND_HIGH",
+        "TAILWIND",
+        "GUSTY",
+        "HIGH_DA"
+      ],
+      "warning": [
+        "LOW_VIS",
+        "LOW_CEILING",
+        "TS_RISK",
+        "QNH_FALLING_FAST"
+      ]
+    }
+  },
+  {
+    "name": "CPL",
+    "licence_tier": "CPL",
+    "ratings": [
+      "Night"
+    ],
+    "operation_context": "Charter",
+    "thresholds": {
+      "max_crosswind_kt": 18,
+      "max_tailwind_kt": 8,
+      "max_gust_spread_kt": 15,
+      "max_da_ft": 9000,
+      "min_vis_m": 2000,
+      "min_ceiling_ft": 1200,
+      "qnh_fall_fast_hpa_per_hr": 4
+    },
+    "severity": {
+      "ok": [
+        "LOW_RISK"
+      ],
+      "caution": [
+        "CROSSWIND_HIGH",
+        "TAILWIND",
+        "GUSTY",
+        "HIGH_DA"
+      ],
+      "warning": [
+        "LOW_VIS",
+        "LOW_CEILING",
+        "TS_RISK",
+        "QNH_FALLING_FAST"
+      ]
+    }
+  },
+  {
+    "name": "ATPL",
+    "licence_tier": "ATPL",
+    "ratings": [
+      "Night",
+      "IR"
+    ],
+    "operation_context": "Airline",
+    "thresholds": {
+      "max_crosswind_kt": 25,
+      "max_tailwind_kt": 10,
+      "max_gust_spread_kt": 20,
+      "max_da_ft": 10000,
+      "min_vis_m": 1500,
+      "min_ceiling_ft": 800,
+      "qnh_fall_fast_hpa_per_hr": 5
+    },
+    "severity": {
+      "ok": [
+        "LOW_RISK"
+      ],
+      "caution": [
+        "CROSSWIND_HIGH",
+        "TAILWIND",
+        "GUSTY",
+        "HIGH_DA"
+      ],
+      "warning": [
+        "LOW_VIS",
+        "LOW_CEILING",
+        "TS_RISK",
+        "QNH_FALLING_FAST"
+      ]
+    }
+  }
+]

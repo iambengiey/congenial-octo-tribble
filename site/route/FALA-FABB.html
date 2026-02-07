@@ -4,39 +4,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base-path" content="../" />
   <title>FALA-FABB route pack</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
   <header>
-    <h1>Route pack FALA-FABB</h1>
-    <p>Training/augmentation only. Not an official briefing source.</p>
+    <h1>METAR.oncloud.africa</h1>
+    <p class="disclaimer">Training/augmentation only. Not an official briefing source.</p>
     <nav>
-      <a href="../index.html">Airfields</a>
+      <a class="" href="../index.html">Airfields</a>
       <a class="active" href="../routes.html">Routes</a>
+      <a class="" href="../tools/index.html">Tools</a>
     </nav>
   </header>
   <main class="container">
+    
     <section class="summary">
-      <h2>FALA → FABB</h2>
+      <h2>FALA-FABB — FALA → FABB</h2>
       <p>Track: 130.1667205801936° | Corridor: 25 NM</p>
-      <div><span class='badge'>TURB_POSSIBLE (TRAINING)</span><span class='badge'>CONVECTIVE_RISK_HIGH</span></div>
+      <div class="badge-row"><span class="badge">CONVECTIVE_RISK_HIGH</span><span class="badge">TURB_POSSIBLE (TRAINING)</span></div>
     </section>
 
     <section class="section">
       <h3>Weather summary</h3>
       <table class="table">
-        <tr><th>Aerodrome</th><th>METAR</th><th>METAR time/source</th><th>TAF</th></tr>
-        <tr><td>FALA</td><td>FALA 121100Z 05008KT 9999 FEW015 20/10 Q1018 NOSIG</td><td>2026-02-12T11:00:00Z (SAMPLE)</td><td>TAF FALA 121100Z 1212/1312 06008KT 9999 SCT020 BECMG 1302/1304 09012KT 7000 BKN020</td></tr><tr><td>FABB</td><td>FABB 121100Z VRB03KT 5000 BR SCT008 16/14 Q1017</td><td>2026-02-12T11:00:00Z (SAMPLE)</td><td>TAF FABB 121100Z 1212/1312 VRB05KT 6000 BR BKN010 TEMPO 1218/1222 3000 DZ BKN008</td></tr><tr><td>FAOR</td><td>FAOR 121100Z 03012G20KT 8000 -RA FEW020 BKN035 18/12 Q1016 NOSIG</td><td>2026-02-12T11:00:00Z (SAMPLE)</td><td>TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030</td></tr>
+        <tr><th>Aerodrome</th><th>METAR</th><th>TAF</th></tr>
+        <tr><td>FALA</td><td>FALA 121100Z 05008KT 9999 FEW015 20/10 Q1018 NOSIG</td><td>TAF FALA 121100Z 1212/1312 06008KT 9999 SCT020 BECMG 1302/1304 09012KT 7000 BKN020</td></tr><tr><td>FABB</td><td>FABB 121100Z VRB03KT 5000 BR SCT008 16/14 Q1017</td><td>TAF FABB 121100Z 1212/1312 VRB05KT 6000 BR BKN010 TEMPO 1218/1222 3000 DZ BKN008</td></tr><tr><td>FAOR</td><td>FAOR 121100Z 03012G20KT 8000 -RA FEW020 BKN035 18/12 Q1016 NOSIG</td><td>TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030</td></tr>
       </table>
     </section>
 
     <section class="section">
       <h3>NOTAM highlights</h3>
-      <div class="grid">
-        <div class="card"><strong>FALA</strong><p>B1234/24 FALA RWY 07/25 WIP. EXPECT DELAYS.</p><p>Source: SAMPLE</p></div>
-        <div class="card"><strong>FABB</strong><p>C0001/24 FABB AD CLOSED 1800-0400 UTC.</p><p>Source: SAMPLE</p></div>
-      </div>
+      <div class="grid"><div class='card'><strong>FALA</strong><p>FALA RWY 07/25 WIP. EXPECT DELAYS.</p></div><div class='card'><strong>FABB</strong><p>FABB AD CLOSED 1800-0400 UTC.</p></div></div>
     </section>
 
     <section class="section">
@@ -50,20 +50,23 @@
 
     <section class="section">
       <h3>SIGMET / AIRMET</h3>
-      <div class="grid"><div class='card'><strong>TURB</strong><p>MOD TURB FL080-FL180</p><p>2024-12-12T10:00Z → 2024-12-12T16:00Z</p><p>Johannesburg FIR</p></div><div class='card'><strong>TS</strong><p>ISOL TS MOV NE</p><p>2024-12-12T12:00Z → 2024-12-12T18:00Z</p><p>Johannesburg FIR</p></div><div class='card'><strong>ICE</strong><p>ICE MOD FL090-FL150</p><p>2024-12-12T09:00Z → 2024-12-12T15:00Z</p><p>Johannesburg FIR</p></div></div>
+      <div class="grid"><div class='card'><p>SIGMET 1 ZFWG JOHANNESBURG FIR MOD TURB FL080-FL180 MOV NE</p></div><div class='card'><p>SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE</p></div><div class='card'><p>AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150</p></div></div>
     </section>
 
     <section class="section">
       <h3>SIGWX charts</h3>
       <div class="grid">
-        <div class="card"><img src="../assets/low_sigwx.svg" alt="Low-level SIGWX sample" style="width:100%" /></div>
-        <div class="card"><img src="../assets/high_sigwx.svg" alt="High-level SIGWX sample" style="width:100%" /></div>
+        <div class="card"><img src="../assets/low_sigwx.svg" alt="Low-level SIGWX sample" /></div>
+        <div class="card"><img src="../assets/high_sigwx.svg" alt="High-level SIGWX sample" /></div>
       </div>
+      <p class="note">For training reference only.</p>
     </section>
-
-    <div class="footer">
-      Training/augmentation only. Official briefings remain SAWS/ATC. Never use this for go/no-go decisions.
-    </div>
+    
   </main>
+  <footer>
+    <p>Training/augmentation only. Verify with SAWS/ATC/AIP/NOTAM office and POH/AFM.</p>
+    <p>Computed values are approximations.</p>
+  </footer>
+  <script src="../assets/app.js"></script>
 </body>
 </html>
