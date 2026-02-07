@@ -1,0 +1,118 @@
+{
+  "ident": "FATP",
+  "name": "Tzaneen",
+  "elevation_m": 582,
+  "latitude_deg": -23.827,
+  "longitude_deg": 30.347,
+  "night_ops_allowed": "no",
+  "lighting": {
+    "runway_edge": "no",
+    "threshold": "no",
+    "taxiway": "no",
+    "apron": "no"
+  },
+  "ppr_required": "yes",
+  "ops_hours": "Daylight",
+  "notes": "Reference only.",
+  "runways": [
+    {
+      "designator": "02",
+      "magnetic_heading_deg": 20,
+      "length_m": 1650,
+      "surface": "ASPH"
+    },
+    {
+      "designator": "20",
+      "magnetic_heading_deg": 200,
+      "length_m": 1650,
+      "surface": "ASPH"
+    }
+  ],
+  "night_ops": {
+    "night_ops_allowed": "no",
+    "lighting": {
+      "runway_edge": "no",
+      "threshold": "no",
+      "taxiway": "no",
+      "apron": "no"
+    },
+    "ppr_required": "yes",
+    "ops_hours": "Daylight",
+    "notes": "Reference only."
+  },
+  "night_ready": false,
+  "metar": {
+    "raw": "FATP 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+    "observed_time_utc": "2026-02-01T00:00:00Z",
+    "wind_dir_deg": 0,
+    "wind_speed_kt": 0,
+    "gust_kt": null,
+    "variable_wind": null,
+    "visibility_m": null,
+    "weather_codes": [],
+    "cloud_layers": [],
+    "ceiling_ft": null,
+    "temp_c": 20,
+    "dewpoint_c": 10,
+    "qnh_hpa": 1013,
+    "remarks": "",
+    "source": "SAMPLE"
+  },
+  "taf": {
+    "raw": "FATP 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+    "summary": {
+      "valid_from": "",
+      "valid_to": "",
+      "key_changes": []
+    },
+    "source": "SAMPLE"
+  },
+  "computed": {
+    "wind_components_per_runway": [
+      {
+        "runway": "02",
+        "headwind_kt": 0.0,
+        "crosswind_kt": 0.0,
+        "tailwind_kt": 0.0,
+        "crosswind_side": "L"
+      },
+      {
+        "runway": "20",
+        "headwind_kt": -0.0,
+        "crosswind_kt": 0.0,
+        "tailwind_kt": 0.0,
+        "crosswind_side": "L"
+      }
+    ],
+    "density_altitude": {
+      "da_ft": 2973,
+      "da_m": 906
+    },
+    "qnh_trend": "steady",
+    "flags": [],
+    "severity": {
+      "level": "OK",
+      "flags": []
+    },
+    "trends": {
+      "wind_speed": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "qnh": [
+        1013,
+        1013,
+        1013,
+        1013
+      ],
+      "temp": [
+        20,
+        20,
+        20,
+        20
+      ]
+    }
+  }
+}

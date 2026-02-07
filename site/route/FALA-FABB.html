@@ -1,0 +1,72 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base-path" content="../" />
+  <title>FALA-FABB route pack</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>METAR.oncloud.africa</h1>
+    <p class="disclaimer">Training/augmentation only. Not an official briefing source.</p>
+    <nav>
+      <a class="" href="../index.html">Airfields</a>
+      <a class="active" href="../routes.html">Routes</a>
+      <a class="" href="../tools/index.html">Tools</a>
+    </nav>
+  </header>
+  <main class="container">
+    
+    <section class="summary">
+      <h2>FALA-FABB — FALA → FABB</h2>
+      <p>Track: 130.1667205801936° | Corridor: 25 NM</p>
+      <div class="badge-row"><span class="badge">CONVECTIVE_RISK_HIGH</span><span class="badge">TURB_POSSIBLE (TRAINING)</span></div>
+    </section>
+
+    <section class="section">
+      <h3>Weather summary</h3>
+      <table class="table">
+        <tr><th>Aerodrome</th><th>METAR</th><th>TAF</th></tr>
+        <tr><td>FALA</td><td>FALA 121100Z 05008KT 9999 FEW015 20/10 Q1018 NOSIG</td><td>TAF FALA 121100Z 1212/1312 06008KT 9999 SCT020 BECMG 1302/1304 09012KT 7000 BKN020</td></tr><tr><td>FABB</td><td>FABB 121100Z VRB03KT 5000 BR SCT008 16/14 Q1017</td><td>TAF FABB 121100Z 1212/1312 VRB05KT 6000 BR BKN010 TEMPO 1218/1222 3000 DZ BKN008</td></tr><tr><td>FAOR</td><td>FAOR 121100Z 03012G20KT 8000 -RA FEW020 BKN035 18/12 Q1016 NOSIG</td><td>TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030</td></tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <h3>NOTAM highlights</h3>
+      <div class="grid"><div class='card'><strong>FALA</strong><p>FALA RWY 07/25 WIP. EXPECT DELAYS.</p></div><div class='card'><strong>FABB</strong><p>FABB AD CLOSED 1800-0400 UTC.</p></div></div>
+    </section>
+
+    <section class="section">
+      <h3>Upper winds & temperatures</h3>
+      <table class="table">
+        <tr><th>Level (ft)</th><th>Wind</th><th>Temp</th><th>Headwind (kt)</th><th>Ground speed (kt)</th></tr>
+        <tr><td>3000</td><td>40/12 kt</td><td>20 °C</td><td>-0.0</td><td>120.0</td></tr><tr><td>6000</td><td>60/18 kt</td><td>14 °C</td><td>6.1</td><td>113.9</td></tr><tr><td>9000</td><td>80/25 kt</td><td>8 °C</td><td>16.0</td><td>104.0</td></tr><tr><td>12000</td><td>90/30 kt</td><td>2 °C</td><td>22.9</td><td>97.1</td></tr>
+      </table>
+      <p>Freezing level estimate: 18000 ft</p>
+    </section>
+
+    <section class="section">
+      <h3>SIGMET / AIRMET</h3>
+      <div class="grid"><div class='card'><p>SIGMET 1 ZFWG JOHANNESBURG FIR MOD TURB FL080-FL180 MOV NE</p></div><div class='card'><p>SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE</p></div><div class='card'><p>AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150</p></div></div>
+    </section>
+
+    <section class="section">
+      <h3>SIGWX charts</h3>
+      <div class="grid">
+        <div class="card"><img src="../assets/low_sigwx.svg" alt="Low-level SIGWX sample" /></div>
+        <div class="card"><img src="../assets/high_sigwx.svg" alt="High-level SIGWX sample" /></div>
+      </div>
+      <p class="note">For training reference only.</p>
+    </section>
+    
+  </main>
+  <footer>
+    <p>Training/augmentation only. Verify with SAWS/ATC/AIP/NOTAM office and POH/AFM.</p>
+    <p>Computed values are approximations.</p>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

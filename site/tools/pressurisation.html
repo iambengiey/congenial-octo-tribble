@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base-path" content="../" />
+  <title>Pressurisation Simulator — Tools</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>METAR.oncloud.africa</h1>
+    <p class="disclaimer">Training/augmentation only. Not an official briefing source.</p>
+    <nav>
+      <a class="" href="../index.html">Airfields</a>
+      <a class="" href="../routes.html">Routes</a>
+      <a class="active" href="../tools/index.html">Tools</a>
+    </nav>
+  </header>
+  <main class="container">
+    
+    <section class="summary">
+      <h2>Pressurisation Simulator</h2>
+      <p class="note">Training-only, simplified models. Always verify with official sources and POH/AFM.</p>
+    </section>
+    <section class="section">
+    <label>Cruise level (ft) <input id="press-cruise" type="number" value="25000" /></label>
+    <label>Destination elevation (ft) <input id="press-dest" type="number" value="1500" /></label>
+    <label>Cabin rate (fpm) <input id="press-rate" type="number" value="500" /></label>
+    <label>Max differential (psi) <input id="press-diff" type="number" value="7" /></label>
+    <button data-action="calc-press">Calculate</button>
+    <div id="press-output" class="result"></div>
+    </section>
+    
+  </main>
+  <footer>
+    <p>Training/augmentation only. Verify with SAWS/ATC/AIP/NOTAM office and POH/AFM.</p>
+    <p>Computed values are approximations.</p>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base-path" content="../" />
+  <title>Density Altitude Tool — Tools</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>METAR.oncloud.africa</h1>
+    <p class="disclaimer">Training/augmentation only. Not an official briefing source.</p>
+    <nav>
+      <a class="" href="../index.html">Airfields</a>
+      <a class="" href="../routes.html">Routes</a>
+      <a class="active" href="../tools/index.html">Tools</a>
+    </nav>
+  </header>
+  <main class="container">
+    
+    <section class="summary">
+      <h2>Density Altitude Tool</h2>
+      <p class="note">Training-only, simplified models. Always verify with official sources and POH/AFM.</p>
+    </section>
+    <section class="section">
+    <label>Elevation (m) <input id="da-elev" type="number" value="1500" /></label>
+    <label>QNH (hPa) <input id="da-qnh" type="number" value="1013" /></label>
+    <label>OAT (°C) <input id="da-oat" type="number" value="20" /></label>
+    <button data-action="calc-da">Calculate</button>
+    <div id="da-output" class="result"></div>
+    </section>
+    
+  </main>
+  <footer>
+    <p>Training/augmentation only. Verify with SAWS/ATC/AIP/NOTAM office and POH/AFM.</p>
+    <p>Computed values are approximations.</p>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

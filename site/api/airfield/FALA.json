@@ -1,0 +1,129 @@
+{
+  "ident": "FALA",
+  "name": "Lanseria",
+  "elevation_m": 1377,
+  "latitude_deg": -25.9385,
+  "longitude_deg": 27.9261,
+  "night_ops_allowed": "yes",
+  "lighting": {
+    "runway_edge": "yes",
+    "threshold": "yes",
+    "taxiway": "yes",
+    "apron": "yes"
+  },
+  "ppr_required": "no",
+  "ops_hours": "H24",
+  "notes": "Reference only.",
+  "runways": [
+    {
+      "designator": "07",
+      "magnetic_heading_deg": 74,
+      "length_m": 2990,
+      "surface": "ASPH"
+    },
+    {
+      "designator": "25",
+      "magnetic_heading_deg": 254,
+      "length_m": 2990,
+      "surface": "ASPH"
+    }
+  ],
+  "night_ops": {
+    "night_ops_allowed": "yes",
+    "lighting": {
+      "runway_edge": "yes",
+      "threshold": "yes",
+      "taxiway": "yes",
+      "apron": "yes"
+    },
+    "ppr_required": "no",
+    "ops_hours": "H24",
+    "notes": "Reference only."
+  },
+  "night_ready": true,
+  "metar": {
+    "raw": "FALA 121100Z 05008KT 9999 FEW015 20/10 Q1018 NOSIG",
+    "observed_time_utc": "2026-02-12T11:00:00Z",
+    "wind_dir_deg": 50,
+    "wind_speed_kt": 8,
+    "gust_kt": null,
+    "variable_wind": null,
+    "visibility_m": 9999,
+    "weather_codes": [],
+    "cloud_layers": [
+      {
+        "cover": "FEW",
+        "base_ft": 1500
+      }
+    ],
+    "ceiling_ft": null,
+    "temp_c": 20,
+    "dewpoint_c": 10,
+    "qnh_hpa": 1018,
+    "remarks": "",
+    "source": "SAMPLE"
+  },
+  "taf": {
+    "raw": "TAF FALA 121100Z 1212/1312 06008KT 9999 SCT020 BECMG 1302/1304 09012KT 7000 BKN020",
+    "summary": {
+      "valid_from": "1212",
+      "valid_to": "1312",
+      "key_changes": [
+        "BECMG"
+      ]
+    },
+    "source": "SAMPLE"
+  },
+  "computed": {
+    "wind_components_per_runway": [
+      {
+        "runway": "07",
+        "headwind_kt": 7.3,
+        "crosswind_kt": 3.3,
+        "tailwind_kt": 0.0,
+        "crosswind_side": "L"
+      },
+      {
+        "runway": "25",
+        "headwind_kt": 0.0,
+        "crosswind_kt": 3.3,
+        "tailwind_kt": 7.3,
+        "crosswind_side": "R"
+      }
+    ],
+    "density_altitude": {
+      "da_ft": 6031,
+      "da_m": 1838
+    },
+    "qnh_trend": "steady",
+    "flags": [
+      "TAILWIND"
+    ],
+    "severity": {
+      "level": "CAUTION",
+      "flags": [
+        "TAILWIND"
+      ]
+    },
+    "trends": {
+      "wind_speed": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "qnh": [
+        1018,
+        1018,
+        1018,
+        1018
+      ],
+      "temp": [
+        20,
+        20,
+        20,
+        20
+      ]
+    }
+  }
+}

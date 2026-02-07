@@ -1,0 +1,29 @@
+
+:root { font-family: 'Inter', system-ui, sans-serif; color: #0f172a; }
+body { margin: 0; background: #f8fafc; }
+header { background: #0f172a; color: #fff; padding: 20px; }
+nav a { color: #cbd5f5; margin-right: 16px; text-decoration: none; font-weight: 600; }
+nav a.active { color: #fff; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
+.container { padding: 24px; max-width: 1200px; margin: 0 auto; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08); }
+.card-header { display: flex; justify-content: space-between; align-items: center; }
+.badge-row { display: flex; gap: 8px; margin: 8px 0; }
+.badge { display: inline-block; background: #e2e8f0; color: #1e293b; padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.badge.night { background: #c7d2fe; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.icon { font-size: 10px; }
+.status-ok { background: #e0f2fe; color: #0f172a; }
+.status-caution { background: #fef3c7; color: #92400e; }
+.status-warning { background: #fee2e2; color: #991b1b; }
+.status-unknown { background: #e5e7eb; color: #374151; }
+.summary { background: #e0f2fe; border-radius: 12px; padding: 16px; }
+.table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+.table th, .table td { text-align: left; padding: 8px; border-bottom: 1px solid #e5e7eb; font-size: 14px; }
+.section { margin-top: 24px; }
+.flag-list { margin: 8px 0; padding-left: 18px; }
+.note { font-size: 13px; color: #475569; }
+.result { margin-top: 12px; padding: 12px; background: #f1f5f9; border-radius: 8px; }
+footer { padding: 24px; text-align: center; font-size: 12px; color: #475569; }
+input, select { padding: 6px 8px; margin: 6px 8px 6px 0; }
+button { padding: 6px 10px; background: #0ea5e9; color: #fff; border: none; border-radius: 6px; cursor: pointer; }

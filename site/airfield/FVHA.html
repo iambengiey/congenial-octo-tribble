@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base-path" content="../" />
+  <title>FVHA briefing</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>METAR.oncloud.africa</h1>
+    <p class="disclaimer">Training/augmentation only. Not an official briefing source.</p>
+    <nav>
+      <a class="active" href="../index.html">Airfields</a>
+      <a class="" href="../routes.html">Routes</a>
+      <a class="" href="../tools/index.html">Tools</a>
+    </nav>
+  </header>
+  <main class="container">
+    
+    <section class="summary">
+      <h2>FVHA — Harare Intl</h2>
+      <p><strong>Raw METAR:</strong> FVHA 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG</p>
+      <p>Observed: 2026-02-01T00:00:00Z (SAMPLE)</p>
+    </section>
+
+    <section class="section">
+      <h3>Decoded METAR</h3>
+      <table class="table">
+        <tr><th>Wind</th><td>VRB° -- kt</td></tr>
+        <tr><th>Gust</th><td>-- kt</td></tr>
+        <tr><th>Variable wind</th><td>--</td></tr>
+        <tr><th>Visibility</th><td>-- m</td></tr>
+        <tr><th>Weather</th><td>--</td></tr>
+        <tr><th>Clouds</th><td>--</td></tr>
+        <tr><th>Ceiling</th><td>-- ft</td></tr>
+        <tr><th>Temperature</th><td>20 °C</td></tr>
+        <tr><th>Dewpoint</th><td>10 °C</td></tr>
+        <tr><th>QNH</th><td>1013 hPa</td></tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <h3>TAF summary</h3>
+      <p><strong>Raw TAF:</strong> FVHA 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG</p>
+      <p>Valid:  → </p>
+      <p>Key changes: None</p>
+    </section>
+
+    <section class="section">
+      <h3>Runway wind components</h3>
+      <p class="note">Why it matters: Crosswind, tailwind, and gust spread affect handling and performance. Headwind is generally helpful but not a limit.</p>
+      <table class="table">
+        <tr><th>Runway</th><th>Headwind (kt)</th><th>Crosswind (kt)</th><th>Tailwind (kt)</th></tr>
+        <tr><td>05</td><td>0.0</td><td>0.0 (L)</td><td>0.0</td></tr><tr><td>23</td><td>-0.0</td><td>0.0 (L)</td><td>0.0</td></tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <h3>Night operations</h3>
+      <ul>
+        <li>Night ops allowed: yes</li>
+        <li>Lighting: RWY edge yes, threshold yes, taxiway yes, apron yes</li>
+        <li>PPR required: no</li>
+        <li>Ops hours: H24</li>
+        <li>Notes: Reference only.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h3>Trends</h3>
+      <div class="trend" data-trend='{'wind_speed': [0, 0, 0, 0], 'qnh': [1013, 1013, 1013, 1013], 'temp': [20, 20, 20, 20]}'></div>
+    </section>
+
+    <section class="section">
+      <h3>Flags</h3>
+      <ul class="flag-list"><li>LOW_RISK</li></ul>
+    </section>
+    
+  </main>
+  <footer>
+    <p>Training/augmentation only. Verify with SAWS/ATC/AIP/NOTAM office and POH/AFM.</p>
+    <p>Computed values are approximations.</p>
+  </footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
