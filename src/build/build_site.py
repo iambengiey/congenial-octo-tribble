@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+from json import JSONDecodeError
 from pathlib import Path
 from typing import Any
 
@@ -87,7 +88,10 @@ def load_history(ident: str) -> list[dict]:
     path = HISTORY_DIR / f"{ident}.json"
     if not path.exists():
         return []
-    return json.loads(path.read_text(encoding="utf-8"))
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except JSONDecodeError:
+        return []
 
 
 def save_history(ident: str, history: list[dict]) -> None:
@@ -268,7 +272,11 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
         metar_adapter = SampleMetarTafAdapter(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
 
     airfields = []
+<<<<<<< HEAD
+    now = dt.datetime.now(dt.timezone.utc)
+=======
     now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+>>>>>>> main
     for airfield in aerodromes:
         ident = airfield["ident"]
         metar_raw = metar_adapter.fetch_metar(ident)
@@ -430,7 +438,11 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
     sigmet_adapter = SampleSigmetAdapter(SAMPLES_DIR / "sigmet" / "sigmet.txt")
     winds_adapter = SampleWindsTempsAdapter(SAMPLES_DIR / "winds_temps" / "winds_temps.json")
 
+<<<<<<< HEAD
+    now = dt.datetime.now(dt.timezone.utc)
+=======
     now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+>>>>>>> main
     sigmet_lines = sigmet_adapter.fetch()
     sigmet_decoded = decode_sigmet(sigmet_lines)
     winds = winds_adapter.fetch()
@@ -732,7 +744,7 @@ def build_snapshot(snapshot_type: str, ident: str, profile_name: str, source: st
 
     snapshot = {
         "id": snapshot_id,
-        "generated_at": dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc).isoformat(),
+        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "mode": mode_info,
         "profile": profile,
         "payload": payload,
@@ -955,7 +967,7 @@ def parse_args() -> argparse.Namespace:
 if __name__ == "__main__":
     args = parse_args()
     if args.snapshot:
-        snap_id = args.snapshot_id or f"snap-{dt.datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+        snap_id = args.snapshot_id or f"snap-{dt.datetime.now(dt.timezone.utc).strftime('%Y%m%d%H%M%S')}"
         build_snapshot(args.snapshot_type, args.snapshot_ident, args.snapshot_profile, args.snapshot_source, snap_id)
     else:
         build_site(args.mode)

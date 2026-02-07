@@ -59,5 +59,9 @@ See [docs/DISCLAIMER.md](docs/DISCLAIMER.md). Data sources are described in [doc
 <<<<<<< HEAD
 Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details. Route packs are evaluated using the ATPL profile to reflect airline-level minima.
 =======
+<<<<<<< HEAD
+Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details. Route packs are evaluated using the ATPL profile to reflect airline-level minima.
+=======
 Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details.
+>>>>>>> main
 >>>>>>> main
