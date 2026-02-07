@@ -1,5 +1,6 @@
 # METAR.oncloud.africa
 
+
 Static aviation briefing and training toolkit for PPL → ATPL. This repository builds a GitHub Pages site and JSON API that decode METAR/TAF, compute runway wind components and density altitude, generate route packs, and provide interactive training tools (ISA, TAS, hypoxia, pressurisation, scenario builder).
 
 > **Training/augmentation only. Not an official briefing source.** Always verify with SAWS/ATC/AIP/NOTAM office and POH/AFM.
