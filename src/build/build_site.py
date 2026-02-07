@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 import argparse
+<<<<<<< HEAD
+import datetime as dt
+=======
+>>>>>>> main
 import json
 from pathlib import Path
 from typing import Any
@@ -20,9 +24,20 @@ from src.build.render_html import (
 )
 from src.build.render_json import write_json
 from src.build.schema_validate import validate_all
+<<<<<<< HEAD
+from src.compute.change_detection import detect_changes
+from src.compute.cloud_base import cloud_base_ft
+from src.compute.compound_flags import compound_flags
+from src.compute.density_altitude import density_altitude
+from src.compute.risk_flags import flag_severity
+from src.compute.stability import stability_score
+from src.compute.sun import civil_twilight, is_night, sun_times
+from src.compute.workload import workload_score
+=======
 from src.compute.cloud_base import cloud_base_ft
 from src.compute.density_altitude import density_altitude
 from src.compute.risk_flags import flag_severity
+>>>>>>> main
 from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.wind_components import wind_components
 from src.parsers.metar import decode_metar
@@ -89,6 +104,54 @@ def save_history(ident: str, history: list[dict]) -> None:
     path.write_text(json.dumps(history[-200:], indent=2), encoding="utf-8")
 
 
+<<<<<<< HEAD
+def _parse_iso(ts: str | None) -> dt.datetime | None:
+    if not ts:
+        return None
+    return dt.datetime.fromisoformat(ts.replace("Z", "+00:00"))
+
+
+def hours_between(prev_ts: str | None, curr_ts: str | None) -> float | None:
+    prev = _parse_iso(prev_ts)
+    curr = _parse_iso(curr_ts)
+    if not prev or not curr:
+        return None
+    delta = curr - prev
+    return max(delta.total_seconds() / 3600.0, 0.0)
+
+
+def parse_taf_valid_to(valid_to: str, reference: dt.datetime) -> dt.datetime | None:
+    if not valid_to or len(valid_to) != 4:
+        return None
+    day = int(valid_to[:2])
+    hour = int(valid_to[2:])
+    month = reference.month
+    year = reference.year
+    if day < reference.day:
+        month = month + 1 if month < 12 else 1
+        year = year + 1 if month == 1 else year
+    return dt.datetime(year, month, day, hour, 0, tzinfo=dt.timezone.utc)
+
+
+def time_to_expiry(end_time: dt.datetime | None, now: dt.datetime) -> dict:
+    if not end_time:
+        return {"hours": None, "urgency": "unknown"}
+    hours = (end_time - now).total_seconds() / 3600.0
+    urgency = "ok"
+    if hours <= 1:
+        urgency = "red"
+    elif hours <= 2:
+        urgency = "amber"
+    return {"hours": round(hours, 1), "urgency": urgency}
+
+
+def build_mode_info(mode: str) -> dict:
+    if mode == "live_beta":
+        return {"label": "LIVE (BETA)", "text": "Not an official briefing source", "class": "mode-live"}
+    return {"label": "TRAINING (Sample)", "text": "Reproducible training data", "class": "mode-training"}
+
+=======
+>>>>>>> main
 def qnh_trend(history: list[dict]) -> str:
     if len(history) < 2:
         return "steady"
@@ -115,8 +178,14 @@ def qnh_falling_fast(history: list[dict], threshold: float) -> bool:
     return delta <= -threshold
 
 
+<<<<<<< HEAD
+def compute_flags(metar: dict, da: dict, components: list[dict], profile: dict, trend_fast: bool) -> tuple[list[str], dict]:
+    flags: list[str] = []
+    explanations: dict[str, dict] = {}
+=======
 def compute_flags(metar: dict, da: dict, components: list[dict], profile: dict, trend_fast: bool) -> list[str]:
     flags: list[str] = []
+>>>>>>> main
     thresholds = profile["thresholds"]
 
     crosswind_limit = thresholds["max_crosswind_kt"]
@@ -126,28 +195,96 @@ def compute_flags(metar: dict, da: dict, components: list[dict], profile: dict, 
     min_vis = thresholds["min_vis_m"]
     min_ceiling = thresholds["min_ceiling_ft"]
 
+<<<<<<< HEAD
+    max_crosswind_comp = max(components, key=lambda c: c["crosswind_kt"] or 0, default=None)
+    max_tailwind_comp = max(components, key=lambda c: c["tailwind_kt"] or 0, default=None)
+=======
+>>>>>>> main
     crosswind = max((c["crosswind_kt"] or 0 for c in components), default=0)
     tailwind = max((c["tailwind_kt"] or 0 for c in components), default=0)
 
     if crosswind > crosswind_limit:
         flags.append("CROSSWIND_HIGH")
+<<<<<<< HEAD
+        explanations["CROSSWIND_HIGH"] = {
+            "input": f"{metar.get('wind_dir_deg')}/{metar.get('wind_speed_kt')}kt",
+            "runway": max_crosswind_comp.get("runway") if max_crosswind_comp else None,
+            "crosswind_kt": crosswind,
+            "threshold_kt": crosswind_limit,
+            "note": "Crosswind affects controllability; headwind is typically helpful.",
+        }
     if tailwind > tailwind_limit:
         flags.append("TAILWIND")
+        explanations["TAILWIND"] = {
+            "input": f"{metar.get('wind_dir_deg')}/{metar.get('wind_speed_kt')}kt",
+            "runway": max_tailwind_comp.get("runway") if max_tailwind_comp else None,
+            "tailwind_kt": tailwind,
+            "threshold_kt": tailwind_limit,
+            "note": "Tailwind reduces performance and increases landing distance.",
+        }
+=======
+    if tailwind > tailwind_limit:
+        flags.append("TAILWIND")
+>>>>>>> main
 
     if metar.get("gust_kt") and metar.get("wind_speed_kt"):
         gust_spread = metar["gust_kt"] - metar["wind_speed_kt"]
         if gust_spread > gust_spread_limit:
             flags.append("GUSTY")
+<<<<<<< HEAD
+            explanations["GUSTY"] = {
+                "gust_spread_kt": gust_spread,
+                "threshold_kt": gust_spread_limit,
+                "note": "Gust spread increases workload and variability.",
+            }
+
+    if da.get("da_ft") and da["da_ft"] > max_da:
+        flags.append("HIGH_DA")
+        explanations["HIGH_DA"] = {
+            "density_altitude_ft": da["da_ft"],
+            "threshold_ft": max_da,
+            "note": "High DA reduces aircraft performance.",
+        }
+
+    if metar.get("visibility_m") is not None and metar["visibility_m"] < min_vis:
+        flags.append("LOW_VIS")
+        explanations["LOW_VIS"] = {
+            "visibility_m": metar["visibility_m"],
+            "threshold_m": min_vis,
+            "note": "Visibility below training minima.",
+        }
+=======
 
     if da.get("da_ft") and da["da_ft"] > max_da:
         flags.append("HIGH_DA")
 
     if metar.get("visibility_m") is not None and metar["visibility_m"] < min_vis:
         flags.append("LOW_VIS")
+>>>>>>> main
 
     ceiling = metar.get("ceiling_ft")
     if ceiling is not None and ceiling < min_ceiling:
         flags.append("LOW_CEILING")
+<<<<<<< HEAD
+        explanations["LOW_CEILING"] = {
+            "ceiling_ft": ceiling,
+            "threshold_ft": min_ceiling,
+            "note": "Ceiling below training minima.",
+        }
+
+    if any("TS" in code for code in metar.get("weather_codes", [])):
+        flags.append("TS_RISK")
+        explanations["TS_RISK"] = {"note": "Thunderstorm code in METAR.", "input": metar.get("weather_codes", [])}
+
+    if trend_fast:
+        flags.append("QNH_FALLING_FAST")
+        explanations["QNH_FALLING_FAST"] = {
+            "threshold_hpa_per_hr": thresholds["qnh_fall_fast_hpa_per_hr"],
+            "note": "Rapid QNH fall can indicate deteriorating conditions.",
+        }
+
+    return flags, explanations
+=======
 
     if any("TS" in code for code in metar.get("weather_codes", [])):
         flags.append("TS_RISK")
@@ -156,6 +293,7 @@ def compute_flags(metar: dict, da: dict, components: list[dict], profile: dict, 
         flags.append("QNH_FALLING_FAST")
 
     return flags
+>>>>>>> main
 
 
 def night_ready(airfield: dict) -> bool:
@@ -163,7 +301,11 @@ def night_ready(airfield: dict) -> bool:
     return airfield.get("night_ops_allowed") == "yes" and lighting.get("runway_edge") == "yes"
 
 
+<<<<<<< HEAD
+def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict], dict, list[dict]]:
+=======
 def build_airfields(mode: str) -> tuple[list[dict], dict, list[dict]]:
+>>>>>>> main
     profiles = load_profiles()
     default_profile = next((p for p in profiles if p["licence_tier"] == "PPL"), profiles[0])
 
@@ -171,11 +313,24 @@ def build_airfields(mode: str) -> tuple[list[dict], dict, list[dict]]:
     metar_adapter = SampleMetarTafAdapter(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
 
     airfields = []
+<<<<<<< HEAD
+    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+=======
+>>>>>>> main
     for airfield in aerodromes:
         ident = airfield["ident"]
         metar_raw = metar_adapter.fetch_metar(ident)
         taf_raw = metar_adapter.fetch_taf(ident)
         metar_decoded = decode_metar(metar_raw.raw)
+<<<<<<< HEAD
+        if mode == "live_beta":
+            fetch_time = now.isoformat().replace("+00:00", "Z")
+            obs_time = _parse_iso(metar_decoded.get("observed_time_utc"))
+            latency = round((now - obs_time).total_seconds() / 60.0, 1) if obs_time else None
+            metar_decoded["fetch_time_utc"] = fetch_time
+            metar_decoded["latency_min"] = latency
+=======
+>>>>>>> main
         taf_decoded = decode_taf(taf_raw.raw)
 
         components = []
@@ -183,10 +338,18 @@ def build_airfields(mode: str) -> tuple[list[dict], dict, list[dict]]:
             comp = wind_components(metar_decoded["wind_dir_deg"], metar_decoded["wind_speed_kt"], runway["magnetic_heading_deg"])
             components.append({"runway": runway["designator"], **comp})
 
+<<<<<<< HEAD
+        crosswind = max((c["crosswind_kt"] or 0 for c in components), default=0)
+=======
+>>>>>>> main
         da = density_altitude(airfield["elevation_m"], metar_decoded["qnh_hpa"], metar_decoded["temp_c"])
         ceiling_est = metar_decoded.get("ceiling_ft") or cloud_base_ft(metar_decoded.get("temp_c"), metar_decoded.get("dewpoint_c"))
 
         history = load_history(ident)
+<<<<<<< HEAD
+        previous = history[-1] if history else None
+=======
+>>>>>>> main
         history.append(
             {
                 "timestamp": metar_decoded["observed_time_utc"],
@@ -199,10 +362,83 @@ def build_airfields(mode: str) -> tuple[list[dict], dict, list[dict]]:
                 "ceiling_ft_est": ceiling_est,
             }
         )
+<<<<<<< HEAD
+        if record_history:
+            save_history(ident, history)
+
+        changes = detect_changes(previous, history[-1])
+        qnh_rate = None
+        hours = hours_between(previous.get("timestamp") if previous else None, history[-1]["timestamp"])
+        if hours and previous and previous.get("qnh_hpa") and history[-1].get("qnh_hpa"):
+            qnh_rate = round((history[-1]["qnh_hpa"] - previous["qnh_hpa"]) / hours, 2)
+
+        taf_valid_to = parse_taf_valid_to(taf_decoded["summary"]["valid_to"], now)
+        taf_expiry = time_to_expiry(taf_valid_to, now)
+
+        sun = sun_times(now.date(), airfield["latitude_deg"], airfield["longitude_deg"])
+        twilight = civil_twilight(now.date(), airfield["latitude_deg"], airfield["longitude_deg"])
+        night = is_night(now, twilight.get("sunset"), twilight.get("sunrise"))
+
+        trend_fast = qnh_falling_fast(history, default_profile["thresholds"]["qnh_fall_fast_hpa_per_hr"])
+        flags, flag_explanations = compute_flags(metar_decoded, da, components, default_profile, trend_fast)
+        runway_short = any(runway["length_m"] < default_profile["thresholds"]["short_runway_m"] for runway in airfield["runways"])
+        taf_deteriorating = "TS" in taf_decoded["raw"] or "TEMPO" in taf_decoded["raw"]
+        compounds = compound_flags(flags, runway_short, night, taf_deteriorating, trend_fast)
+        for compound in compounds:
+            if compound == "HIGH_DA_SHORT_RWY":
+                flag_explanations[compound] = {
+                    "density_altitude_ft": da.get("da_ft"),
+                    "short_runway_threshold_m": default_profile["thresholds"]["short_runway_m"],
+                    "note": "High DA combined with short runway increases performance risk.",
+                }
+            elif compound == "CROSSWIND_HIGH_GUSTY":
+                flag_explanations[compound] = {
+                    "crosswind_kt": crosswind,
+                    "gust_kt": metar_decoded.get("gust_kt"),
+                    "note": "Crosswind with gusts increases workload.",
+                }
+            elif compound == "LOW_CEILING_NIGHT":
+                flag_explanations[compound] = {
+                    "ceiling_ft": metar_decoded.get("ceiling_ft"),
+                    "night": night,
+                    "note": "Low ceiling during night conditions.",
+                }
+            elif compound == "RAPID_QNH_FALL_TAF_DETERIORATING":
+                flag_explanations[compound] = {
+                    "qnh_change_rate_hpa_per_hr": qnh_rate,
+                    "taf_hint": taf_decoded.get("raw"),
+                    "note": "Rapid QNH fall with deteriorating TAF.",
+                }
+            else:
+                flag_explanations[compound] = {"note": "Compound flag based on multiple conditions."}
+        all_flags = flags + compounds
+        severity = flag_severity(all_flags, default_profile.get("severity", {}))
+
+        workload = workload_score(
+            {
+                "crosswind_ratio": crosswind / default_profile["thresholds"]["max_crosswind_kt"] if default_profile["thresholds"]["max_crosswind_kt"] else 0,
+                "gust_ratio": (metar_decoded.get("gust_kt", 0) - metar_decoded.get("wind_speed_kt", 0)) / default_profile["thresholds"]["max_gust_spread_kt"] if metar_decoded.get("gust_kt") and metar_decoded.get("wind_speed_kt") else 0,
+                "da_ratio": (da.get("da_ft") or 0) / default_profile["thresholds"]["max_da_ft"] if default_profile["thresholds"]["max_da_ft"] else 0,
+                "convective": 1.0 if "TS" in taf_decoded["raw"] else 0.0,
+                "night": 1.0 if night else 0.0,
+                "rapid_change": 1.0 if abs(changes["details"].get("wind_speed_delta_kt", 0)) >= 10 else 0.0,
+            }
+        )
+        stability = stability_score(
+            {
+                "wind_shift": min(abs(changes["details"].get("wind_dir_shift_deg", 0)) / 60.0, 1.0),
+                "gust_spread": min((metar_decoded.get("gust_kt", 0) - metar_decoded.get("wind_speed_kt", 0)) / default_profile["thresholds"]["max_gust_spread_kt"] if metar_decoded.get("gust_kt") and metar_decoded.get("wind_speed_kt") else 0, 1.0),
+                "metar_taf_mismatch": 1.0 if ("TS" in taf_decoded["raw"] and "TS" not in metar_decoded.get("weather_codes", [])) else 0.0,
+                "qnh_fall": 1.0 if trend_fast else 0.0,
+                "speci": 0.0,
+            }
+        )
+=======
         save_history(ident, history)
         trend_fast = qnh_falling_fast(history, default_profile["thresholds"]["qnh_fall_fast_hpa_per_hr"])
         flags = compute_flags(metar_decoded, da, components, default_profile, trend_fast)
         severity = flag_severity(flags, default_profile.get("severity", {}))
+>>>>>>> main
 
         airfields.append(
             {
@@ -221,12 +457,35 @@ def build_airfields(mode: str) -> tuple[list[dict], dict, list[dict]]:
                     "wind_components_per_runway": components,
                     "density_altitude": da,
                     "qnh_trend": qnh_trend(history),
+<<<<<<< HEAD
+                    "flags": all_flags,
+                    "flag_explanations": flag_explanations,
+                    "severity": severity,
+                    "changes": changes,
+                    "qnh_change_rate_hpa_per_hr": qnh_rate,
+                    "taf_time_to_expiry": taf_expiry,
+                    "sun": {
+                        "sunrise": sun.get("sunrise"),
+                        "sunset": sun.get("sunset"),
+                        "civil_twilight_start": twilight.get("sunrise"),
+                        "civil_twilight_end": twilight.get("sunset"),
+                        "is_night": night,
+                    },
+                    "workload": workload,
+                    "stability": stability,
+=======
                     "flags": flags,
                     "severity": severity,
+>>>>>>> main
                     "trends": {
                         "wind_speed": [item.get("wind_speed_kt") for item in history][-20:],
                         "qnh": [item.get("qnh_hpa") for item in history][-20:],
                         "temp": [item.get("temp_c") for item in history][-20:],
+<<<<<<< HEAD
+                        "dewpoint": [item.get("dewpoint_c") for item in history][-20:],
+                        "visibility": [item.get("visibility_m") for item in history][-20:],
+=======
+>>>>>>> main
                     },
                 },
             }
@@ -243,6 +502,10 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
     sigmet_adapter = SampleSigmetAdapter(SAMPLES_DIR / "sigmet" / "sigmet.txt")
     winds_adapter = SampleWindsTempsAdapter(SAMPLES_DIR / "winds_temps" / "winds_temps.json")
 
+<<<<<<< HEAD
+    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+=======
+>>>>>>> main
     sigmet_lines = sigmet_adapter.fetch()
     sigmet_decoded = decode_sigmet(sigmet_lines)
     winds = winds_adapter.fetch()
@@ -293,6 +556,35 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
             route["dest"]: decode_notam(notam_adapter.fetch(route["dest"]).lines),
         }
 
+<<<<<<< HEAD
+        route_workload = workload_score(
+            {
+                "crosswind_ratio": 0.0,
+                "gust_ratio": 0.0,
+                "da_ratio": 0.0,
+                "convective": 1.0 if convective_risk else 0.0,
+                "night": 1.0 if (dep and dep["computed"]["sun"]["is_night"]) else 0.0,
+                "rapid_change": 1.0 if turbulence_risk else 0.0,
+            }
+        )
+        route_stability = stability_score(
+            {
+                "wind_shift": 0.0,
+                "gust_spread": 0.0,
+                "metar_taf_mismatch": 1.0 if convective_risk else 0.0,
+                "qnh_fall": 0.0,
+                "speci": 0.0,
+            }
+        )
+
+        def _taf_expiry(item: dict | None) -> dict:
+            if not item:
+                return {"hours": None, "urgency": "unknown"}
+            taf_valid_to = parse_taf_valid_to(item["taf"]["summary"]["valid_to"], now)
+            return time_to_expiry(taf_valid_to, now)
+
+=======
+>>>>>>> main
         built_routes.append(
             {
                 **route,
@@ -301,10 +593,24 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
                 "upper_winds": wind_levels,
                 "freezing_level_ft": freezing_level,
                 "sigmet_lines": [item["raw"] for item in sigmet_decoded],
+<<<<<<< HEAD
+                "sigmet_time_to_expiry": time_to_expiry(None, now),
+                "notams": {ident: [entry["text"] for entry in entries] for ident, entries in notams.items()},
+                "taf_time_to_expiry": {
+                    "dep": _taf_expiry(dep),
+                    "dest": _taf_expiry(dest),
+                },
+                "summary": {
+                    "flags": flags,
+                    "severity": severity,
+                    "workload": route_workload,
+                    "stability": route_stability,
+=======
                 "notams": {ident: [entry["text"] for entry in entries] for ident, entries in notams.items()},
                 "summary": {
                     "flags": flags,
                     "severity": severity,
+>>>>>>> main
                 },
             }
         )
@@ -329,11 +635,19 @@ def write_assets() -> None:
     (assets_dir / "app.js").write_text(_app_js(), encoding="utf-8")
 
 
+<<<<<<< HEAD
+def build_tools_pages(mode_info: dict) -> None:
+    tools_dir = SITE_DIR / "tools"
+    tools_dir.mkdir(parents=True, exist_ok=True)
+
+    (tools_dir / "index.html").write_text(render_tools_index(mode_info), encoding="utf-8")
+=======
 def build_tools_pages() -> None:
     tools_dir = SITE_DIR / "tools"
     tools_dir.mkdir(parents=True, exist_ok=True)
 
     (tools_dir / "index.html").write_text(render_tools_index(), encoding="utf-8")
+>>>>>>> main
 
     isa_content = """
     <label>Altitude (ft) <input id="isa-alt" type="number" value="5000" /></label>
@@ -395,6 +709,16 @@ def build_tools_pages() -> None:
     <div id="scenario-output" class="result"></div>
     """
 
+<<<<<<< HEAD
+    (tools_dir / "isa.html").write_text(render_tool_page("ISA Tool", isa_content, mode_info), encoding="utf-8")
+    (tools_dir / "altimetry.html").write_text(render_tool_page("Altimetry Tool", altimetry_content, mode_info), encoding="utf-8")
+    (tools_dir / "density-altitude.html").write_text(render_tool_page("Density Altitude Tool", da_content, mode_info), encoding="utf-8")
+    (tools_dir / "tas.html").write_text(render_tool_page("IAS → TAS Tool", tas_content, mode_info), encoding="utf-8")
+    (tools_dir / "hypoxia.html").write_text(render_tool_page("Gas laws & Hypoxia", hypoxia_content, mode_info), encoding="utf-8")
+    (tools_dir / "pressurisation.html").write_text(render_tool_page("Pressurisation Simulator", press_content, mode_info), encoding="utf-8")
+    (tools_dir / "aircraft.html").write_text(render_tool_page("Training Aircraft Reference", aircraft_content, mode_info), encoding="utf-8")
+    (tools_dir / "scenario.html").write_text(render_tool_page("Scenario Builder", scenario_content, mode_info), encoding="utf-8")
+=======
     (tools_dir / "isa.html").write_text(render_tool_page("ISA Tool", isa_content), encoding="utf-8")
     (tools_dir / "altimetry.html").write_text(render_tool_page("Altimetry Tool", altimetry_content), encoding="utf-8")
     (tools_dir / "density-altitude.html").write_text(render_tool_page("Density Altitude Tool", da_content), encoding="utf-8")
@@ -403,11 +727,17 @@ def build_tools_pages() -> None:
     (tools_dir / "pressurisation.html").write_text(render_tool_page("Pressurisation Simulator", press_content), encoding="utf-8")
     (tools_dir / "aircraft.html").write_text(render_tool_page("Training Aircraft Reference", aircraft_content), encoding="utf-8")
     (tools_dir / "scenario.html").write_text(render_tool_page("Scenario Builder", scenario_content), encoding="utf-8")
+>>>>>>> main
 
 
 def build_site(mode: str = "sample") -> None:
     validate_all()
 
+<<<<<<< HEAD
+    mode_key = "sample" if mode in ("sample", "auto") else "live_beta"
+    mode_info = build_mode_info(mode_key)
+=======
+>>>>>>> main
     airfields, default_profile, profiles = build_airfields(mode)
     routes = build_routes(airfields, default_profile)
 
@@ -416,22 +746,39 @@ def build_site(mode: str = "sample") -> None:
 
     SITE_DIR.mkdir(parents=True, exist_ok=True)
     write_assets()
+<<<<<<< HEAD
+    build_tools_pages(mode_info)
+
+    (SITE_DIR / "index.html").write_text(render_home(airfields, default_profile["name"], mode_info), encoding="utf-8")
+    (SITE_DIR / "routes.html").write_text(render_routes_index(routes, mode_info), encoding="utf-8")
+=======
     build_tools_pages()
 
     (SITE_DIR / "index.html").write_text(render_home(airfields, default_profile["name"]), encoding="utf-8")
     (SITE_DIR / "routes.html").write_text(render_routes_index(routes), encoding="utf-8")
+>>>>>>> main
 
     airfield_dir = SITE_DIR / "airfield"
     airfield_dir.mkdir(parents=True, exist_ok=True)
     for airfield in airfields:
+<<<<<<< HEAD
+        (airfield_dir / f"{airfield['ident']}.html").write_text(render_airfield_page(airfield, mode_info), encoding="utf-8")
+=======
         (airfield_dir / f"{airfield['ident']}.html").write_text(render_airfield_page(airfield), encoding="utf-8")
+>>>>>>> main
 
     route_dir = SITE_DIR / "route"
     route_dir.mkdir(parents=True, exist_ok=True)
     for route in routes:
+<<<<<<< HEAD
+        (route_dir / f"{route['route_id']}.html").write_text(render_route_page(route, sigwx_paths, mode_info), encoding="utf-8")
+
+    write_json(SITE_DIR / "api" / "latest.json", {"mode": mode_info, "airfields": airfields, "routes": routes})
+=======
         (route_dir / f"{route['route_id']}.html").write_text(render_route_page(route, sigwx_paths), encoding="utf-8")
 
     write_json(SITE_DIR / "api" / "latest.json", {"airfields": airfields, "routes": routes})
+>>>>>>> main
     write_json(SITE_DIR / "api" / "profiles.json", profiles)
     write_json(SITE_DIR / "api" / "aircraft.json", load_aircraft())
 
@@ -441,6 +788,87 @@ def build_site(mode: str = "sample") -> None:
         write_json(SITE_DIR / "api" / "route" / f"{route['route_id']}.json", route)
 
 
+<<<<<<< HEAD
+def render_snapshot_page(snapshot_id: str, mode_info: dict) -> str:
+    return f"""
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base-path" content="../" />
+  <title>Snapshot {snapshot_id}</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>METAR.oncloud.africa Snapshot</h1>
+    <p class="disclaimer">Training/augmentation only. Not an official briefing source.</p>
+    <div class="mode-row">
+      <span class="mode-banner {mode_info['class']}"><span class="icon">●</span>{mode_info['label']} — {mode_info['text']}</span>
+      <button id="copy-link">Copy link</button>
+    </div>
+  </header>
+  <main class="container">
+    <div id="snapshot-content" class="card">Loading snapshot...</div>
+  </main>
+  <script>
+    async function loadSnapshot() {{
+      const res = await fetch(`../api/snapshots/{snapshot_id}.json`);
+      const data = await res.json();
+      const content = document.getElementById('snapshot-content');
+      content.innerHTML = `
+        <h3>Snapshot ${snapshot_id}</h3>
+        <p><strong>Generated:</strong> ${data.generated_at}</p>
+        <p><strong>Profile:</strong> ${data.profile.name}</p>
+        <pre>${JSON.stringify(data.payload, null, 2)}</pre>
+      `;
+    }}
+    document.getElementById('copy-link').addEventListener('click', () => {{
+      navigator.clipboard.writeText(window.location.href);
+    }});
+    loadSnapshot();
+  </script>
+</body>
+</html>
+"""
+
+
+def build_snapshot(snapshot_type: str, ident: str, profile_name: str, source: str, snapshot_id: str) -> None:
+    mode_key = "live_beta" if source == "live_beta" else "sample"
+    mode_info = build_mode_info(mode_key)
+    airfields, _, profiles = build_airfields(mode_key, record_history=False)
+    routes = build_routes(airfields, profiles[0])
+
+    profile = next((p for p in profiles if p["name"] == profile_name), profiles[0])
+
+    payload: dict
+    if snapshot_type == "airfield":
+        target = next((a for a in airfields if a["ident"] == ident), None)
+        if not target:
+            raise ValueError("Unknown airfield for snapshot")
+        payload = {"airfield": target}
+    else:
+        target = next((r for r in routes if r["route_id"] == ident), None)
+        if not target:
+            raise ValueError("Unknown route for snapshot")
+        payload = {"route": target}
+
+    snapshot = {
+        "id": snapshot_id,
+        "generated_at": dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc).isoformat(),
+        "mode": mode_info,
+        "profile": profile,
+        "payload": payload,
+    }
+
+    write_json(SITE_DIR / "api" / "snapshots" / f"{snapshot_id}.json", snapshot)
+    (SITE_DIR / "snapshot").mkdir(parents=True, exist_ok=True)
+    (SITE_DIR / "snapshot" / f"{snapshot_id}.html").write_text(render_snapshot_page(snapshot_id, mode_info), encoding="utf-8")
+
+
+=======
+>>>>>>> main
 def _style_css() -> str:
     return """
 :root { font-family: 'Inter', system-ui, sans-serif; color: #0f172a; }
@@ -448,6 +876,14 @@ body { margin: 0; background: #f8fafc; }
 header { background: #0f172a; color: #fff; padding: 20px; }
 nav a { color: #cbd5f5; margin-right: 16px; text-decoration: none; font-weight: 600; }
 nav a.active { color: #fff; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
+<<<<<<< HEAD
+.mode-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; flex-wrap: wrap; gap: 12px; }
+.mode-banner { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.mode-training { background: #e0f2fe; color: #0f172a; }
+.mode-live { background: #fee2e2; color: #991b1b; }
+.mode-select select { padding: 4px 6px; }
+=======
+>>>>>>> main
 .container { padding: 24px; max-width: 1200px; margin: 0 auto; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 .card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08); }
@@ -471,6 +907,13 @@ nav a.active { color: #fff; border-bottom: 2px solid #38bdf8; padding-bottom: 4p
 footer { padding: 24px; text-align: center; font-size: 12px; color: #475569; }
 input, select { padding: 6px 8px; margin: 6px 8px 6px 0; }
 button { padding: 6px 10px; background: #0ea5e9; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+<<<<<<< HEAD
+.urgency-amber { color: #b45309; font-weight: 700; }
+.urgency-red { color: #b91c1c; font-weight: 700; }
+.sparkline { width: 140px; height: 40px; }
+.timeline { display: flex; gap: 12px; align-items: center; font-size: 12px; }
+=======
+>>>>>>> main
 """
 
 
@@ -607,15 +1050,55 @@ async function populateAircraft() {
 }
 
 populateAircraft();
+<<<<<<< HEAD
+
+function renderSparkline() {
+  document.querySelectorAll('[data-spark]').forEach(el => {
+    const data = JSON.parse(el.getAttribute('data-spark'));
+    if (!data.length) return;
+    const max = Math.max(...data.filter(v => v !== null));
+    const min = Math.min(...data.filter(v => v !== null));
+    const width = 140;
+    const height = 40;
+    const points = data.map((v, idx) => {
+      const x = (idx / (data.length - 1)) * width;
+      const y = height - ((v - min) / (max - min || 1)) * height;
+      return `${x},${y}`;
+    }).join(' ');
+    el.innerHTML = `<svg width=\"${width}\" height=\"${height}\" viewBox=\"0 0 ${width} ${height}\"><polyline fill=\"none\" stroke=\"#0ea5e9\" stroke-width=\"2\" points=\"${points}\"/></svg>`;
+  });
+}
+
+renderSparkline();
+=======
+>>>>>>> main
 """
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
+<<<<<<< HEAD
+    parser.add_argument("--mode", default="sample", choices=["sample", "auto", "live_beta"], help="Build mode")
+    parser.add_argument("--snapshot", action="store_true", help="Create snapshot artifacts only")
+    parser.add_argument("--snapshot-type", choices=["airfield", "route"], default="airfield")
+    parser.add_argument("--snapshot-ident", default="")
+    parser.add_argument("--snapshot-profile", default="PPL")
+    parser.add_argument("--snapshot-source", choices=["sample", "live_beta"], default="sample")
+    parser.add_argument("--snapshot-id", default="")
+=======
     parser.add_argument("--mode", default="sample", choices=["sample", "auto"], help="Sample mode only")
+>>>>>>> main
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
+<<<<<<< HEAD
+    if args.snapshot:
+        snap_id = args.snapshot_id or f"snap-{dt.datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+        build_snapshot(args.snapshot_type, args.snapshot_ident, args.snapshot_profile, args.snapshot_source, snap_id)
+    else:
+        build_site(args.mode)
+=======
     build_site(args.mode)
+>>>>>>> main

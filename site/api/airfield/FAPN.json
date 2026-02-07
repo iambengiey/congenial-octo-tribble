@@ -14,6 +14,19 @@
   "ppr_required": "no",
   "ops_hours": "H24",
   "notes": "Reference only.",
+<<<<<<< HEAD
+  "airspace_context": {
+    "ctr": "no",
+    "tma": "no",
+    "class": "G"
+  },
+  "circuit": {
+    "direction": "L",
+    "height_ft_agl": 1000
+  },
+  "noise_abatement_notes": "Training reference only.",
+=======
+>>>>>>> main
   "runways": [
     {
       "designator": "05",
@@ -99,30 +112,117 @@
     "flags": [
       "TAILWIND"
     ],
+<<<<<<< HEAD
+    "flag_explanations": {
+      "TAILWIND": {
+        "input": "90/15kt",
+        "runway": "23",
+        "tailwind_kt": 11.5,
+        "threshold_kt": 5,
+        "note": "Tailwind reduces performance and increases landing distance."
+      }
+    },
+=======
+>>>>>>> main
     "severity": {
       "level": "CAUTION",
       "flags": [
         "TAILWIND"
       ]
     },
+<<<<<<< HEAD
+    "changes": {
+      "summary": "Minimal changes",
+      "details": {
+        "wind_speed_delta_kt": 0,
+        "wind_dir_shift_deg": 0,
+        "qnh_change_hpa": 0,
+        "temp_dewpoint_spread_change": 0,
+        "ceiling_category": {
+          "from": "normal",
+          "to": "normal"
+        },
+        "visibility_category": {
+          "from": "normal",
+          "to": "normal"
+        }
+      }
+    },
+    "qnh_change_rate_hpa_per_hr": null,
+    "taf_time_to_expiry": {
+      "hours": 154.7,
+      "urgency": "ok"
+    },
+    "sun": {
+      "sunrise": "03:41",
+      "sunset": "16:49",
+      "civil_twilight_start": "03:17",
+      "civil_twilight_end": "17:13",
+      "is_night": false
+    },
+    "workload": {
+      "score": 47.6,
+      "category": "Medium",
+      "top_contributors": [
+        "convective",
+        "crosswind_ratio",
+        "da_ratio"
+      ]
+    },
+    "stability": {
+      "score": 80.0,
+      "category": "Stable",
+      "drivers": [
+        "metar_taf_mismatch"
+      ]
+    },
+=======
+>>>>>>> main
     "trends": {
       "wind_speed": [
         15,
         15,
         15,
+<<<<<<< HEAD
+        15,
+=======
+>>>>>>> main
         15
       ],
       "qnh": [
         1015,
         1015,
         1015,
+<<<<<<< HEAD
+        1015,
+=======
+>>>>>>> main
         1015
       ],
       "temp": [
         19,
         19,
         19,
+<<<<<<< HEAD
+        19,
         19
+      ],
+      "dewpoint": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "visibility": [
+        9999,
+        9999,
+        9999,
+        9999,
+        9999
+=======
+        19
+>>>>>>> main
       ]
     }
   }

@@ -38,5 +38,18 @@
     "dewpoint_c": 8,
     "visibility_m": 9999,
     "ceiling_ft_est": 4400
+<<<<<<< HEAD
+  },
+  {
+    "timestamp": "2026-02-12T11:00:00Z",
+    "wind_speed_kt": 15,
+    "wind_dir_deg": 90,
+    "qnh_hpa": 1015,
+    "temp_c": 19,
+    "dewpoint_c": 8,
+    "visibility_m": 9999,
+    "ceiling_ft_est": 4400
+=======
+>>>>>>> main
   }
 ]

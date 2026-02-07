@@ -130,3 +130,25 @@ async function populateAircraft() {
 }
 
 populateAircraft();
+<<<<<<< HEAD
+
+function renderSparkline() {
+  document.querySelectorAll('[data-spark]').forEach(el => {
+    const data = JSON.parse(el.getAttribute('data-spark'));
+    if (!data.length) return;
+    const max = Math.max(...data.filter(v => v !== null));
+    const min = Math.min(...data.filter(v => v !== null));
+    const width = 140;
+    const height = 40;
+    const points = data.map((v, idx) => {
+      const x = (idx / (data.length - 1)) * width;
+      const y = height - ((v - min) / (max - min || 1)) * height;
+      return `${x},${y}`;
+    }).join(' ');
+    el.innerHTML = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><polyline fill="none" stroke="#0ea5e9" stroke-width="2" points="${points}"/></svg>`;
+  });
+}
+
+renderSparkline();
+=======
+>>>>>>> main

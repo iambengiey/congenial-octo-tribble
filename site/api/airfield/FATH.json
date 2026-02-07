@@ -14,6 +14,19 @@
   "ppr_required": "yes",
   "ops_hours": "Daylight",
   "notes": "Reference only.",
+<<<<<<< HEAD
+  "airspace_context": {
+    "ctr": "no",
+    "tma": "no",
+    "class": "G"
+  },
+  "circuit": {
+    "direction": "L",
+    "height_ft_agl": 1000
+  },
+  "noise_abatement_notes": "Training reference only.",
+=======
+>>>>>>> main
   "runways": [
     {
       "designator": "01",
@@ -92,30 +105,111 @@
     "flags": [
       "HIGH_DA"
     ],
+<<<<<<< HEAD
+    "flag_explanations": {
+      "HIGH_DA": {
+        "density_altitude_ft": 8051,
+        "threshold_ft": 8000,
+        "note": "High DA reduces aircraft performance."
+      }
+    },
+=======
+>>>>>>> main
     "severity": {
       "level": "CAUTION",
       "flags": [
         "HIGH_DA"
       ]
     },
+<<<<<<< HEAD
+    "changes": {
+      "summary": "Minimal changes",
+      "details": {
+        "wind_speed_delta_kt": 0,
+        "wind_dir_shift_deg": 0,
+        "qnh_change_hpa": 0,
+        "temp_dewpoint_spread_change": 0,
+        "ceiling_category": {
+          "from": "normal",
+          "to": "normal"
+        },
+        "visibility_category": {
+          "from": "unknown",
+          "to": "unknown"
+        }
+      }
+    },
+    "qnh_change_rate_hpa_per_hr": null,
+    "taf_time_to_expiry": {
+      "hours": null,
+      "urgency": "unknown"
+    },
+    "sun": {
+      "sunrise": "03:32",
+      "sunset": "16:33",
+      "civil_twilight_start": "03:08",
+      "civil_twilight_end": "16:57",
+      "is_night": false
+    },
+    "workload": {
+      "score": 20.0,
+      "category": "Low",
+      "top_contributors": [
+        "da_ratio"
+      ]
+    },
+    "stability": {
+      "score": 100.0,
+      "category": "Stable",
+      "drivers": []
+    },
+=======
+>>>>>>> main
     "trends": {
       "wind_speed": [
         0,
         0,
         0,
+<<<<<<< HEAD
+        0,
+=======
+>>>>>>> main
         0
       ],
       "qnh": [
         1013,
         1013,
         1013,
+<<<<<<< HEAD
+        1013,
+=======
+>>>>>>> main
         1013
       ],
       "temp": [
         20,
         20,
         20,
+<<<<<<< HEAD
+        20,
         20
+      ],
+      "dewpoint": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "visibility": [
+        null,
+        null,
+        null,
+        null,
+        null
+=======
+        20
+>>>>>>> main
       ]
     }
   }

@@ -20,6 +20,10 @@ def validate_aerodromes(path: Path) -> None:
     for item in data.get("aerodromes", []):
         _require_keys(item, ["ident", "elevation_m", "latitude_deg", "longitude_deg", "runways"], "aerodrome")
         _require_keys(item, ["night_ops_allowed", "lighting", "ppr_required", "ops_hours", "notes"], "night ops")
+<<<<<<< HEAD
+        _require_keys(item, ["airspace_context", "circuit"], "airspace/circuit")
+=======
+>>>>>>> main
         for runway in item["runways"]:
             _require_keys(runway, ["designator", "magnetic_heading_deg", "length_m", "surface"], "runway")
 
@@ -36,7 +40,19 @@ def validate_profiles(path: Path) -> None:
         _require_keys(profile, ["name", "licence_tier", "ratings", "operation_context", "thresholds"], "profile")
         _require_keys(
             profile["thresholds"],
+<<<<<<< HEAD
+            [
+                "max_crosswind_kt",
+                "max_tailwind_kt",
+                "max_gust_spread_kt",
+                "short_runway_m",
+                "max_da_ft",
+                "min_vis_m",
+                "min_ceiling_ft",
+            ],
+=======
             ["max_crosswind_kt", "max_tailwind_kt", "max_gust_spread_kt", "max_da_ft", "min_vis_m", "min_ceiling_ft"],
+>>>>>>> main
             "thresholds",
         )
 
