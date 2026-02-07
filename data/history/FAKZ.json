@@ -58,6 +58,7 @@
     "dewpoint_c": 10,
     "visibility_m": null,
     "ceiling_ft_est": 4000
+<<<<<<< HEAD
   },
   {
     "timestamp": "2026-02-01T00:00:00Z",
@@ -68,5 +69,7 @@
     "dewpoint_c": 10,
     "visibility_m": null,
     "ceiling_ft_est": 4000
+=======
+>>>>>>> main
   }
 ]

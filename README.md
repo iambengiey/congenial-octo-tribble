@@ -56,4 +56,8 @@ See [docs/DISCLAIMER.md](docs/DISCLAIMER.md). Data sources are described in [doc
 - **Live Awareness (BETA):** METAR/TAF pulled from AviationWeather.gov with a 5-minute cache; other products still fall back to sample data.
 - Snapshots are generated via GitHub Actions workflow_dispatch and stored under `/site/api/snapshots` with a matching `/site/snapshot/<id>.html`.
 
+<<<<<<< HEAD
 Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details. Route packs are evaluated using the ATPL profile to reflect airline-level minima.
+=======
+Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details.
+>>>>>>> main
