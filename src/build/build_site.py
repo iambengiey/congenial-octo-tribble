@@ -434,11 +434,8 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
     sigmet_adapter = SampleSigmetAdapter(SAMPLES_DIR / "sigmet" / "sigmet.txt")
     winds_adapter = SampleWindsTempsAdapter(SAMPLES_DIR / "winds_temps" / "winds_temps.json")
 
-<<<<<<< HEAD
-    now = dt.datetime.now(dt.timezone.utc)
-=======
+
     now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
->>>>>>> main
     sigmet_lines = sigmet_adapter.fetch()
     sigmet_decoded = decode_sigmet(sigmet_lines)
     winds = winds_adapter.fetch()
