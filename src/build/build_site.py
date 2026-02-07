@@ -272,7 +272,11 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
         metar_adapter = SampleMetarTafAdapter(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
 
     airfields = []
+<<<<<<< HEAD
     now = dt.datetime.now(dt.timezone.utc)
+=======
+    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+>>>>>>> main
     for airfield in aerodromes:
         ident = airfield["ident"]
         metar_raw = metar_adapter.fetch_metar(ident)
@@ -434,7 +438,11 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
     sigmet_adapter = SampleSigmetAdapter(SAMPLES_DIR / "sigmet" / "sigmet.txt")
     winds_adapter = SampleWindsTempsAdapter(SAMPLES_DIR / "winds_temps" / "winds_temps.json")
 
+<<<<<<< HEAD
     now = dt.datetime.now(dt.timezone.utc)
+=======
+    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+>>>>>>> main
     sigmet_lines = sigmet_adapter.fetch()
     sigmet_decoded = decode_sigmet(sigmet_lines)
     winds = winds_adapter.fetch()
