@@ -1,0 +1,76 @@
+{
+  "ident": "FABB",
+  "name": "Brakpan",
+  "elevation_m": 1641,
+  "latitude_deg": -26.2544,
+  "longitude_deg": 28.3442,
+  "runways": [
+    {
+      "designator": "18",
+      "magnetic_heading_deg": 182,
+      "length_m": 900,
+      "surface": "TAR"
+    },
+    {
+      "designator": "36",
+      "magnetic_heading_deg": 2,
+      "length_m": 900,
+      "surface": "TAR"
+    }
+  ],
+  "metar": {
+    "raw": "FABB 121100Z VRB03KT 5000 BR SCT008 16/14 Q1017",
+    "wind_dir": null,
+    "wind_speed_kt": 3,
+    "gust_kt": null,
+    "vis_m": 1211,
+    "cloud_layers": [
+      {
+        "cover": "SCT",
+        "base_ft": 800
+      }
+    ],
+    "temp_c": 16,
+    "dewpoint_c": 14,
+    "qnh_hpa": 1017,
+    "remarks": "",
+    "observed_time_utc": "2026-02-12T11:00:00Z",
+    "source": "SAMPLE"
+  },
+  "taf": {
+    "raw": "TAF FABB 121100Z 1212/1312 VRB05KT 6000 BR BKN010 TEMPO 1218/1222 3000 DZ BKN008",
+    "summary": {
+      "valid_from": "1212",
+      "valid_to": "1312",
+      "key_changes": [
+        "TEMPO"
+      ]
+    },
+    "source": "SAMPLE"
+  },
+  "computed": {
+    "wind_components_per_runway": [
+      {
+        "runway": "18",
+        "headwind_kt": null,
+        "crosswind_kt": null,
+        "tailwind_kt": null,
+        "crosswind_direction": null
+      },
+      {
+        "runway": "36",
+        "headwind_kt": null,
+        "crosswind_kt": null,
+        "tailwind_kt": null,
+        "crosswind_direction": null
+      }
+    ],
+    "density_altitude_ft": 6671,
+    "density_altitude_m": 2033,
+    "qnh_trend": "steady",
+    "flags": [
+      "LOW_VIS",
+      "LOW_CEILING"
+    ]
+  }
+}

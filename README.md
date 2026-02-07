@@ -53,8 +53,19 @@ See [docs/DISCLAIMER.md](docs/DISCLAIMER.md). Data sources are described in [doc
 ## Modes and snapshots
 
 - **Training (Sample/Snapshot):** reproducible data for practice and exam-style scenarios.
+<<<<<<< HEAD
 - **Live Awareness (BETA):** live adapters are stubs and must fail over to sample data.
 - Live METAR/TAF (beta) uses aviationweather.gov and falls back to sample data if unavailable.
 - Snapshots are generated via GitHub Actions workflow_dispatch and stored under `/site/api/snapshots` with a matching `/site/snapshot/<id>.html`.
 
 Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details.
+=======
+- **Live Awareness (BETA):** METAR/TAF pulled from AviationWeather.gov with a 5-minute cache; other products still fall back to sample data.
+- Snapshots are generated via GitHub Actions workflow_dispatch and stored under `/site/api/snapshots` with a matching `/site/snapshot/<id>.html`.
+
+<<<<<<< HEAD
+Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details. Route packs are evaluated using the ATPL profile to reflect airline-level minima.
+=======
+Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details.
+>>>>>>> main
+>>>>>>> main

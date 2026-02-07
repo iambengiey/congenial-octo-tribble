@@ -6,7 +6,11 @@ import json
 from pathlib import Path
 from typing import Any
 
+<<<<<<< HEAD
 from src.adapters.live_metar_taf import LiveMetarTafAdapter
+=======
+from src.adapters.live_stub_metar_taf import LiveMetarTafStub
+>>>>>>> main
 from src.adapters.sample_metar_taf import SampleMetarTafAdapter
 from src.adapters.sample_notam import SampleNotamAdapter
 from src.adapters.sample_sigmet import SampleSigmetAdapter
@@ -257,6 +261,7 @@ def night_ready(airfield: dict) -> bool:
     return airfield.get("night_ops_allowed") == "yes" and lighting.get("runway_edge") == "yes"
 
 
+<<<<<<< HEAD
 def _build_metar_taf_adapter(mode: str) -> tuple[SampleMetarTafAdapter, LiveMetarTafAdapter | None]:
     sample = SampleMetarTafAdapter(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
     if mode == "live_beta":
@@ -277,19 +282,33 @@ def _fetch_with_fallback(ident: str, adapter: LiveMetarTafAdapter | None, fallba
     return fallback.fetch_taf(ident), "SAMPLE_FALLBACK"
 
 
+=======
+>>>>>>> main
 def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict], dict, list[dict]]:
     profiles = load_profiles()
     default_profile = next((p for p in profiles if p["licence_tier"] == "PPL"), profiles[0])
 
     aerodromes, _ = load_packs()
+<<<<<<< HEAD
     sample_adapter, live_adapter = _build_metar_taf_adapter(mode)
+=======
+    if mode == "live_beta":
+        metar_adapter = LiveMetarTafStub(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
+    else:
+        metar_adapter = SampleMetarTafAdapter(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
+>>>>>>> main
 
     airfields = []
     now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
     for airfield in aerodromes:
         ident = airfield["ident"]
+<<<<<<< HEAD
         metar_raw, metar_source = _fetch_with_fallback(ident, live_adapter, sample_adapter, "metar")
         taf_raw, taf_source = _fetch_with_fallback(ident, live_adapter, sample_adapter, "taf")
+=======
+        metar_raw = metar_adapter.fetch_metar(ident)
+        taf_raw = metar_adapter.fetch_taf(ident)
+>>>>>>> main
         metar_decoded = decode_metar(metar_raw.raw)
         if mode == "live_beta":
             fetch_time = now.isoformat().replace("+00:00", "Z")
@@ -404,8 +423,13 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
                     "notes": airfield["notes"],
                 },
                 "night_ready": night_ready(airfield),
+<<<<<<< HEAD
                 "metar": metar_decoded | {"source": metar_source},
                 "taf": taf_decoded | {"source": taf_source},
+=======
+                "metar": metar_decoded | {"source": metar_raw.source},
+                "taf": taf_decoded | {"source": taf_raw.source},
+>>>>>>> main
                 "computed": {
                     "wind_components_per_runway": components,
                     "density_altitude": da,
@@ -649,7 +673,12 @@ def build_site(mode: str = "sample") -> None:
     mode_key = "sample" if mode in ("sample", "auto") else "live_beta"
     mode_info = build_mode_info(mode_key)
     airfields, default_profile, profiles = build_airfields(mode)
+<<<<<<< HEAD
     routes = build_routes(airfields, default_profile)
+=======
+    atpl_profile = next((p for p in profiles if p["licence_tier"] == "ATPL" or p["name"] == "ATPL"), default_profile)
+    routes = build_routes(airfields, atpl_profile)
+>>>>>>> main
 
     sigwx_adapter = SampleSigwxAdapter(SAMPLES_DIR / "sigwx")
     sigwx_paths = copy_sigwx(sigwx_adapter.fetch())
