@@ -272,11 +272,7 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
         metar_adapter = SampleMetarTafAdapter(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
 
     airfields = []
-<<<<<<< HEAD
-    now = dt.datetime.now(dt.timezone.utc)
-=======
     now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
->>>>>>> main
     for airfield in aerodromes:
         ident = airfield["ident"]
         metar_raw = metar_adapter.fetch_metar(ident)
