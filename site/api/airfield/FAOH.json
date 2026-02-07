@@ -14,7 +14,6 @@
   "ppr_required": "yes",
   "ops_hours": "Daylight",
   "notes": "Reference only.",
-<<<<<<< HEAD
   "airspace_context": {
     "ctr": "no",
     "tma": "no",
@@ -25,8 +24,6 @@
     "height_ft_agl": 1000
   },
   "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
   "runways": [
     {
       "designator": "04",
@@ -103,15 +100,11 @@
     },
     "qnh_trend": "steady",
     "flags": [],
-<<<<<<< HEAD
     "flag_explanations": {},
-=======
->>>>>>> main
     "severity": {
       "level": "OK",
       "flags": []
     },
-<<<<<<< HEAD
     "changes": {
       "summary": "Minimal changes",
       "details": {
@@ -153,38 +146,37 @@
       "category": "Stable",
       "drivers": []
     },
-=======
->>>>>>> main
     "trends": {
       "wind_speed": [
         0,
         0,
         0,
-<<<<<<< HEAD
         0,
-=======
->>>>>>> main
+        0,
+        0,
         0
       ],
       "qnh": [
         1013,
         1013,
         1013,
-<<<<<<< HEAD
         1013,
-=======
->>>>>>> main
+        1013,
+        1013,
         1013
       ],
       "temp": [
         20,
         20,
         20,
-<<<<<<< HEAD
+        20,
+        20,
         20,
         20
       ],
       "dewpoint": [
+        10,
+        10,
         10,
         10,
         10,
@@ -196,10 +188,9 @@
         null,
         null,
         null,
+        null,
+        null,
         null
-=======
-        20
->>>>>>> main
       ]
     }
   }

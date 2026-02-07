@@ -38,7 +38,6 @@
     "dewpoint_c": 10,
     "visibility_m": 9999,
     "ceiling_ft_est": 4000
-<<<<<<< HEAD
   },
   {
     "timestamp": "2026-02-12T11:00:00Z",
@@ -49,7 +48,25 @@
     "dewpoint_c": 10,
     "visibility_m": 9999,
     "ceiling_ft_est": 4000
-=======
->>>>>>> main
+  },
+  {
+    "timestamp": "2026-02-12T11:00:00Z",
+    "wind_speed_kt": 8,
+    "wind_dir_deg": 50,
+    "qnh_hpa": 1018,
+    "temp_c": 20,
+    "dewpoint_c": 10,
+    "visibility_m": 9999,
+    "ceiling_ft_est": 4000
+  },
+  {
+    "timestamp": "2026-02-12T11:00:00Z",
+    "wind_speed_kt": 8,
+    "wind_dir_deg": 50,
+    "qnh_hpa": 1018,
+    "temp_c": 20,
+    "dewpoint_c": 10,
+    "visibility_m": 9999,
+    "ceiling_ft_est": 4000
   }
 ]
