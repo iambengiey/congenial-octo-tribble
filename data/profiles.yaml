@@ -7,10 +7,7 @@ profiles:
       max_crosswind_kt: 10
       max_tailwind_kt: 2
       max_gust_spread_kt: 8
-<<<<<<< HEAD
       short_runway_m: 900
-=======
->>>>>>> main
       max_da_ft: 6500
       min_vis_m: 5000
       min_ceiling_ft: 2000
@@ -28,10 +25,7 @@ profiles:
       max_crosswind_kt: 15
       max_tailwind_kt: 5
       max_gust_spread_kt: 12
-<<<<<<< HEAD
       short_runway_m: 900
-=======
->>>>>>> main
       max_da_ft: 8000
       min_vis_m: 3000
       min_ceiling_ft: 1500
@@ -49,10 +43,7 @@ profiles:
       max_crosswind_kt: 18
       max_tailwind_kt: 8
       max_gust_spread_kt: 15
-<<<<<<< HEAD
       short_runway_m: 900
-=======
->>>>>>> main
       max_da_ft: 9000
       min_vis_m: 2000
       min_ceiling_ft: 1200
@@ -70,10 +61,7 @@ profiles:
       max_crosswind_kt: 25
       max_tailwind_kt: 10
       max_gust_spread_kt: 20
-<<<<<<< HEAD
       short_runway_m: 900
-=======
->>>>>>> main
       max_da_ft: 10000
       min_vis_m: 1500
       min_ceiling_ft: 800
