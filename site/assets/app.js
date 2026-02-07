@@ -130,7 +130,6 @@ async function populateAircraft() {
 }
 
 populateAircraft();
-<<<<<<< HEAD
 
 function renderSparkline() {
   document.querySelectorAll('[data-spark]').forEach(el => {
@@ -150,5 +149,3 @@ function renderSparkline() {
 }
 
 renderSparkline();
-=======
->>>>>>> main

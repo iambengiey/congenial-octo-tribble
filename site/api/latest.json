@@ -1,12 +1,9 @@
 {
-<<<<<<< HEAD
   "mode": {
     "label": "TRAINING (Sample)",
     "text": "Reproducible training data",
     "class": "mode-training"
   },
-=======
->>>>>>> main
   "airfields": [
     {
       "ident": "FBSK",
@@ -24,7 +21,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -35,8 +31,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "08",
@@ -113,15 +107,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -163,41 +153,44 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -211,10 +204,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -235,7 +228,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -246,8 +238,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "08",
@@ -324,15 +314,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -374,38 +360,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -417,10 +406,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -441,7 +430,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -452,8 +440,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "03L",
@@ -572,7 +558,6 @@
         "flags": [
           "TAILWIND"
         ],
-<<<<<<< HEAD
         "flag_explanations": {
           "TAILWIND": {
             "input": "30/12kt",
@@ -582,15 +567,12 @@
             "note": "Tailwind reduces performance and increases landing distance."
           }
         },
-=======
->>>>>>> main
         "severity": {
           "level": "CAUTION",
           "flags": [
             "TAILWIND"
           ]
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -610,7 +592,7 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 160.7,
+          "hours": 151.5,
           "urgency": "ok"
         },
         "sun": {
@@ -636,38 +618,41 @@
             "gust_spread"
           ]
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             12,
             12,
             12,
-<<<<<<< HEAD
             12,
-=======
->>>>>>> main
+            12,
+            12,
+            12,
             12
           ],
           "qnh": [
             1016,
             1016,
             1016,
-<<<<<<< HEAD
             1016,
-=======
->>>>>>> main
+            1016,
+            1016,
+            1016,
             1016
           ],
           "temp": [
             18,
             18,
             18,
-<<<<<<< HEAD
+            18,
+            18,
+            18,
             18,
             18
           ],
           "dewpoint": [
+            12,
+            12,
+            12,
             12,
             12,
             12,
@@ -679,10 +664,10 @@
             8000,
             8000,
             8000,
+            8000,
+            8000,
+            8000,
             8000
-=======
-            18
->>>>>>> main
           ]
         }
       }
@@ -703,7 +688,6 @@
       "ppr_required": "no",
       "ops_hours": "HR",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -714,8 +698,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "11",
@@ -792,15 +774,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -842,38 +820,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -885,10 +866,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -909,7 +890,6 @@
       "ppr_required": "no",
       "ops_hours": "HR",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -920,8 +900,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "17",
@@ -998,15 +976,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -1048,38 +1022,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -1091,10 +1068,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -1115,7 +1092,6 @@
       "ppr_required": "no",
       "ops_hours": "HR",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -1126,8 +1102,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "11",
@@ -1204,15 +1178,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -1254,38 +1224,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -1297,10 +1270,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -1321,7 +1294,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -1332,8 +1304,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "07",
@@ -1419,7 +1389,6 @@
         "flags": [
           "TAILWIND"
         ],
-<<<<<<< HEAD
         "flag_explanations": {
           "TAILWIND": {
             "input": "50/8kt",
@@ -1429,15 +1398,12 @@
             "note": "Tailwind reduces performance and increases landing distance."
           }
         },
-=======
->>>>>>> main
         "severity": {
           "level": "CAUTION",
           "flags": [
             "TAILWIND"
           ]
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -1457,7 +1423,7 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         },
         "sun": {
@@ -1480,38 +1446,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             8,
             8,
             8,
-<<<<<<< HEAD
             8,
-=======
->>>>>>> main
+            8,
+            8,
+            8,
             8
           ],
           "qnh": [
             1018,
             1018,
             1018,
-<<<<<<< HEAD
             1018,
-=======
->>>>>>> main
+            1018,
+            1018,
+            1018,
             1018
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -1523,10 +1492,10 @@
             9999,
             9999,
             9999,
+            9999,
+            9999,
+            9999,
             9999
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -1547,7 +1516,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -1558,8 +1526,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "02",
@@ -1645,7 +1611,6 @@
         "flags": [
           "TAILWIND"
         ],
-<<<<<<< HEAD
         "flag_explanations": {
           "TAILWIND": {
             "input": "140/12kt",
@@ -1655,15 +1620,12 @@
             "note": "Tailwind reduces performance and increases landing distance."
           }
         },
-=======
->>>>>>> main
         "severity": {
           "level": "CAUTION",
           "flags": [
             "TAILWIND"
           ]
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -1683,7 +1645,7 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         },
         "sun": {
@@ -1706,38 +1668,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             12,
             12,
             12,
-<<<<<<< HEAD
             12,
-=======
->>>>>>> main
+            12,
+            12,
+            12,
             12
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             24,
             24,
             24,
-<<<<<<< HEAD
+            24,
+            24,
+            24,
             24,
             24
           ],
           "dewpoint": [
+            9,
+            9,
+            9,
             9,
             9,
             9,
@@ -1749,10 +1714,10 @@
             9999,
             9999,
             9999,
+            9999,
+            9999,
+            9999,
             9999
-=======
-            24
->>>>>>> main
           ]
         }
       }
@@ -1773,7 +1738,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -1784,8 +1748,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "18",
@@ -1871,15 +1833,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -1899,7 +1857,7 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         },
         "sun": {
@@ -1921,38 +1879,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             3,
             3,
             3,
-<<<<<<< HEAD
             3,
-=======
->>>>>>> main
+            3,
+            3,
+            3,
             3
           ],
           "qnh": [
             1017,
             1017,
             1017,
-<<<<<<< HEAD
             1017,
-=======
->>>>>>> main
+            1017,
+            1017,
+            1017,
             1017
           ],
           "temp": [
             16,
             16,
             16,
-<<<<<<< HEAD
+            16,
+            16,
+            16,
             16,
             16
           ],
           "dewpoint": [
+            14,
+            14,
+            14,
             14,
             14,
             14,
@@ -1964,10 +1925,10 @@
             5000,
             5000,
             5000,
+            5000,
+            5000,
+            5000,
             5000
-=======
-            16
->>>>>>> main
           ]
         }
       }
@@ -1988,7 +1949,6 @@
       "ppr_required": "yes",
       "ops_hours": "HR",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -1999,8 +1959,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "01",
@@ -2077,15 +2035,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -2127,38 +2081,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -2170,10 +2127,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -2194,7 +2151,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -2205,8 +2161,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "17",
@@ -2283,15 +2237,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -2333,38 +2283,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -2376,10 +2329,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -2400,7 +2353,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -2411,8 +2363,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "03",
@@ -2489,15 +2439,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -2539,38 +2485,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -2582,10 +2531,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -2606,7 +2555,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -2617,8 +2565,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "08",
@@ -2695,15 +2641,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -2745,38 +2687,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -2788,10 +2733,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -2812,7 +2757,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -2823,8 +2767,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "01",
@@ -2927,15 +2869,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -2977,38 +2915,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -3020,10 +2961,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -3044,7 +2985,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -3055,8 +2995,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "05",
@@ -3133,15 +3071,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -3183,38 +3117,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -3226,10 +3163,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -3250,7 +3187,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -3261,8 +3197,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "16",
@@ -3339,15 +3273,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -3389,38 +3319,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -3432,10 +3365,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -3456,7 +3389,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -3467,8 +3399,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "05",
@@ -3554,7 +3484,6 @@
         "flags": [
           "TAILWIND"
         ],
-<<<<<<< HEAD
         "flag_explanations": {
           "TAILWIND": {
             "input": "90/15kt",
@@ -3564,15 +3493,12 @@
             "note": "Tailwind reduces performance and increases landing distance."
           }
         },
-=======
->>>>>>> main
         "severity": {
           "level": "CAUTION",
           "flags": [
             "TAILWIND"
           ]
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -3592,7 +3518,7 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         },
         "sun": {
@@ -3618,38 +3544,41 @@
             "metar_taf_mismatch"
           ]
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             15,
             15,
             15,
-<<<<<<< HEAD
             15,
-=======
->>>>>>> main
+            15,
+            15,
+            15,
             15
           ],
           "qnh": [
             1015,
             1015,
             1015,
-<<<<<<< HEAD
             1015,
-=======
->>>>>>> main
+            1015,
+            1015,
+            1015,
             1015
           ],
           "temp": [
             19,
             19,
             19,
-<<<<<<< HEAD
+            19,
+            19,
+            19,
             19,
             19
           ],
           "dewpoint": [
+            8,
+            8,
+            8,
             8,
             8,
             8,
@@ -3661,10 +3590,10 @@
             9999,
             9999,
             9999,
+            9999,
+            9999,
+            9999,
             9999
-=======
-            19
->>>>>>> main
           ]
         }
       }
@@ -3685,7 +3614,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -3696,8 +3624,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "17",
@@ -3774,15 +3700,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -3824,38 +3746,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -3867,10 +3792,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -3891,7 +3816,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -3902,8 +3826,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "07",
@@ -3980,15 +3902,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -4030,38 +3948,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -4073,10 +3994,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -4097,7 +4018,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -4108,8 +4028,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "06",
@@ -4186,15 +4104,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -4236,38 +4150,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -4279,10 +4196,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -4303,7 +4220,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -4314,8 +4230,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "03",
@@ -4392,15 +4306,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -4442,38 +4352,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -4485,10 +4398,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -4509,7 +4422,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -4520,8 +4432,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "13",
@@ -4598,15 +4508,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -4648,38 +4554,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -4691,10 +4600,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -4715,7 +4624,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -4726,8 +4634,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "11",
@@ -4804,15 +4710,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -4854,38 +4756,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -4897,10 +4802,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -4921,7 +4826,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -4932,8 +4836,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "01",
@@ -5012,7 +4914,6 @@
         "flags": [
           "HIGH_DA"
         ],
-<<<<<<< HEAD
         "flag_explanations": {
           "HIGH_DA": {
             "density_altitude_ft": 8051,
@@ -5020,15 +4921,12 @@
             "note": "High DA reduces aircraft performance."
           }
         },
-=======
->>>>>>> main
         "severity": {
           "level": "CAUTION",
           "flags": [
             "HIGH_DA"
           ]
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -5070,38 +4968,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -5113,10 +5014,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -5137,7 +5038,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -5148,8 +5048,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "04",
@@ -5226,15 +5124,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -5276,38 +5170,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -5319,10 +5216,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -5343,7 +5240,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -5354,8 +5250,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "01",
@@ -5432,15 +5326,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -5482,38 +5372,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -5525,10 +5418,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -5549,7 +5442,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -5560,8 +5452,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "02",
@@ -5638,15 +5528,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -5688,38 +5574,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -5731,10 +5620,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -5755,7 +5644,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -5766,8 +5654,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "04",
@@ -5844,15 +5730,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -5894,38 +5776,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -5937,10 +5822,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -5961,7 +5846,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -5972,8 +5856,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "02",
@@ -6050,15 +5932,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -6100,38 +5978,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -6143,10 +6024,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -6167,7 +6048,6 @@
       "ppr_required": "yes",
       "ops_hours": "Daylight",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -6178,8 +6058,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "14",
@@ -6256,15 +6134,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -6306,38 +6180,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -6349,10 +6226,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -6373,7 +6250,6 @@
       "ppr_required": "no",
       "ops_hours": "H24",
       "notes": "Reference only.",
-<<<<<<< HEAD
       "airspace_context": {
         "ctr": "no",
         "tma": "no",
@@ -6384,8 +6260,6 @@
         "height_ft_agl": 1000
       },
       "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
       "runways": [
         {
           "designator": "05",
@@ -6462,15 +6336,11 @@
         },
         "qnh_trend": "steady",
         "flags": [],
-<<<<<<< HEAD
         "flag_explanations": {},
-=======
->>>>>>> main
         "severity": {
           "level": "OK",
           "flags": []
         },
-<<<<<<< HEAD
         "changes": {
           "summary": "Minimal changes",
           "details": {
@@ -6512,38 +6382,41 @@
           "category": "Stable",
           "drivers": []
         },
-=======
->>>>>>> main
         "trends": {
           "wind_speed": [
             0,
             0,
             0,
-<<<<<<< HEAD
             0,
-=======
->>>>>>> main
+            0,
+            0,
+            0,
             0
           ],
           "qnh": [
             1013,
             1013,
             1013,
-<<<<<<< HEAD
             1013,
-=======
->>>>>>> main
+            1013,
+            1013,
+            1013,
             1013
           ],
           "temp": [
             20,
             20,
             20,
-<<<<<<< HEAD
+            20,
+            20,
+            20,
             20,
             20
           ],
           "dewpoint": [
+            10,
+            10,
+            10,
             10,
             10,
             10,
@@ -6555,10 +6428,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
             null
-=======
-            20
->>>>>>> main
           ]
         }
       }
@@ -6599,7 +6472,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -6610,8 +6482,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "03L",
@@ -6730,7 +6600,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "30/12kt",
@@ -6740,15 +6609,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -6768,7 +6634,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 160.7,
+              "hours": 151.5,
               "urgency": "ok"
             },
             "sun": {
@@ -6794,38 +6660,41 @@
                 "gust_spread"
               ]
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 12,
                 12,
                 12,
-<<<<<<< HEAD
                 12,
-=======
->>>>>>> main
+                12,
+                12,
+                12,
                 12
               ],
               "qnh": [
                 1016,
                 1016,
                 1016,
-<<<<<<< HEAD
                 1016,
-=======
->>>>>>> main
+                1016,
+                1016,
+                1016,
                 1016
               ],
               "temp": [
                 18,
                 18,
                 18,
-<<<<<<< HEAD
+                18,
+                18,
+                18,
                 18,
                 18
               ],
               "dewpoint": [
+                12,
+                12,
+                12,
                 12,
                 12,
                 12,
@@ -6837,10 +6706,10 @@
                 8000,
                 8000,
                 8000,
+                8000,
+                8000,
+                8000,
                 8000
-=======
-                18
->>>>>>> main
               ]
             }
           }
@@ -6861,7 +6730,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -6872,8 +6740,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "07",
@@ -6959,7 +6825,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "50/8kt",
@@ -6969,15 +6834,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -6997,7 +6859,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -7020,38 +6882,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 8,
                 8,
                 8,
-<<<<<<< HEAD
                 8,
-=======
->>>>>>> main
+                8,
+                8,
+                8,
                 8
               ],
               "qnh": [
                 1018,
                 1018,
                 1018,
-<<<<<<< HEAD
                 1018,
-=======
->>>>>>> main
+                1018,
+                1018,
+                1018,
                 1018
               ],
               "temp": [
                 20,
                 20,
                 20,
-<<<<<<< HEAD
+                20,
+                20,
+                20,
                 20,
                 20
               ],
               "dewpoint": [
+                10,
+                10,
+                10,
                 10,
                 10,
                 10,
@@ -7063,10 +6928,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                20
->>>>>>> main
               ]
             }
           }
@@ -7087,7 +6952,6 @@
           "ppr_required": "yes",
           "ops_hours": "Daylight",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -7098,8 +6962,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "18",
@@ -7185,15 +7047,11 @@
             },
             "qnh_trend": "steady",
             "flags": [],
-<<<<<<< HEAD
             "flag_explanations": {},
-=======
->>>>>>> main
             "severity": {
               "level": "OK",
               "flags": []
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -7213,7 +7071,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -7235,38 +7093,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 3,
                 3,
                 3,
-<<<<<<< HEAD
                 3,
-=======
->>>>>>> main
+                3,
+                3,
+                3,
                 3
               ],
               "qnh": [
                 1017,
                 1017,
                 1017,
-<<<<<<< HEAD
                 1017,
-=======
->>>>>>> main
+                1017,
+                1017,
+                1017,
                 1017
               ],
               "temp": [
                 16,
                 16,
                 16,
-<<<<<<< HEAD
+                16,
+                16,
+                16,
                 16,
                 16
               ],
               "dewpoint": [
+                14,
+                14,
+                14,
                 14,
                 14,
                 14,
@@ -7278,10 +7139,10 @@
                 5000,
                 5000,
                 5000,
+                5000,
+                5000,
+                5000,
                 5000
-=======
-                16
->>>>>>> main
               ]
             }
           }
@@ -7352,13 +7213,10 @@
         "SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE",
         "AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150"
       ],
-<<<<<<< HEAD
       "sigmet_time_to_expiry": {
         "hours": null,
         "urgency": "unknown"
       },
-=======
->>>>>>> main
       "notams": {
         "FAOR": [
           "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP.",
@@ -7368,19 +7226,16 @@
           "FALA RWY 07/25 WIP. EXPECT DELAYS."
         ]
       },
-<<<<<<< HEAD
       "taf_time_to_expiry": {
         "dep": {
-          "hours": 160.7,
+          "hours": 151.5,
           "urgency": "ok"
         },
         "dest": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         }
       },
-=======
->>>>>>> main
       "summary": {
         "flags": [
           "CONVECTIVE_RISK_HIGH",
@@ -7394,7 +7249,6 @@
             "TURB_POSSIBLE (TRAINING)",
             "ICING_POSSIBLE (TRAINING)"
           ]
-<<<<<<< HEAD
         },
         "workload": {
           "score": 30.0,
@@ -7410,8 +7264,6 @@
           "drivers": [
             "metar_taf_mismatch"
           ]
-=======
->>>>>>> main
         }
       }
     },
@@ -7449,7 +7301,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -7460,8 +7311,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "03L",
@@ -7580,7 +7429,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "30/12kt",
@@ -7590,15 +7438,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -7618,7 +7463,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 160.7,
+              "hours": 151.5,
               "urgency": "ok"
             },
             "sun": {
@@ -7644,38 +7489,41 @@
                 "gust_spread"
               ]
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 12,
                 12,
                 12,
-<<<<<<< HEAD
                 12,
-=======
->>>>>>> main
+                12,
+                12,
+                12,
                 12
               ],
               "qnh": [
                 1016,
                 1016,
                 1016,
-<<<<<<< HEAD
                 1016,
-=======
->>>>>>> main
+                1016,
+                1016,
+                1016,
                 1016
               ],
               "temp": [
                 18,
                 18,
                 18,
-<<<<<<< HEAD
+                18,
+                18,
+                18,
                 18,
                 18
               ],
               "dewpoint": [
+                12,
+                12,
+                12,
                 12,
                 12,
                 12,
@@ -7687,10 +7535,10 @@
                 8000,
                 8000,
                 8000,
+                8000,
+                8000,
+                8000,
                 8000
-=======
-                18
->>>>>>> main
               ]
             }
           }
@@ -7711,7 +7559,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -7722,8 +7569,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "05",
@@ -7809,7 +7654,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "90/15kt",
@@ -7819,15 +7663,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -7847,7 +7688,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -7873,38 +7714,41 @@
                 "metar_taf_mismatch"
               ]
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 15,
                 15,
                 15,
-<<<<<<< HEAD
                 15,
-=======
->>>>>>> main
+                15,
+                15,
+                15,
                 15
               ],
               "qnh": [
                 1015,
                 1015,
                 1015,
-<<<<<<< HEAD
                 1015,
-=======
->>>>>>> main
+                1015,
+                1015,
+                1015,
                 1015
               ],
               "temp": [
                 19,
                 19,
                 19,
-<<<<<<< HEAD
+                19,
+                19,
+                19,
                 19,
                 19
               ],
               "dewpoint": [
+                8,
+                8,
+                8,
                 8,
                 8,
                 8,
@@ -7916,10 +7760,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                19
->>>>>>> main
               ]
             }
           }
@@ -7940,7 +7784,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -7951,8 +7794,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "07",
@@ -8038,7 +7879,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "50/8kt",
@@ -8048,15 +7888,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -8076,7 +7913,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -8099,38 +7936,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 8,
                 8,
                 8,
-<<<<<<< HEAD
                 8,
-=======
->>>>>>> main
+                8,
+                8,
+                8,
                 8
               ],
               "qnh": [
                 1018,
                 1018,
                 1018,
-<<<<<<< HEAD
                 1018,
-=======
->>>>>>> main
+                1018,
+                1018,
+                1018,
                 1018
               ],
               "temp": [
                 20,
                 20,
                 20,
-<<<<<<< HEAD
+                20,
+                20,
+                20,
                 20,
                 20
               ],
               "dewpoint": [
+                10,
+                10,
+                10,
                 10,
                 10,
                 10,
@@ -8142,10 +7982,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                20
->>>>>>> main
               ]
             }
           }
@@ -8166,7 +8006,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -8177,8 +8016,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "02",
@@ -8264,7 +8101,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "140/12kt",
@@ -8274,15 +8110,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -8302,7 +8135,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -8325,38 +8158,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 12,
                 12,
                 12,
-<<<<<<< HEAD
                 12,
-=======
->>>>>>> main
+                12,
+                12,
+                12,
                 12
               ],
               "qnh": [
                 1013,
                 1013,
                 1013,
-<<<<<<< HEAD
                 1013,
-=======
->>>>>>> main
+                1013,
+                1013,
+                1013,
                 1013
               ],
               "temp": [
                 24,
                 24,
                 24,
-<<<<<<< HEAD
+                24,
+                24,
+                24,
                 24,
                 24
               ],
               "dewpoint": [
+                9,
+                9,
+                9,
                 9,
                 9,
                 9,
@@ -8368,10 +8204,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                24
->>>>>>> main
               ]
             }
           }
@@ -8434,13 +8270,10 @@
         "SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE",
         "AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150"
       ],
-<<<<<<< HEAD
       "sigmet_time_to_expiry": {
         "hours": null,
         "urgency": "unknown"
       },
-=======
->>>>>>> main
       "notams": {
         "FAOR": [
           "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP.",
@@ -8450,19 +8283,16 @@
           "FAPN APRON LIMITED PARKING. MARSHALLER REQUIRED."
         ]
       },
-<<<<<<< HEAD
       "taf_time_to_expiry": {
         "dep": {
-          "hours": 160.7,
+          "hours": 151.5,
           "urgency": "ok"
         },
         "dest": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         }
       },
-=======
->>>>>>> main
       "summary": {
         "flags": [
           "CONVECTIVE_RISK_HIGH",
@@ -8476,7 +8306,6 @@
             "TURB_POSSIBLE (TRAINING)",
             "ICING_POSSIBLE (TRAINING)"
           ]
-<<<<<<< HEAD
         },
         "workload": {
           "score": 30.0,
@@ -8492,8 +8321,6 @@
           "drivers": [
             "metar_taf_mismatch"
           ]
-=======
->>>>>>> main
         }
       }
     },
@@ -8528,7 +8355,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -8539,8 +8365,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "07",
@@ -8626,7 +8450,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "50/8kt",
@@ -8636,15 +8459,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -8664,7 +8484,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -8687,38 +8507,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 8,
                 8,
                 8,
-<<<<<<< HEAD
                 8,
-=======
->>>>>>> main
+                8,
+                8,
+                8,
                 8
               ],
               "qnh": [
                 1018,
                 1018,
                 1018,
-<<<<<<< HEAD
                 1018,
-=======
->>>>>>> main
+                1018,
+                1018,
+                1018,
                 1018
               ],
               "temp": [
                 20,
                 20,
                 20,
-<<<<<<< HEAD
+                20,
+                20,
+                20,
                 20,
                 20
               ],
               "dewpoint": [
+                10,
+                10,
+                10,
                 10,
                 10,
                 10,
@@ -8730,10 +8553,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                20
->>>>>>> main
               ]
             }
           }
@@ -8754,7 +8577,6 @@
           "ppr_required": "yes",
           "ops_hours": "Daylight",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -8765,8 +8587,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "18",
@@ -8852,15 +8672,11 @@
             },
             "qnh_trend": "steady",
             "flags": [],
-<<<<<<< HEAD
             "flag_explanations": {},
-=======
->>>>>>> main
             "severity": {
               "level": "OK",
               "flags": []
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -8880,7 +8696,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -8902,38 +8718,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 3,
                 3,
                 3,
-<<<<<<< HEAD
                 3,
-=======
->>>>>>> main
+                3,
+                3,
+                3,
                 3
               ],
               "qnh": [
                 1017,
                 1017,
                 1017,
-<<<<<<< HEAD
                 1017,
-=======
->>>>>>> main
+                1017,
+                1017,
+                1017,
                 1017
               ],
               "temp": [
                 16,
                 16,
                 16,
-<<<<<<< HEAD
+                16,
+                16,
+                16,
                 16,
                 16
               ],
               "dewpoint": [
+                14,
+                14,
+                14,
                 14,
                 14,
                 14,
@@ -8945,10 +8764,10 @@
                 5000,
                 5000,
                 5000,
+                5000,
+                5000,
+                5000,
                 5000
-=======
-                16
->>>>>>> main
               ]
             }
           }
@@ -8969,7 +8788,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -8980,8 +8798,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "03L",
@@ -9100,7 +8916,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "30/12kt",
@@ -9110,15 +8925,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -9138,7 +8950,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 160.7,
+              "hours": 151.5,
               "urgency": "ok"
             },
             "sun": {
@@ -9164,38 +8976,41 @@
                 "gust_spread"
               ]
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 12,
                 12,
                 12,
-<<<<<<< HEAD
                 12,
-=======
->>>>>>> main
+                12,
+                12,
+                12,
                 12
               ],
               "qnh": [
                 1016,
                 1016,
                 1016,
-<<<<<<< HEAD
                 1016,
-=======
->>>>>>> main
+                1016,
+                1016,
+                1016,
                 1016
               ],
               "temp": [
                 18,
                 18,
                 18,
-<<<<<<< HEAD
+                18,
+                18,
+                18,
                 18,
                 18
               ],
               "dewpoint": [
+                12,
+                12,
+                12,
                 12,
                 12,
                 12,
@@ -9207,10 +9022,10 @@
                 8000,
                 8000,
                 8000,
+                8000,
+                8000,
+                8000,
                 8000
-=======
-                18
->>>>>>> main
               ]
             }
           }
@@ -9257,13 +9072,10 @@
         "SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE",
         "AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150"
       ],
-<<<<<<< HEAD
       "sigmet_time_to_expiry": {
         "hours": null,
         "urgency": "unknown"
       },
-=======
->>>>>>> main
       "notams": {
         "FALA": [
           "FALA RWY 07/25 WIP. EXPECT DELAYS."
@@ -9272,19 +9084,16 @@
           "FABB AD CLOSED 1800-0400 UTC."
         ]
       },
-<<<<<<< HEAD
       "taf_time_to_expiry": {
         "dep": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         },
         "dest": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         }
       },
-=======
->>>>>>> main
       "summary": {
         "flags": [
           "CONVECTIVE_RISK_HIGH",
@@ -9296,7 +9105,6 @@
             "CONVECTIVE_RISK_HIGH",
             "TURB_POSSIBLE (TRAINING)"
           ]
-<<<<<<< HEAD
         },
         "workload": {
           "score": 30.0,
@@ -9312,8 +9120,6 @@
           "drivers": [
             "metar_taf_mismatch"
           ]
-=======
->>>>>>> main
         }
       }
     },
@@ -9351,7 +9157,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -9362,8 +9167,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "03L",
@@ -9482,7 +9285,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "30/12kt",
@@ -9492,15 +9294,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -9520,7 +9319,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 160.7,
+              "hours": 151.5,
               "urgency": "ok"
             },
             "sun": {
@@ -9546,38 +9345,41 @@
                 "gust_spread"
               ]
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 12,
                 12,
                 12,
-<<<<<<< HEAD
                 12,
-=======
->>>>>>> main
+                12,
+                12,
+                12,
                 12
               ],
               "qnh": [
                 1016,
                 1016,
                 1016,
-<<<<<<< HEAD
                 1016,
-=======
->>>>>>> main
+                1016,
+                1016,
+                1016,
                 1016
               ],
               "temp": [
                 18,
                 18,
                 18,
-<<<<<<< HEAD
+                18,
+                18,
+                18,
                 18,
                 18
               ],
               "dewpoint": [
+                12,
+                12,
+                12,
                 12,
                 12,
                 12,
@@ -9589,10 +9391,10 @@
                 8000,
                 8000,
                 8000,
+                8000,
+                8000,
+                8000,
                 8000
-=======
-                18
->>>>>>> main
               ]
             }
           }
@@ -9613,7 +9415,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -9624,8 +9425,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "07",
@@ -9711,7 +9510,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "50/8kt",
@@ -9721,15 +9519,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -9749,7 +9544,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -9772,38 +9567,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 8,
                 8,
                 8,
-<<<<<<< HEAD
                 8,
-=======
->>>>>>> main
+                8,
+                8,
+                8,
                 8
               ],
               "qnh": [
                 1018,
                 1018,
                 1018,
-<<<<<<< HEAD
                 1018,
-=======
->>>>>>> main
+                1018,
+                1018,
+                1018,
                 1018
               ],
               "temp": [
                 20,
                 20,
                 20,
-<<<<<<< HEAD
+                20,
+                20,
+                20,
                 20,
                 20
               ],
               "dewpoint": [
+                10,
+                10,
+                10,
                 10,
                 10,
                 10,
@@ -9815,10 +9613,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                20
->>>>>>> main
               ]
             }
           }
@@ -9839,7 +9637,6 @@
           "ppr_required": "yes",
           "ops_hours": "Daylight",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -9850,8 +9647,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "18",
@@ -9937,15 +9732,11 @@
             },
             "qnh_trend": "steady",
             "flags": [],
-<<<<<<< HEAD
             "flag_explanations": {},
-=======
->>>>>>> main
             "severity": {
               "level": "OK",
               "flags": []
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -9965,7 +9756,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -9987,38 +9778,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 3,
                 3,
                 3,
-<<<<<<< HEAD
                 3,
-=======
->>>>>>> main
+                3,
+                3,
+                3,
                 3
               ],
               "qnh": [
                 1017,
                 1017,
                 1017,
-<<<<<<< HEAD
                 1017,
-=======
->>>>>>> main
+                1017,
+                1017,
+                1017,
                 1017
               ],
               "temp": [
                 16,
                 16,
                 16,
-<<<<<<< HEAD
+                16,
+                16,
+                16,
                 16,
                 16
               ],
               "dewpoint": [
+                14,
+                14,
+                14,
                 14,
                 14,
                 14,
@@ -10030,10 +9824,10 @@
                 5000,
                 5000,
                 5000,
+                5000,
+                5000,
+                5000,
                 5000
-=======
-                16
->>>>>>> main
               ]
             }
           }
@@ -10104,13 +9898,10 @@
         "SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE",
         "AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150"
       ],
-<<<<<<< HEAD
       "sigmet_time_to_expiry": {
         "hours": null,
         "urgency": "unknown"
       },
-=======
->>>>>>> main
       "notams": {
         "FAOR": [
           "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP.",
@@ -10120,19 +9911,16 @@
           "FALA RWY 07/25 WIP. EXPECT DELAYS."
         ]
       },
-<<<<<<< HEAD
       "taf_time_to_expiry": {
         "dep": {
-          "hours": 160.7,
+          "hours": 151.5,
           "urgency": "ok"
         },
         "dest": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         }
       },
-=======
->>>>>>> main
       "summary": {
         "flags": [
           "CONVECTIVE_RISK_HIGH",
@@ -10146,7 +9934,6 @@
             "TURB_POSSIBLE (TRAINING)",
             "ICING_POSSIBLE (TRAINING)"
           ]
-<<<<<<< HEAD
         },
         "workload": {
           "score": 30.0,
@@ -10162,8 +9949,6 @@
           "drivers": [
             "metar_taf_mismatch"
           ]
-=======
->>>>>>> main
         }
       }
     },
@@ -10201,7 +9986,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -10212,8 +9996,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "03L",
@@ -10332,7 +10114,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "30/12kt",
@@ -10342,15 +10123,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -10370,7 +10148,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 160.7,
+              "hours": 151.5,
               "urgency": "ok"
             },
             "sun": {
@@ -10396,38 +10174,41 @@
                 "gust_spread"
               ]
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 12,
                 12,
                 12,
-<<<<<<< HEAD
                 12,
-=======
->>>>>>> main
+                12,
+                12,
+                12,
                 12
               ],
               "qnh": [
                 1016,
                 1016,
                 1016,
-<<<<<<< HEAD
                 1016,
-=======
->>>>>>> main
+                1016,
+                1016,
+                1016,
                 1016
               ],
               "temp": [
                 18,
                 18,
                 18,
-<<<<<<< HEAD
+                18,
+                18,
+                18,
                 18,
                 18
               ],
               "dewpoint": [
+                12,
+                12,
+                12,
                 12,
                 12,
                 12,
@@ -10439,10 +10220,10 @@
                 8000,
                 8000,
                 8000,
+                8000,
+                8000,
+                8000,
                 8000
-=======
-                18
->>>>>>> main
               ]
             }
           }
@@ -10463,7 +10244,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -10474,8 +10254,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "05",
@@ -10561,7 +10339,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "90/15kt",
@@ -10571,15 +10348,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -10599,7 +10373,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -10625,38 +10399,41 @@
                 "metar_taf_mismatch"
               ]
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 15,
                 15,
                 15,
-<<<<<<< HEAD
                 15,
-=======
->>>>>>> main
+                15,
+                15,
+                15,
                 15
               ],
               "qnh": [
                 1015,
                 1015,
                 1015,
-<<<<<<< HEAD
                 1015,
-=======
->>>>>>> main
+                1015,
+                1015,
+                1015,
                 1015
               ],
               "temp": [
                 19,
                 19,
                 19,
-<<<<<<< HEAD
+                19,
+                19,
+                19,
                 19,
                 19
               ],
               "dewpoint": [
+                8,
+                8,
+                8,
                 8,
                 8,
                 8,
@@ -10668,10 +10445,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                19
->>>>>>> main
               ]
             }
           }
@@ -10692,7 +10469,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -10703,8 +10479,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "07",
@@ -10790,7 +10564,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "50/8kt",
@@ -10800,15 +10573,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -10828,7 +10598,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -10851,38 +10621,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 8,
                 8,
                 8,
-<<<<<<< HEAD
                 8,
-=======
->>>>>>> main
+                8,
+                8,
+                8,
                 8
               ],
               "qnh": [
                 1018,
                 1018,
                 1018,
-<<<<<<< HEAD
                 1018,
-=======
->>>>>>> main
+                1018,
+                1018,
+                1018,
                 1018
               ],
               "temp": [
                 20,
                 20,
                 20,
-<<<<<<< HEAD
+                20,
+                20,
+                20,
                 20,
                 20
               ],
               "dewpoint": [
+                10,
+                10,
+                10,
                 10,
                 10,
                 10,
@@ -10894,10 +10667,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                20
->>>>>>> main
               ]
             }
           }
@@ -10918,7 +10691,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -10929,8 +10701,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "02",
@@ -11016,7 +10786,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "140/12kt",
@@ -11026,15 +10795,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -11054,7 +10820,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -11077,38 +10843,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 12,
                 12,
                 12,
-<<<<<<< HEAD
                 12,
-=======
->>>>>>> main
+                12,
+                12,
+                12,
                 12
               ],
               "qnh": [
                 1013,
                 1013,
                 1013,
-<<<<<<< HEAD
                 1013,
-=======
->>>>>>> main
+                1013,
+                1013,
+                1013,
                 1013
               ],
               "temp": [
                 24,
                 24,
                 24,
-<<<<<<< HEAD
+                24,
+                24,
+                24,
                 24,
                 24
               ],
               "dewpoint": [
+                9,
+                9,
+                9,
                 9,
                 9,
                 9,
@@ -11120,10 +10889,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                24
->>>>>>> main
               ]
             }
           }
@@ -11186,13 +10955,10 @@
         "SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE",
         "AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150"
       ],
-<<<<<<< HEAD
       "sigmet_time_to_expiry": {
         "hours": null,
         "urgency": "unknown"
       },
-=======
->>>>>>> main
       "notams": {
         "FAOR": [
           "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP.",
@@ -11202,19 +10968,16 @@
           "FAPN APRON LIMITED PARKING. MARSHALLER REQUIRED."
         ]
       },
-<<<<<<< HEAD
       "taf_time_to_expiry": {
         "dep": {
-          "hours": 160.7,
+          "hours": 151.5,
           "urgency": "ok"
         },
         "dest": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         }
       },
-=======
->>>>>>> main
       "summary": {
         "flags": [
           "CONVECTIVE_RISK_HIGH",
@@ -11228,7 +10991,6 @@
             "TURB_POSSIBLE (TRAINING)",
             "ICING_POSSIBLE (TRAINING)"
           ]
-<<<<<<< HEAD
         },
         "workload": {
           "score": 30.0,
@@ -11244,8 +11006,6 @@
           "drivers": [
             "metar_taf_mismatch"
           ]
-=======
->>>>>>> main
         }
       }
     },
@@ -11280,7 +11040,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -11291,8 +11050,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "07",
@@ -11378,7 +11135,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "50/8kt",
@@ -11388,15 +11144,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -11416,7 +11169,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -11439,38 +11192,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 8,
                 8,
                 8,
-<<<<<<< HEAD
                 8,
-=======
->>>>>>> main
+                8,
+                8,
+                8,
                 8
               ],
               "qnh": [
                 1018,
                 1018,
                 1018,
-<<<<<<< HEAD
                 1018,
-=======
->>>>>>> main
+                1018,
+                1018,
+                1018,
                 1018
               ],
               "temp": [
                 20,
                 20,
                 20,
-<<<<<<< HEAD
+                20,
+                20,
+                20,
                 20,
                 20
               ],
               "dewpoint": [
+                10,
+                10,
+                10,
                 10,
                 10,
                 10,
@@ -11482,10 +11238,10 @@
                 9999,
                 9999,
                 9999,
+                9999,
+                9999,
+                9999,
                 9999
-=======
-                20
->>>>>>> main
               ]
             }
           }
@@ -11506,7 +11262,6 @@
           "ppr_required": "yes",
           "ops_hours": "Daylight",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -11517,8 +11272,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "18",
@@ -11604,15 +11357,11 @@
             },
             "qnh_trend": "steady",
             "flags": [],
-<<<<<<< HEAD
             "flag_explanations": {},
-=======
->>>>>>> main
             "severity": {
               "level": "OK",
               "flags": []
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -11632,7 +11381,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 154.7,
+              "hours": 145.5,
               "urgency": "ok"
             },
             "sun": {
@@ -11654,38 +11403,41 @@
               "category": "Stable",
               "drivers": []
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 3,
                 3,
                 3,
-<<<<<<< HEAD
                 3,
-=======
->>>>>>> main
+                3,
+                3,
+                3,
                 3
               ],
               "qnh": [
                 1017,
                 1017,
                 1017,
-<<<<<<< HEAD
                 1017,
-=======
->>>>>>> main
+                1017,
+                1017,
+                1017,
                 1017
               ],
               "temp": [
                 16,
                 16,
                 16,
-<<<<<<< HEAD
+                16,
+                16,
+                16,
                 16,
                 16
               ],
               "dewpoint": [
+                14,
+                14,
+                14,
                 14,
                 14,
                 14,
@@ -11697,10 +11449,10 @@
                 5000,
                 5000,
                 5000,
+                5000,
+                5000,
+                5000,
                 5000
-=======
-                16
->>>>>>> main
               ]
             }
           }
@@ -11721,7 +11473,6 @@
           "ppr_required": "no",
           "ops_hours": "H24",
           "notes": "Reference only.",
-<<<<<<< HEAD
           "airspace_context": {
             "ctr": "no",
             "tma": "no",
@@ -11732,8 +11483,6 @@
             "height_ft_agl": 1000
           },
           "noise_abatement_notes": "Training reference only.",
-=======
->>>>>>> main
           "runways": [
             {
               "designator": "03L",
@@ -11852,7 +11601,6 @@
             "flags": [
               "TAILWIND"
             ],
-<<<<<<< HEAD
             "flag_explanations": {
               "TAILWIND": {
                 "input": "30/12kt",
@@ -11862,15 +11610,12 @@
                 "note": "Tailwind reduces performance and increases landing distance."
               }
             },
-=======
->>>>>>> main
             "severity": {
               "level": "CAUTION",
               "flags": [
                 "TAILWIND"
               ]
             },
-<<<<<<< HEAD
             "changes": {
               "summary": "Minimal changes",
               "details": {
@@ -11890,7 +11635,7 @@
             },
             "qnh_change_rate_hpa_per_hr": null,
             "taf_time_to_expiry": {
-              "hours": 160.7,
+              "hours": 151.5,
               "urgency": "ok"
             },
             "sun": {
@@ -11916,38 +11661,41 @@
                 "gust_spread"
               ]
             },
-=======
->>>>>>> main
             "trends": {
               "wind_speed": [
                 12,
                 12,
                 12,
-<<<<<<< HEAD
                 12,
-=======
->>>>>>> main
+                12,
+                12,
+                12,
                 12
               ],
               "qnh": [
                 1016,
                 1016,
                 1016,
-<<<<<<< HEAD
                 1016,
-=======
->>>>>>> main
+                1016,
+                1016,
+                1016,
                 1016
               ],
               "temp": [
                 18,
                 18,
                 18,
-<<<<<<< HEAD
+                18,
+                18,
+                18,
                 18,
                 18
               ],
               "dewpoint": [
+                12,
+                12,
+                12,
                 12,
                 12,
                 12,
@@ -11959,10 +11707,10 @@
                 8000,
                 8000,
                 8000,
+                8000,
+                8000,
+                8000,
                 8000
-=======
-                18
->>>>>>> main
               ]
             }
           }
@@ -12009,13 +11757,10 @@
         "SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE",
         "AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150"
       ],
-<<<<<<< HEAD
       "sigmet_time_to_expiry": {
         "hours": null,
         "urgency": "unknown"
       },
-=======
->>>>>>> main
       "notams": {
         "FALA": [
           "FALA RWY 07/25 WIP. EXPECT DELAYS."
@@ -12024,19 +11769,16 @@
           "FABB AD CLOSED 1800-0400 UTC."
         ]
       },
-<<<<<<< HEAD
       "taf_time_to_expiry": {
         "dep": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         },
         "dest": {
-          "hours": 154.7,
+          "hours": 145.5,
           "urgency": "ok"
         }
       },
-=======
->>>>>>> main
       "summary": {
         "flags": [
           "CONVECTIVE_RISK_HIGH",
@@ -12048,7 +11790,6 @@
             "CONVECTIVE_RISK_HIGH",
             "TURB_POSSIBLE (TRAINING)"
           ]
-<<<<<<< HEAD
         },
         "workload": {
           "score": 30.0,
@@ -12064,8 +11805,6 @@
           "drivers": [
             "metar_taf_mismatch"
           ]
-=======
->>>>>>> main
         }
       }
     }

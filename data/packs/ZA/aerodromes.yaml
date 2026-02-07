@@ -15,7 +15,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -24,8 +23,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "03L"
         magnetic_heading_deg: 034
@@ -58,7 +55,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "HR"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -67,8 +63,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "11"
         magnetic_heading_deg: 114
@@ -93,7 +87,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "HR"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -102,8 +95,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "17"
         magnetic_heading_deg: 168
@@ -128,7 +119,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "HR"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -137,8 +127,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "11"
         magnetic_heading_deg: 112
@@ -163,7 +151,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -172,8 +159,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "07"
         magnetic_heading_deg: 074
@@ -198,7 +183,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -207,8 +191,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "02"
         magnetic_heading_deg: 020
@@ -233,7 +215,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -242,8 +223,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "18"
         magnetic_heading_deg: 182
@@ -268,7 +247,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "HR"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -277,8 +255,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "01"
         magnetic_heading_deg: 010
@@ -303,7 +279,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -312,8 +287,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "17"
         magnetic_heading_deg: 170
@@ -338,7 +311,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -347,8 +319,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "03"
         magnetic_heading_deg: 030
@@ -373,7 +343,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -382,8 +351,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "08"
         magnetic_heading_deg: 080
@@ -408,7 +375,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -417,8 +383,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "01"
         magnetic_heading_deg: 010
@@ -451,7 +415,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -460,8 +423,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "05"
         magnetic_heading_deg: 050
@@ -486,7 +447,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -495,8 +455,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "16"
         magnetic_heading_deg: 160
@@ -521,7 +479,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -530,8 +487,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "05"
         magnetic_heading_deg: 050
@@ -556,7 +511,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -565,8 +519,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "17"
         magnetic_heading_deg: 170
@@ -591,7 +543,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -600,8 +551,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "07"
         magnetic_heading_deg: 070
@@ -626,7 +575,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -635,8 +583,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "06"
         magnetic_heading_deg: 060
@@ -661,7 +607,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -670,8 +615,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "03"
         magnetic_heading_deg: 030
@@ -696,7 +639,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -705,8 +647,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "13"
         magnetic_heading_deg: 130
@@ -731,7 +671,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -740,8 +679,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "11"
         magnetic_heading_deg: 110
@@ -766,7 +703,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -775,8 +711,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "01"
         magnetic_heading_deg: 010
@@ -801,7 +735,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -810,8 +743,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "04"
         magnetic_heading_deg: 040
@@ -836,7 +767,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -845,8 +775,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "01"
         magnetic_heading_deg: 010
@@ -871,7 +799,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -880,8 +807,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "02"
         magnetic_heading_deg: 020
@@ -906,7 +831,6 @@ aerodromes:
     ppr_required: no
     ops_hours: "H24"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -915,8 +839,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "04"
         magnetic_heading_deg: 040
@@ -941,7 +863,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -950,8 +871,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "02"
         magnetic_heading_deg: 020
@@ -976,7 +895,6 @@ aerodromes:
     ppr_required: yes
     ops_hours: "Daylight"
     notes: "Reference only."
-<<<<<<< HEAD
     airspace_context:
       ctr: no
       tma: no
@@ -985,8 +903,6 @@ aerodromes:
       direction: L
       height_ft_agl: 1000
     noise_abatement_notes: "Training reference only."
-=======
->>>>>>> main
     runways:
       - designator: "14"
         magnetic_heading_deg: 140
