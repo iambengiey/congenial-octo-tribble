@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2026-02-12T11:00:00Z",
+    "wind_speed_kt": 12,
+    "wind_dir_deg": 30,
+    "qnh_hpa": 1016,
+    "temp_c": 18,
+    "dewpoint_c": 12,
+    "visibility_m": 8000,
+    "ceiling_ft_est": 3500
+  },
+  {
+    "timestamp": "2026-02-12T11:00:00Z",
+    "wind_speed_kt": 12,
+    "wind_dir_deg": 30,
+    "qnh_hpa": 1016,
+    "temp_c": 18,
+    "dewpoint_c": 12,
+    "visibility_m": 8000,
+    "ceiling_ft_est": 3500
+  },
+  {
+    "timestamp": "2026-02-12T11:00:00Z",
+    "wind_speed_kt": 12,
+    "wind_dir_deg": 30,
+    "qnh_hpa": 1016,
+    "temp_c": 18,
+    "dewpoint_c": 12,
+    "visibility_m": 8000,
+    "ceiling_ft_est": 3500
+  },
+  {
+    "timestamp": "2026-02-12T11:00:00Z",
+    "wind_speed_kt": 12,
+    "wind_dir_deg": 30,
+    "qnh_hpa": 1016,
+    "temp_c": 18,
+    "dewpoint_c": 12,
+    "visibility_m": 8000,
+    "ceiling_ft_est": 3500
+  },
+  {
+    "timestamp": "2026-02-12T11:00:00Z",
+    "wind_speed_kt": 12,
+    "wind_dir_deg": 30,
+    "qnh_hpa": 1016,
+    "temp_c": 18,
+    "dewpoint_c": 12,
+    "visibility_m": 8000,
+    "ceiling_ft_est": 3500
+  }
+]
