@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from src.adapters.live_stub_metar_taf import LiveMetarTafStub
 from src.adapters.sample_metar_taf import SampleMetarTafAdapter
 from src.adapters.sample_notam import SampleNotamAdapter
 from src.adapters.sample_sigmet import SampleSigmetAdapter
@@ -261,7 +262,10 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
     default_profile = next((p for p in profiles if p["licence_tier"] == "PPL"), profiles[0])
 
     aerodromes, _ = load_packs()
-    metar_adapter = SampleMetarTafAdapter(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
+    if mode == "live_beta":
+        metar_adapter = LiveMetarTafStub(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
+    else:
+        metar_adapter = SampleMetarTafAdapter(SAMPLES_DIR / "metar", SAMPLES_DIR / "taf")
 
     airfields = []
     now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
@@ -628,7 +632,8 @@ def build_site(mode: str = "sample") -> None:
     mode_key = "sample" if mode in ("sample", "auto") else "live_beta"
     mode_info = build_mode_info(mode_key)
     airfields, default_profile, profiles = build_airfields(mode)
-    routes = build_routes(airfields, default_profile)
+    atpl_profile = next((p for p in profiles if p["licence_tier"] == "ATPL" or p["name"] == "ATPL"), default_profile)
+    routes = build_routes(airfields, atpl_profile)
 
     sigwx_adapter = SampleSigwxAdapter(SAMPLES_DIR / "sigwx")
     sigwx_paths = copy_sigwx(sigwx_adapter.fetch())
