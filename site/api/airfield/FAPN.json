@@ -14,6 +14,7 @@
   "ppr_required": "no",
   "ops_hours": "H24",
   "notes": "Reference only.",
+<<<<<<< HEAD
   "airspace_context": {
     "ctr": "no",
     "tma": "no",
@@ -24,6 +25,8 @@
     "height_ft_agl": 1000
   },
   "noise_abatement_notes": "Training reference only.",
+=======
+>>>>>>> main
   "runways": [
     {
       "designator": "05",
@@ -109,6 +112,7 @@
     "flags": [
       "TAILWIND"
     ],
+<<<<<<< HEAD
     "flag_explanations": {
       "TAILWIND": {
         "input": "90/15kt",
@@ -118,12 +122,15 @@
         "note": "Tailwind reduces performance and increases landing distance."
       }
     },
+=======
+>>>>>>> main
     "severity": {
       "level": "CAUTION",
       "flags": [
         "TAILWIND"
       ]
     },
+<<<<<<< HEAD
     "changes": {
       "summary": "Minimal changes",
       "details": {
@@ -169,25 +176,34 @@
         "metar_taf_mismatch"
       ]
     },
+=======
+>>>>>>> main
     "trends": {
       "wind_speed": [
         15,
         15,
         15,
+<<<<<<< HEAD
         15,
+=======
+>>>>>>> main
         15
       ],
       "qnh": [
         1015,
         1015,
         1015,
+<<<<<<< HEAD
         1015,
+=======
+>>>>>>> main
         1015
       ],
       "temp": [
         19,
         19,
         19,
+<<<<<<< HEAD
         19,
         19
       ],
@@ -204,6 +220,9 @@
         9999,
         9999,
         9999
+=======
+        19
+>>>>>>> main
       ]
     }
   }

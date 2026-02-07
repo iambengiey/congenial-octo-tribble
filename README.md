@@ -10,7 +10,10 @@ Static aviation briefing and training toolkit for PPL → ATPL. This repository 
 - **Routes:** ATPL-style briefing packs with METAR/TAF, NOTAM highlights, SIGMET/AIRMET, winds/temps aloft, and SIGWX charts.
 - **Tools:** ISA, altimetry, DA, IAS→TAS, gas laws/hypoxia, pressurisation, aircraft reference, scenario builder.
 - **Static output:** `/site` for GitHub Pages and `/site/api` JSON files.
+<<<<<<< HEAD
 - **Modes:** Training (sample/snapshot) vs Live Awareness (beta). Training is deterministic/reproducible.
+=======
+>>>>>>> main
 
 ## Quick start
 
@@ -49,6 +52,7 @@ Country packs live in `data/packs/<COUNTRY>/`. The build merges all pack aerodro
 ## Disclaimers
 
 See [docs/DISCLAIMER.md](docs/DISCLAIMER.md). Data sources are described in [docs/SOURCES.md](docs/SOURCES.md).
+<<<<<<< HEAD
 
 ## Modes and snapshots
 
@@ -57,3 +61,5 @@ See [docs/DISCLAIMER.md](docs/DISCLAIMER.md). Data sources are described in [doc
 - Snapshots are generated via GitHub Actions workflow_dispatch and stored under `/site/api/snapshots` with a matching `/site/snapshot/<id>.html`.
 
 Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details.
+=======
+>>>>>>> main

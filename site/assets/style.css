@@ -4,11 +4,14 @@ body { margin: 0; background: #f8fafc; }
 header { background: #0f172a; color: #fff; padding: 20px; }
 nav a { color: #cbd5f5; margin-right: 16px; text-decoration: none; font-weight: 600; }
 nav a.active { color: #fff; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
+<<<<<<< HEAD
 .mode-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; flex-wrap: wrap; gap: 12px; }
 .mode-banner { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
 .mode-training { background: #e0f2fe; color: #0f172a; }
 .mode-live { background: #fee2e2; color: #991b1b; }
 .mode-select select { padding: 4px 6px; }
+=======
+>>>>>>> main
 .container { padding: 24px; max-width: 1200px; margin: 0 auto; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
 .card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08); }
@@ -32,7 +35,10 @@ nav a.active { color: #fff; border-bottom: 2px solid #38bdf8; padding-bottom: 4p
 footer { padding: 24px; text-align: center; font-size: 12px; color: #475569; }
 input, select { padding: 6px 8px; margin: 6px 8px 6px 0; }
 button { padding: 6px 10px; background: #0ea5e9; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+<<<<<<< HEAD
 .urgency-amber { color: #b45309; font-weight: 700; }
 .urgency-red { color: #b91c1c; font-weight: 700; }
 .sparkline { width: 140px; height: 40px; }
 .timeline { display: flex; gap: 12px; align-items: center; font-size: 12px; }
+=======
+>>>>>>> main

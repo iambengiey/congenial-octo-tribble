@@ -11,6 +11,7 @@ COLOR_CLASSES = {
 }
 
 
+<<<<<<< HEAD
 def page_wrapper(
     title: str,
     body: str,
@@ -18,6 +19,9 @@ def page_wrapper(
     active_tab: str = "airfields",
     prefix: str = "",
 ) -> str:
+=======
+def page_wrapper(title: str, body: str, active_tab: str = "airfields", prefix: str = "") -> str:
+>>>>>>> main
     return f"""
 <!doctype html>
 <html lang="en">
@@ -37,6 +41,7 @@ def page_wrapper(
       <a class="{_active(active_tab, 'routes')}" href="{prefix}routes.html">Routes</a>
       <a class="{_active(active_tab, 'tools')}" href="{prefix}tools/index.html">Tools</a>
     </nav>
+<<<<<<< HEAD
     <div class="mode-row">
       <span class="mode-banner {mode_info['class']}"><span class="icon">●</span>{mode_info['label']} — {mode_info['text']}</span>
       <label class="mode-select">Mode
@@ -46,6 +51,8 @@ def page_wrapper(
         </select>
       </label>
     </div>
+=======
+>>>>>>> main
   </header>
   <main class="container">
     {body}
@@ -69,12 +76,18 @@ def airfield_cards(airfields: Iterable[dict]) -> str:
     for airfield in airfields:
         flags = airfield["computed"]["flags"]
         badge = flags[0] if flags else "LOW_RISK"
+<<<<<<< HEAD
         top_flags = ", ".join(flags[:2]) if flags else "LOW_RISK"
         status = airfield["computed"]["severity"]["level"]
         status_class = COLOR_CLASSES.get(status, "status-unknown")
         night_badge = "Night-ready" if airfield["night_ready"] else "Night limited"
         workload = airfield["computed"]["workload"]
         stability = airfield["computed"]["stability"]
+=======
+        status = airfield["computed"]["severity"]["level"]
+        status_class = COLOR_CLASSES.get(status, "status-unknown")
+        night_badge = "Night-ready" if airfield["night_ready"] else "Night limited"
+>>>>>>> main
         cards.append(
             f"""
             <div class="card" data-ident="{airfield['ident']}">
@@ -87,13 +100,19 @@ def airfield_cards(airfields: Iterable[dict]) -> str:
               <p>QNH: {airfield['metar']['qnh_hpa'] or '--'} hPa</p>
               <p>Temp/Dew: {airfield['metar']['temp_c'] or '--'}°C / {airfield['metar']['dewpoint_c'] or '--'}°C</p>
               <p>DA: {airfield['computed']['density_altitude']['da_ft'] or '--'} ft</p>
+<<<<<<< HEAD
               <p>Workload: {workload['category']} ({workload['score']})</p>
               <p>Stability: {stability['category']} ({stability['score']})</p>
+=======
+>>>>>>> main
               <div class="badge-row">
                 <span class="badge">{badge}</span>
                 <span class="badge night">{night_badge}</span>
               </div>
+<<<<<<< HEAD
               <p><strong>Top warnings:</strong> {top_flags}</p>
+=======
+>>>>>>> main
               <p><a href="airfield/{airfield['ident']}.html">Open briefing</a></p>
             </div>
             """
@@ -123,7 +142,11 @@ def route_cards(routes: Iterable[dict]) -> str:
     return "\n".join(cards)
 
 
+<<<<<<< HEAD
 def render_home(airfields: list[dict], profile_name: str, mode_info: dict) -> str:
+=======
+def render_home(airfields: list[dict], profile_name: str) -> str:
+>>>>>>> main
     body = f"""
     <section class="summary">
       <h2>Airfields overview</h2>
@@ -132,10 +155,17 @@ def render_home(airfields: list[dict], profile_name: str, mode_info: dict) -> st
     </section>
     <section class="grid">{airfield_cards(airfields)}</section>
     """
+<<<<<<< HEAD
     return page_wrapper("METAR.oncloud.africa — Airfields", body, mode_info, active_tab="airfields", prefix="")
 
 
 def render_routes_index(routes: list[dict], mode_info: dict) -> str:
+=======
+    return page_wrapper("METAR.oncloud.africa — Airfields", body, active_tab="airfields", prefix="")
+
+
+def render_routes_index(routes: list[dict]) -> str:
+>>>>>>> main
     body = f"""
     <section class="summary">
       <h2>ATPL route packs</h2>
@@ -144,10 +174,17 @@ def render_routes_index(routes: list[dict], mode_info: dict) -> str:
     </section>
     <section class="grid">{route_cards(routes)}</section>
     """
+<<<<<<< HEAD
     return page_wrapper("METAR.oncloud.africa — Routes", body, mode_info, active_tab="routes", prefix="")
 
 
 def render_airfield_page(airfield: dict, mode_info: dict) -> str:
+=======
+    return page_wrapper("METAR.oncloud.africa — Routes", body, active_tab="routes", prefix="")
+
+
+def render_airfield_page(airfield: dict) -> str:
+>>>>>>> main
     metar = airfield["metar"]
     taf = airfield["taf"]
     runways = "".join(
@@ -155,6 +192,7 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
         for c in airfield["computed"]["wind_components_per_runway"]
     )
     flags = airfield["computed"]["flags"] or ["LOW_RISK"]
+<<<<<<< HEAD
     explanations = airfield["computed"]["flag_explanations"]
     flags_html = "".join(
         f"<details><summary>{flag}</summary><pre>{explanations.get(flag, {})}</pre></details>"
@@ -167,13 +205,21 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
     sun = airfield["computed"]["sun"]
     workload = airfield["computed"]["workload"]
     stability = airfield["computed"]["stability"]
+=======
+    flags_html = "".join(f"<li>{flag}</li>" for flag in flags)
+    trend_data = airfield["computed"]["trends"]
+    night = airfield["night_ops"]
+>>>>>>> main
 
     body = f"""
     <section class="summary">
       <h2>{airfield['ident']} — {airfield.get('name','')}</h2>
       <p><strong>Raw METAR:</strong> {metar['raw']}</p>
       <p>Observed: {metar['observed_time_utc'] or 'Unknown'} ({metar['source']})</p>
+<<<<<<< HEAD
       <p>Fetch time: {metar.get('fetch_time_utc', '--')} | Latency: {metar.get('latency_min', '--')} min</p>
+=======
+>>>>>>> main
     </section>
 
     <section class="section">
@@ -197,7 +243,10 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
       <p><strong>Raw TAF:</strong> {taf['raw']}</p>
       <p>Valid: {taf['summary']['valid_from']} → {taf['summary']['valid_to']}</p>
       <p>Key changes: {', '.join(taf['summary']['key_changes']) or 'None'}</p>
+<<<<<<< HEAD
       <p>Time to TAF expiry: <span class="urgency-{taf_expiry['urgency']}">{taf_expiry['hours'] or '--'} hours</span></p>
+=======
+>>>>>>> main
     </section>
 
     <section class="section">
@@ -221,6 +270,7 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
     </section>
 
     <section class="section">
+<<<<<<< HEAD
       <h3>Airspace & Circuit</h3>
       <ul>
         <li>CTR: {airfield['airspace_context']['ctr']}</li>
@@ -265,10 +315,15 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
       <div class="sparkline" data-spark='{trend_data["qnh"]}'></div>
       <div class="sparkline" data-spark='{trend_data["temp"]}'></div>
       <div class="sparkline" data-spark='{trend_data["dewpoint"]}'></div>
+=======
+      <h3>Trends</h3>
+      <div class="trend" data-trend='{trend_data}'></div>
+>>>>>>> main
     </section>
 
     <section class="section">
       <h3>Flags</h3>
+<<<<<<< HEAD
       <div class="flag-list">{flags_html}</div>
     </section>
     """
@@ -276,6 +331,15 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
 
 
 def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
+=======
+      <ul class="flag-list">{flags_html}</ul>
+    </section>
+    """
+    return page_wrapper(f"{airfield['ident']} briefing", body, active_tab="airfields", prefix="../")
+
+
+def render_route_page(route: dict, sigwx_paths: dict) -> str:
+>>>>>>> main
     metar_rows = "".join(
         f"<tr><td>{item['ident']}</td><td>{item['metar']['raw']}</td><td>{item['taf']['raw']}</td></tr>"
         for item in route["airfields"]
@@ -295,8 +359,11 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
       <h2>{route['route_id']} — {route['dep']} → {route['dest']}</h2>
       <p>Track: {route['track_deg'] or 'Unknown'}° | Corridor: {route['corridor_nm']} NM</p>
       <div class="badge-row">{''.join(f'<span class="badge">{flag}</span>' for flag in route['summary']['flags'])}</div>
+<<<<<<< HEAD
       <p>Workload: {route['summary']['workload']['category']} ({route['summary']['workload']['score']})</p>
       <p>Stability: {route['summary']['stability']['category']} ({route['summary']['stability']['score']})</p>
+=======
+>>>>>>> main
     </section>
 
     <section class="section">
@@ -305,7 +372,10 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
         <tr><th>Aerodrome</th><th>METAR</th><th>TAF</th></tr>
         {metar_rows}
       </table>
+<<<<<<< HEAD
       <p>TAF expiry: Dep {route['taf_time_to_expiry']['dep']['hours'] or '--'}h | Dest {route['taf_time_to_expiry']['dest']['hours'] or '--'}h</p>
+=======
+>>>>>>> main
     </section>
 
     <section class="section">
@@ -325,7 +395,10 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
     <section class="section">
       <h3>SIGMET / AIRMET</h3>
       <div class="grid">{sigmet_cards}</div>
+<<<<<<< HEAD
       <p>Time to SIGMET expiry: {route['sigmet_time_to_expiry']['hours'] or '--'}h</p>
+=======
+>>>>>>> main
     </section>
 
     <section class="section">
@@ -337,10 +410,17 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
       <p class="note">For training reference only.</p>
     </section>
     """
+<<<<<<< HEAD
     return page_wrapper(f"{route['route_id']} route pack", body, mode_info, active_tab="routes", prefix="../")
 
 
 def render_tools_index(mode_info: dict) -> str:
+=======
+    return page_wrapper(f"{route['route_id']} route pack", body, active_tab="routes", prefix="../")
+
+
+def render_tools_index() -> str:
+>>>>>>> main
     body = """
     <section class="summary">
       <h2>Training Tools</h2>
@@ -357,10 +437,17 @@ def render_tools_index(mode_info: dict) -> str:
       <div class="card"><h3>Scenario Builder</h3><p><a href="scenario.html">Open tool</a></p></div>
     </section>
     """
+<<<<<<< HEAD
     return page_wrapper("METAR.oncloud.africa — Tools", body, mode_info, active_tab="tools", prefix="../")
 
 
 def render_tool_page(title: str, content: str, mode_info: dict) -> str:
+=======
+    return page_wrapper("METAR.oncloud.africa — Tools", body, active_tab="tools", prefix="../")
+
+
+def render_tool_page(title: str, content: str) -> str:
+>>>>>>> main
     body = f"""
     <section class="summary">
       <h2>{title}</h2>
@@ -368,4 +455,8 @@ def render_tool_page(title: str, content: str, mode_info: dict) -> str:
     </section>
     <section class="section">{content}</section>
     """
+<<<<<<< HEAD
     return page_wrapper(f"{title} — Tools", body, mode_info, active_tab="tools", prefix="../")
+=======
+    return page_wrapper(f"{title} — Tools", body, active_tab="tools", prefix="../")
+>>>>>>> main
