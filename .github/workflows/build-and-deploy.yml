@@ -26,7 +26,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Build site
+<<<<<<< HEAD
+        run: python -m src.build.build_site --mode live_beta
+=======
         run: python -m src.build.build_site --mode auto
+>>>>>>> main
       - name: Commit site artifacts
         run: |
           if git status --porcelain | grep -E '^( M|??) (site/|data/history/)'; then

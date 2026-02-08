@@ -1,0 +1,34 @@
+country: ZW
+reference_note: "Training/reference data. Verify with AIP/AD charts."
+aerodromes:
+  - ident: FVHA
+    name: Harare Intl
+    elevation_m: 1490
+    latitude_deg: -17.9318
+    longitude_deg: 31.0928
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "05"
+        magnetic_heading_deg: 050
+        length_m: 4725
+        surface: ASPH
+      - designator: "23"
+        magnetic_heading_deg: 230
+        length_m: 4725
+        surface: ASPH

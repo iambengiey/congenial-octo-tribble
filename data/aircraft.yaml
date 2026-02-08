@@ -1,0 +1,16 @@
+aircraft:
+  - type: C172
+    demonstrated_crosswind_kt: 15
+    notes: "Typical training aircraft. Check POH/AFM for exact values."
+  - type: PA28
+    demonstrated_crosswind_kt: 17
+    notes: "Typical PA-28 series. POH/AFM required for limits."
+  - type: C152
+    demonstrated_crosswind_kt: 12
+    notes: "Light trainer with lower demonstrated crosswind."
+  - type: C182
+    demonstrated_crosswind_kt: 20
+    notes: "Heavier single with better crosswind capability."
+  - type: DA40
+    demonstrated_crosswind_kt: 20
+    notes: "Diamond DA40 training reference."
