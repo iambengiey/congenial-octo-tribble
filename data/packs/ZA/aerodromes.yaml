@@ -1,0 +1,914 @@
+country: ZA
+reference_note: "Training/reference data. Verify with AIP/AD charts."
+aerodromes:
+  - ident: FAOR
+    name: OR Tambo Intl
+    elevation_m: 1694
+    latitude_deg: -26.1392
+    longitude_deg: 28.2460
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "03L"
+        magnetic_heading_deg: 034
+        length_m: 4400
+        surface: ASPH
+      - designator: "03R"
+        magnetic_heading_deg: 034
+        length_m: 3400
+        surface: ASPH
+      - designator: "21L"
+        magnetic_heading_deg: 214
+        length_m: 3400
+        surface: ASPH
+      - designator: "21R"
+        magnetic_heading_deg: 214
+        length_m: 4400
+        surface: ASPH
+
+  - ident: FAWB
+    name: Wonderboom
+    elevation_m: 1245
+    latitude_deg: -25.6539
+    longitude_deg: 28.2242
+    night_ops_allowed: by_prior_arrangement
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "HR"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "11"
+        magnetic_heading_deg: 114
+        length_m: 1860
+        surface: ASPH
+      - designator: "29"
+        magnetic_heading_deg: 294
+        length_m: 1860
+        surface: ASPH
+
+  - ident: FAGC
+    name: Grand Central
+    elevation_m: 1620
+    latitude_deg: -25.9863
+    longitude_deg: 28.1400
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "HR"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "17"
+        magnetic_heading_deg: 168
+        length_m: 1700
+        surface: ASPH
+      - designator: "35"
+        magnetic_heading_deg: 348
+        length_m: 1700
+        surface: ASPH
+
+  - ident: FAGM
+    name: Rand
+    elevation_m: 1675
+    latitude_deg: -26.2422
+    longitude_deg: 28.1512
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "HR"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "11"
+        magnetic_heading_deg: 112
+        length_m: 1610
+        surface: ASPH
+      - designator: "29"
+        magnetic_heading_deg: 292
+        length_m: 1610
+        surface: ASPH
+
+  - ident: FALA
+    name: Lanseria
+    elevation_m: 1377
+    latitude_deg: -25.9385
+    longitude_deg: 27.9261
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "07"
+        magnetic_heading_deg: 074
+        length_m: 2990
+        surface: ASPH
+      - designator: "25"
+        magnetic_heading_deg: 254
+        length_m: 2990
+        surface: ASPH
+
+  - ident: FABL
+    name: Bloemfontein Intl
+    elevation_m: 1350
+    latitude_deg: -29.0927
+    longitude_deg: 26.3025
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "02"
+        magnetic_heading_deg: 020
+        length_m: 2550
+        surface: ASPH
+      - designator: "20"
+        magnetic_heading_deg: 200
+        length_m: 2550
+        surface: ASPH
+
+  - ident: FABB
+    name: Brakpan
+    elevation_m: 1641
+    latitude_deg: -26.2544
+    longitude_deg: 28.3442
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "18"
+        magnetic_heading_deg: 182
+        length_m: 900
+        surface: TAR
+      - designator: "36"
+        magnetic_heading_deg: 002
+        length_m: 900
+        surface: TAR
+
+  - ident: FASI
+    name: Sishen
+    elevation_m: 1180
+    latitude_deg: -27.6480
+    longitude_deg: 22.9990
+    night_ops_allowed: by_prior_arrangement
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: no
+      apron: yes
+    ppr_required: yes
+    ops_hours: "HR"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "01"
+        magnetic_heading_deg: 010
+        length_m: 2500
+        surface: ASPH
+      - designator: "19"
+        magnetic_heading_deg: 190
+        length_m: 2500
+        surface: ASPH
+
+  - ident: FAPK
+    name: Prieska
+    elevation_m: 1000
+    latitude_deg: -29.6690
+    longitude_deg: 22.7710
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "17"
+        magnetic_heading_deg: 170
+        length_m: 1500
+        surface: ASPH
+      - designator: "35"
+        magnetic_heading_deg: 350
+        length_m: 1500
+        surface: ASPH
+
+  - ident: FAHG
+    name: Harrismith
+    elevation_m: 1685
+    latitude_deg: -28.2350
+    longitude_deg: 29.1060
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "03"
+        magnetic_heading_deg: 030
+        length_m: 1800
+        surface: ASPH
+      - designator: "21"
+        magnetic_heading_deg: 210
+        length_m: 1800
+        surface: ASPH
+
+  - ident: FAPE
+    name: Gqeberha
+    elevation_m: 69
+    latitude_deg: -33.9849
+    longitude_deg: 25.6173
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "08"
+        magnetic_heading_deg: 080
+        length_m: 1980
+        surface: ASPH
+      - designator: "26"
+        magnetic_heading_deg: 260
+        length_m: 1980
+        surface: ASPH
+
+  - ident: FACT
+    name: Cape Town Intl
+    elevation_m: 46
+    latitude_deg: -33.9696
+    longitude_deg: 18.5972
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "01"
+        magnetic_heading_deg: 010
+        length_m: 3200
+        surface: ASPH
+      - designator: "19"
+        magnetic_heading_deg: 190
+        length_m: 3200
+        surface: ASPH
+      - designator: "16"
+        magnetic_heading_deg: 160
+        length_m: 1700
+        surface: ASPH
+      - designator: "34"
+        magnetic_heading_deg: 340
+        length_m: 1700
+        surface: ASPH
+
+  - ident: FAKN
+    name: Kruger Mpumalanga Intl
+    elevation_m: 866
+    latitude_deg: -25.3830
+    longitude_deg: 31.1050
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "05"
+        magnetic_heading_deg: 050
+        length_m: 3100
+        surface: ASPH
+      - designator: "23"
+        magnetic_heading_deg: 230
+        length_m: 3100
+        surface: ASPH
+
+  - ident: FAKM
+    name: Kimberley
+    elevation_m: 1200
+    latitude_deg: -28.8020
+    longitude_deg: 24.7650
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "16"
+        magnetic_heading_deg: 160
+        length_m: 2270
+        surface: ASPH
+      - designator: "34"
+        magnetic_heading_deg: 340
+        length_m: 2270
+        surface: ASPH
+
+  - ident: FAPN
+    name: Pilanesberg Intl
+    elevation_m: 1033
+    latitude_deg: -25.3336
+    longitude_deg: 27.1734
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "05"
+        magnetic_heading_deg: 050
+        length_m: 3600
+        surface: ASPH
+      - designator: "23"
+        magnetic_heading_deg: 230
+        length_m: 3600
+        surface: ASPH
+
+  - ident: FAUP
+    name: Upington
+    elevation_m: 835
+    latitude_deg: -28.3991
+    longitude_deg: 21.2602
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "17"
+        magnetic_heading_deg: 170
+        length_m: 4900
+        surface: ASPH
+      - designator: "35"
+        magnetic_heading_deg: 350
+        length_m: 4900
+        surface: ASPH
+
+  - ident: FAKR
+    name: Krugersdorp
+    elevation_m: 1680
+    latitude_deg: -26.0814
+    longitude_deg: 27.7250
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "07"
+        magnetic_heading_deg: 070
+        length_m: 1700
+        surface: TAR
+      - designator: "25"
+        magnetic_heading_deg: 250
+        length_m: 1700
+        surface: TAR
+
+  - ident: FALE
+    name: King Shaka Intl
+    elevation_m: 90
+    latitude_deg: -29.6140
+    longitude_deg: 31.1197
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "06"
+        magnetic_heading_deg: 060
+        length_m: 3700
+        surface: ASPH
+      - designator: "24"
+        magnetic_heading_deg: 240
+        length_m: 3700
+        surface: ASPH
+
+  - ident: FABS
+    name: Bethlehem
+    elevation_m: 1700
+    latitude_deg: -28.2480
+    longitude_deg: 28.3360
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "03"
+        magnetic_heading_deg: 030
+        length_m: 1600
+        surface: ASPH
+      - designator: "21"
+        magnetic_heading_deg: 210
+        length_m: 1600
+        surface: ASPH
+
+  - ident: FAMM
+    name: Mmabatho Intl
+    elevation_m: 1270
+    latitude_deg: -25.7900
+    longitude_deg: 25.5480
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "13"
+        magnetic_heading_deg: 130
+        length_m: 2600
+        surface: ASPH
+      - designator: "31"
+        magnetic_heading_deg: 310
+        length_m: 2600
+        surface: ASPH
+
+  - ident: FAEL
+    name: East London
+    elevation_m: 133
+    latitude_deg: -33.0356
+    longitude_deg: 27.8259
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "11"
+        magnetic_heading_deg: 110
+        length_m: 1960
+        surface: ASPH
+      - designator: "29"
+        magnetic_heading_deg: 290
+        length_m: 1960
+        surface: ASPH
+
+  - ident: FATH
+    name: Thohoyandou
+    elevation_m: 1830
+    latitude_deg: -23.0760
+    longitude_deg: 30.3830
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "01"
+        magnetic_heading_deg: 010
+        length_m: 2000
+        surface: ASPH
+      - designator: "19"
+        magnetic_heading_deg: 190
+        length_m: 2000
+        surface: ASPH
+
+  - ident: FAOH
+    name: Oryx (Orkney)
+    elevation_m: 1400
+    latitude_deg: -26.8280
+    longitude_deg: 26.6620
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "04"
+        magnetic_heading_deg: 040
+        length_m: 2000
+        surface: ASPH
+      - designator: "22"
+        magnetic_heading_deg: 220
+        length_m: 2000
+        surface: ASPH
+
+  - ident: FAKZ
+    name: Kleinzee
+    elevation_m: 170
+    latitude_deg: -29.6880
+    longitude_deg: 17.0940
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "01"
+        magnetic_heading_deg: 010
+        length_m: 1500
+        surface: ASPH
+      - designator: "19"
+        magnetic_heading_deg: 190
+        length_m: 1500
+        surface: ASPH
+
+  - ident: FARB
+    name: Richards Bay
+    elevation_m: 33
+    latitude_deg: -28.7410
+    longitude_deg: 32.0920
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "02"
+        magnetic_heading_deg: 020
+        length_m: 1900
+        surface: ASPH
+      - designator: "20"
+        magnetic_heading_deg: 200
+        length_m: 1900
+        surface: ASPH
+
+  - ident: FAUL
+    name: Ulundi
+    elevation_m: 525
+    latitude_deg: -28.3200
+    longitude_deg: 31.4160
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "04"
+        magnetic_heading_deg: 040
+        length_m: 2600
+        surface: ASPH
+      - designator: "22"
+        magnetic_heading_deg: 220
+        length_m: 2600
+        surface: ASPH
+
+  - ident: FATP
+    name: Tzaneen
+    elevation_m: 582
+    latitude_deg: -23.8270
+    longitude_deg: 30.3470
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "02"
+        magnetic_heading_deg: 020
+        length_m: 1650
+        surface: ASPH
+      - designator: "20"
+        magnetic_heading_deg: 200
+        length_m: 1650
+        surface: ASPH
+
+  - ident: FADQ
+    name: Durban Queenstown
+    elevation_m: 1070
+    latitude_deg: -31.9200
+    longitude_deg: 26.8820
+    night_ops_allowed: no
+    lighting:
+      runway_edge: no
+      threshold: no
+      taxiway: no
+      apron: no
+    ppr_required: yes
+    ops_hours: "Daylight"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "14"
+        magnetic_heading_deg: 140
+        length_m: 2000
+        surface: ASPH
+      - designator: "32"
+        magnetic_heading_deg: 320
+        length_m: 2000
+        surface: ASPH
