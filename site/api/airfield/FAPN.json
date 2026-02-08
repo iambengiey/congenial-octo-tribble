@@ -1,0 +1,215 @@
+{
+  "ident": "FAPN",
+  "name": "Pilanesberg Intl",
+  "elevation_m": 1033,
+  "latitude_deg": -25.3336,
+  "longitude_deg": 27.1734,
+  "night_ops_allowed": "yes",
+  "lighting": {
+    "runway_edge": "yes",
+    "threshold": "yes",
+    "taxiway": "yes",
+    "apron": "yes"
+  },
+  "ppr_required": "no",
+  "ops_hours": "H24",
+  "notes": "Reference only.",
+  "airspace_context": {
+    "ctr": "no",
+    "tma": "no",
+    "class": "G"
+  },
+  "circuit": {
+    "direction": "L",
+    "height_ft_agl": 1000
+  },
+  "noise_abatement_notes": "Training reference only.",
+  "runways": [
+    {
+      "designator": "05",
+      "magnetic_heading_deg": 50,
+      "length_m": 3600,
+      "surface": "ASPH"
+    },
+    {
+      "designator": "23",
+      "magnetic_heading_deg": 230,
+      "length_m": 3600,
+      "surface": "ASPH"
+    }
+  ],
+  "night_ops": {
+    "night_ops_allowed": "yes",
+    "lighting": {
+      "runway_edge": "yes",
+      "threshold": "yes",
+      "taxiway": "yes",
+      "apron": "yes"
+    },
+    "ppr_required": "no",
+    "ops_hours": "H24",
+    "notes": "Reference only."
+  },
+  "night_ready": true,
+  "metar": {
+    "raw": "FAPN 121100Z 09015KT 9999 FEW025 19/08 Q1015",
+    "observed_time_utc": "2026-02-12T11:00:00Z",
+    "wind_dir_deg": 90,
+    "wind_speed_kt": 15,
+    "gust_kt": null,
+    "variable_wind": null,
+    "visibility_m": 9999,
+    "weather_codes": [],
+    "cloud_layers": [
+      {
+        "cover": "FEW",
+        "base_ft": 2500
+      }
+    ],
+    "ceiling_ft": null,
+    "temp_c": 19,
+    "dewpoint_c": 8,
+    "qnh_hpa": 1015,
+    "remarks": "",
+    "source": "SAMPLE_FALLBACK"
+  },
+  "taf": {
+    "raw": "TAF FAPN 121100Z 1212/1312 10012KT 9999 SCT025 BECMG 1304/1306 13015KT 7000 TSRA BKN020CB",
+    "summary": {
+      "valid_from": "1212",
+      "valid_to": "1312",
+      "key_changes": [
+        "BECMG"
+      ]
+    },
+    "source": "SAMPLE_FALLBACK"
+  },
+  "computed": {
+    "wind_components_per_runway": [
+      {
+        "runway": "05",
+        "headwind_kt": 11.5,
+        "crosswind_kt": 9.6,
+        "tailwind_kt": 0.0,
+        "crosswind_side": "R"
+      },
+      {
+        "runway": "23",
+        "headwind_kt": 0.0,
+        "crosswind_kt": 9.6,
+        "tailwind_kt": 11.5,
+        "crosswind_side": "L"
+      }
+    ],
+    "density_altitude": {
+      "da_ft": 4621,
+      "da_m": 1408
+    },
+    "qnh_trend": "steady",
+    "flags": [
+      "TAILWIND"
+    ],
+    "flag_explanations": {
+      "TAILWIND": {
+        "input": "90/15kt",
+        "runway": "23",
+        "tailwind_kt": 11.5,
+        "threshold_kt": 5,
+        "note": "Tailwind reduces performance and increases landing distance."
+      }
+    },
+    "severity": {
+      "level": "CAUTION",
+      "flags": [
+        "TAILWIND"
+      ]
+    },
+    "changes": {
+      "summary": "Minimal changes",
+      "details": {
+        "wind_speed_delta_kt": 0,
+        "wind_dir_shift_deg": 0,
+        "qnh_change_hpa": 0,
+        "temp_dewpoint_spread_change": 0,
+        "ceiling_category": {
+          "from": "normal",
+          "to": "normal"
+        },
+        "visibility_category": {
+          "from": "normal",
+          "to": "normal"
+        }
+      }
+    },
+    "qnh_change_rate_hpa_per_hr": null,
+    "taf_time_to_expiry": {
+      "hours": 122.7,
+      "urgency": "ok"
+    },
+    "sun": {
+      "sunrise": "03:42",
+      "sunset": "16:48",
+      "civil_twilight_start": "03:18",
+      "civil_twilight_end": "17:12",
+      "is_night": false
+    },
+    "workload": {
+      "score": 47.6,
+      "category": "Medium",
+      "top_contributors": [
+        "convective",
+        "crosswind_ratio",
+        "da_ratio"
+      ]
+    },
+    "stability": {
+      "score": 80.0,
+      "category": "Stable",
+      "drivers": [
+        "metar_taf_mismatch"
+      ]
+    },
+    "trends": {
+      "wind_speed": [
+        15,
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "qnh": [
+        1015,
+        1015,
+        1015,
+        1015,
+        1015,
+        1015
+      ],
+      "temp": [
+        19,
+        19,
+        19,
+        19,
+        19,
+        19
+      ],
+      "dewpoint": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "visibility": [
+        9999,
+        9999,
+        9999,
+        9999,
+        9999,
+        9999
+      ]
+    }
+  }
+}
