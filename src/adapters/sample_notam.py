@@ -11,5 +11,9 @@ class SampleNotamAdapter:
 
     def fetch(self, ident: str) -> TextProduct:
         path = self.notam_dir / f"{ident}.txt"
-        lines = [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+        lines = [
+            line.strip()
+            for line in path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
         return TextProduct(ident=ident, lines=lines, source="SAMPLE")

@@ -4,7 +4,6 @@ import argparse
 import datetime as dt
 import json
 from pathlib import Path
-from typing import Any
 
 from src.adapters.live_metar_taf import LiveMetarTafAdapter
 from src.adapters.sample_metar_taf import SampleMetarTafAdapter
@@ -26,11 +25,11 @@ from src.compute.change_detection import detect_changes
 from src.compute.cloud_base import cloud_base_ft
 from src.compute.compound_flags import compound_flags
 from src.compute.density_altitude import density_altitude
+from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.risk_flags import flag_severity
 from src.compute.stability import stability_score
 from src.compute.sun import civil_twilight, is_night, sun_times
 from src.compute.workload import workload_score
-from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.wind_components import wind_components
 from src.parsers.metar import decode_metar
 from src.parsers.notam import decode_notam
@@ -138,8 +137,17 @@ def time_to_expiry(end_time: dt.datetime | None, now: dt.datetime) -> dict:
 
 def build_mode_info(mode: str) -> dict:
     if mode == "live_beta":
-        return {"label": "LIVE (BETA)", "text": "Not an official briefing source", "class": "mode-live"}
-    return {"label": "TRAINING (Sample)", "text": "Reproducible training data", "class": "mode-training"}
+        return {
+            "label": "LIVE (BETA)",
+            "text": "Not an official briefing source",
+            "class": "mode-live",
+        }
+    return {
+        "label": "TRAINING (Sample)",
+        "text": "Reproducible training data",
+        "class": "mode-training",
+    }
+
 
 def qnh_trend(history: list[dict]) -> str:
     if len(history) < 2:
@@ -167,7 +175,13 @@ def qnh_falling_fast(history: list[dict], threshold: float) -> bool:
     return delta <= -threshold
 
 
-def compute_flags(metar: dict, da: dict, components: list[dict], profile: dict, trend_fast: bool) -> tuple[list[str], dict]:
+def compute_flags(
+    metar: dict,
+    da: dict,
+    components: list[dict],
+    profile: dict,
+    trend_fast: bool,
+) -> tuple[list[str], dict]:
     flags: list[str] = []
     explanations: dict[str, dict] = {}
     thresholds = profile["thresholds"]
@@ -240,7 +254,10 @@ def compute_flags(metar: dict, da: dict, components: list[dict], profile: dict, 
 
     if any("TS" in code for code in metar.get("weather_codes", [])):
         flags.append("TS_RISK")
-        explanations["TS_RISK"] = {"note": "Thunderstorm code in METAR.", "input": metar.get("weather_codes", [])}
+        explanations["TS_RISK"] = {
+            "note": "Thunderstorm code in METAR.",
+            "input": metar.get("weather_codes", []),
+        }
 
     if trend_fast:
         flags.append("QNH_FALLING_FAST")
@@ -264,7 +281,12 @@ def _build_metar_taf_adapter(mode: str) -> tuple[SampleMetarTafAdapter, LiveMeta
     return sample, None
 
 
-def _fetch_with_fallback(ident: str, adapter: LiveMetarTafAdapter | None, fallback: SampleMetarTafAdapter, kind: str) -> tuple[dict, str]:
+def _fetch_with_fallback(
+    ident: str,
+    adapter: LiveMetarTafAdapter | None,
+    fallback: SampleMetarTafAdapter,
+    kind: str,
+) -> tuple[dict, str]:
     try:
         if adapter:
             if kind == "metar":
@@ -301,12 +323,23 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
 
         components = []
         for runway in airfield["runways"]:
-            comp = wind_components(metar_decoded["wind_dir_deg"], metar_decoded["wind_speed_kt"], runway["magnetic_heading_deg"])
+            comp = wind_components(
+                metar_decoded["wind_dir_deg"],
+                metar_decoded["wind_speed_kt"],
+                runway["magnetic_heading_deg"],
+            )
             components.append({"runway": runway["designator"], **comp})
 
         crosswind = max((c["crosswind_kt"] or 0 for c in components), default=0)
-        da = density_altitude(airfield["elevation_m"], metar_decoded["qnh_hpa"], metar_decoded["temp_c"])
-        ceiling_est = metar_decoded.get("ceiling_ft") or cloud_base_ft(metar_decoded.get("temp_c"), metar_decoded.get("dewpoint_c"))
+        da = density_altitude(
+            airfield["elevation_m"],
+            metar_decoded["qnh_hpa"],
+            metar_decoded["temp_c"],
+        )
+        ceiling_est = metar_decoded.get("ceiling_ft") or cloud_base_ft(
+            metar_decoded.get("temp_c"),
+            metar_decoded.get("dewpoint_c"),
+        )
 
         history = load_history(ident)
         previous = history[-1] if history else None
@@ -327,7 +360,10 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
 
         changes = detect_changes(previous, history[-1])
         qnh_rate = None
-        hours = hours_between(previous.get("timestamp") if previous else None, history[-1]["timestamp"])
+        hours = hours_between(
+            previous.get("timestamp") if previous else None,
+            history[-1]["timestamp"],
+        )
         if hours and previous and previous.get("qnh_hpa") and history[-1].get("qnh_hpa"):
             qnh_rate = round((history[-1]["qnh_hpa"] - previous["qnh_hpa"]) / hours, 2)
 
@@ -338,9 +374,21 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
         twilight = civil_twilight(now.date(), airfield["latitude_deg"], airfield["longitude_deg"])
         night = is_night(now, twilight.get("sunset"), twilight.get("sunrise"))
 
-        trend_fast = qnh_falling_fast(history, default_profile["thresholds"]["qnh_fall_fast_hpa_per_hr"])
-        flags, flag_explanations = compute_flags(metar_decoded, da, components, default_profile, trend_fast)
-        runway_short = any(runway["length_m"] < default_profile["thresholds"]["short_runway_m"] for runway in airfield["runways"])
+        trend_fast = qnh_falling_fast(
+            history,
+            default_profile["thresholds"]["qnh_fall_fast_hpa_per_hr"],
+        )
+        flags, flag_explanations = compute_flags(
+            metar_decoded,
+            da,
+            components,
+            default_profile,
+            trend_fast,
+        )
+        runway_short = any(
+            runway["length_m"] < default_profile["thresholds"]["short_runway_m"]
+            for runway in airfield["runways"]
+        )
         taf_deteriorating = "TS" in taf_decoded["raw"] or "TEMPO" in taf_decoded["raw"]
         compounds = compound_flags(flags, runway_short, night, taf_deteriorating, trend_fast)
         for compound in compounds:
@@ -369,25 +417,55 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
                     "note": "Rapid QNH fall with deteriorating TAF.",
                 }
             else:
-                flag_explanations[compound] = {"note": "Compound flag based on multiple conditions."}
+                flag_explanations[compound] = {
+                    "note": "Compound flag based on multiple conditions."
+                }
         all_flags = flags + compounds
         severity = flag_severity(all_flags, default_profile.get("severity", {}))
 
         workload = workload_score(
             {
-                "crosswind_ratio": crosswind / default_profile["thresholds"]["max_crosswind_kt"] if default_profile["thresholds"]["max_crosswind_kt"] else 0,
-                "gust_ratio": (metar_decoded.get("gust_kt", 0) - metar_decoded.get("wind_speed_kt", 0)) / default_profile["thresholds"]["max_gust_spread_kt"] if metar_decoded.get("gust_kt") and metar_decoded.get("wind_speed_kt") else 0,
-                "da_ratio": (da.get("da_ft") or 0) / default_profile["thresholds"]["max_da_ft"] if default_profile["thresholds"]["max_da_ft"] else 0,
+                "crosswind_ratio": crosswind
+                / default_profile["thresholds"]["max_crosswind_kt"]
+                if default_profile["thresholds"]["max_crosswind_kt"]
+                else 0,
+                "gust_ratio": (
+                    metar_decoded.get("gust_kt", 0)
+                    - metar_decoded.get("wind_speed_kt", 0)
+                )
+                / default_profile["thresholds"]["max_gust_spread_kt"]
+                if metar_decoded.get("gust_kt") and metar_decoded.get("wind_speed_kt")
+                else 0,
+                "da_ratio": (da.get("da_ft") or 0)
+                / default_profile["thresholds"]["max_da_ft"]
+                if default_profile["thresholds"]["max_da_ft"]
+                else 0,
                 "convective": 1.0 if "TS" in taf_decoded["raw"] else 0.0,
                 "night": 1.0 if night else 0.0,
-                "rapid_change": 1.0 if abs(changes["details"].get("wind_speed_delta_kt", 0)) >= 10 else 0.0,
+                "rapid_change": 1.0
+                if abs(changes["details"].get("wind_speed_delta_kt", 0)) >= 10
+                else 0.0,
             }
         )
         stability = stability_score(
             {
                 "wind_shift": min(abs(changes["details"].get("wind_dir_shift_deg", 0)) / 60.0, 1.0),
-                "gust_spread": min((metar_decoded.get("gust_kt", 0) - metar_decoded.get("wind_speed_kt", 0)) / default_profile["thresholds"]["max_gust_spread_kt"] if metar_decoded.get("gust_kt") and metar_decoded.get("wind_speed_kt") else 0, 1.0),
-                "metar_taf_mismatch": 1.0 if ("TS" in taf_decoded["raw"] and "TS" not in metar_decoded.get("weather_codes", [])) else 0.0,
+                "gust_spread": min(
+                    (
+                        metar_decoded.get("gust_kt", 0)
+                        - metar_decoded.get("wind_speed_kt", 0)
+                    )
+                    / default_profile["thresholds"]["max_gust_spread_kt"]
+                    if metar_decoded.get("gust_kt") and metar_decoded.get("wind_speed_kt")
+                    else 0,
+                    1.0,
+                ),
+                "metar_taf_mismatch": 1.0
+                if (
+                    "TS" in taf_decoded["raw"]
+                    and "TS" not in metar_decoded.get("weather_codes", [])
+                )
+                else 0.0,
                 "qnh_fall": 1.0 if trend_fast else 0.0,
                 "speci": 0.0,
             }
@@ -456,11 +534,20 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
     for route in routes:
         dep = airfield_map.get(route["dep"])
         dest = airfield_map.get(route["dest"])
-        alternates = [airfield_map[ident] for ident in route.get("alternates", []) if ident in airfield_map]
+        alternates = [
+            airfield_map[ident]
+            for ident in route.get("alternates", [])
+            if ident in airfield_map
+        ]
 
         track = None
         if dep and dest:
-            track = bearing_deg(dep["latitude_deg"], dep["longitude_deg"], dest["latitude_deg"], dest["longitude_deg"])
+            track = bearing_deg(
+                dep["latitude_deg"],
+                dep["longitude_deg"],
+                dest["latitude_deg"],
+                dest["longitude_deg"],
+            )
 
         wind_levels = []
         for level in winds["levels"]:
@@ -533,7 +620,10 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
                 "freezing_level_ft": freezing_level,
                 "sigmet_lines": [item["raw"] for item in sigmet_decoded],
                 "sigmet_time_to_expiry": time_to_expiry(None, now),
-                "notams": {ident: [entry["text"] for entry in entries] for ident, entries in notams.items()},
+                "notams": {
+                    ident: [entry["text"] for entry in entries]
+                    for ident, entries in notams.items()
+                },
                 "taf_time_to_expiry": {
                     "dep": _taf_expiry(dep),
                     "dest": _taf_expiry(dest),
@@ -633,14 +723,38 @@ def build_tools_pages(mode_info: dict) -> None:
     <div id="scenario-output" class="result"></div>
     """
 
-    (tools_dir / "isa.html").write_text(render_tool_page("ISA Tool", isa_content, mode_info), encoding="utf-8")
-    (tools_dir / "altimetry.html").write_text(render_tool_page("Altimetry Tool", altimetry_content, mode_info), encoding="utf-8")
-    (tools_dir / "density-altitude.html").write_text(render_tool_page("Density Altitude Tool", da_content, mode_info), encoding="utf-8")
-    (tools_dir / "tas.html").write_text(render_tool_page("IAS → TAS Tool", tas_content, mode_info), encoding="utf-8")
-    (tools_dir / "hypoxia.html").write_text(render_tool_page("Gas laws & Hypoxia", hypoxia_content, mode_info), encoding="utf-8")
-    (tools_dir / "pressurisation.html").write_text(render_tool_page("Pressurisation Simulator", press_content, mode_info), encoding="utf-8")
-    (tools_dir / "aircraft.html").write_text(render_tool_page("Training Aircraft Reference", aircraft_content, mode_info), encoding="utf-8")
-    (tools_dir / "scenario.html").write_text(render_tool_page("Scenario Builder", scenario_content, mode_info), encoding="utf-8")
+    (tools_dir / "isa.html").write_text(
+        render_tool_page("ISA Tool", isa_content, mode_info),
+        encoding="utf-8",
+    )
+    (tools_dir / "altimetry.html").write_text(
+        render_tool_page("Altimetry Tool", altimetry_content, mode_info),
+        encoding="utf-8",
+    )
+    (tools_dir / "density-altitude.html").write_text(
+        render_tool_page("Density Altitude Tool", da_content, mode_info),
+        encoding="utf-8",
+    )
+    (tools_dir / "tas.html").write_text(
+        render_tool_page("IAS → TAS Tool", tas_content, mode_info),
+        encoding="utf-8",
+    )
+    (tools_dir / "hypoxia.html").write_text(
+        render_tool_page("Gas laws & Hypoxia", hypoxia_content, mode_info),
+        encoding="utf-8",
+    )
+    (tools_dir / "pressurisation.html").write_text(
+        render_tool_page("Pressurisation Simulator", press_content, mode_info),
+        encoding="utf-8",
+    )
+    (tools_dir / "aircraft.html").write_text(
+        render_tool_page("Training Aircraft Reference", aircraft_content, mode_info),
+        encoding="utf-8",
+    )
+    (tools_dir / "scenario.html").write_text(
+        render_tool_page("Scenario Builder", scenario_content, mode_info),
+        encoding="utf-8",
+    )
 
 
 def build_site(mode: str = "sample") -> None:
@@ -658,20 +772,32 @@ def build_site(mode: str = "sample") -> None:
     write_assets()
     build_tools_pages(mode_info)
 
-    (SITE_DIR / "index.html").write_text(render_home(airfields, default_profile["name"], mode_info), encoding="utf-8")
+    (SITE_DIR / "index.html").write_text(
+        render_home(airfields, default_profile["name"], mode_info),
+        encoding="utf-8",
+    )
     (SITE_DIR / "routes.html").write_text(render_routes_index(routes, mode_info), encoding="utf-8")
 
     airfield_dir = SITE_DIR / "airfield"
     airfield_dir.mkdir(parents=True, exist_ok=True)
     for airfield in airfields:
-        (airfield_dir / f"{airfield['ident']}.html").write_text(render_airfield_page(airfield, mode_info), encoding="utf-8")
+        (airfield_dir / f"{airfield['ident']}.html").write_text(
+            render_airfield_page(airfield, mode_info),
+            encoding="utf-8",
+        )
 
     route_dir = SITE_DIR / "route"
     route_dir.mkdir(parents=True, exist_ok=True)
     for route in routes:
-        (route_dir / f"{route['route_id']}.html").write_text(render_route_page(route, sigwx_paths, mode_info), encoding="utf-8")
+        (route_dir / f"{route['route_id']}.html").write_text(
+            render_route_page(route, sigwx_paths, mode_info),
+            encoding="utf-8",
+        )
 
-    write_json(SITE_DIR / "api" / "latest.json", {"mode": mode_info, "airfields": airfields, "routes": routes})
+    write_json(
+        SITE_DIR / "api" / "latest.json",
+        {"mode": mode_info, "airfields": airfields, "routes": routes},
+    )
     write_json(SITE_DIR / "api" / "profiles.json", profiles)
     write_json(SITE_DIR / "api" / "aircraft.json", load_aircraft())
 
@@ -697,7 +823,9 @@ def render_snapshot_page(snapshot_id: str, mode_info: dict) -> str:
     <h1>METAR.oncloud.africa Snapshot</h1>
     <p class="disclaimer">Training/augmentation only. Not an official briefing source.</p>
     <div class="mode-row">
-      <span class="mode-banner {mode_info['class']}"><span class="icon">●</span>{mode_info['label']} — {mode_info['text']}</span>
+      <span class="mode-banner {mode_info['class']}">
+        <span class="icon">●</span>{mode_info['label']} — {mode_info['text']}
+      </span>
       <button id="copy-link">Copy link</button>
     </div>
   </header>
@@ -705,15 +833,16 @@ def render_snapshot_page(snapshot_id: str, mode_info: dict) -> str:
     <div id="snapshot-content" class="card">Loading snapshot...</div>
   </main>
   <script>
+    const snapshotId = "{snapshot_id}";
     async function loadSnapshot() {{
-      const res = await fetch(`../api/snapshots/{snapshot_id}.json`);
+      const res = await fetch(`../api/snapshots/${{snapshotId}}.json`);
       const data = await res.json();
       const content = document.getElementById('snapshot-content');
       content.innerHTML = `
-        <h3>Snapshot ${snapshot_id}</h3>
-        <p><strong>Generated:</strong> ${data.generated_at}</p>
-        <p><strong>Profile:</strong> ${data.profile.name}</p>
-        <pre>${JSON.stringify(data.payload, null, 2)}</pre>
+        <h3>Snapshot ${{snapshotId}}</h3>
+        <p><strong>Generated:</strong> ${{data.generated_at}}</p>
+        <p><strong>Profile:</strong> ${{data.profile.name}}</p>
+        <pre>${{JSON.stringify(data.payload, null, 2)}}</pre>
       `;
     }}
     document.getElementById('copy-link').addEventListener('click', () => {{
@@ -726,7 +855,13 @@ def render_snapshot_page(snapshot_id: str, mode_info: dict) -> str:
 """
 
 
-def build_snapshot(snapshot_type: str, ident: str, profile_name: str, source: str, snapshot_id: str) -> None:
+def build_snapshot(
+    snapshot_type: str,
+    ident: str,
+    profile_name: str,
+    source: str,
+    snapshot_id: str,
+) -> None:
     mode_key = "live_beta" if source == "live_beta" else "sample"
     mode_info = build_mode_info(mode_key)
     airfields, _, profiles = build_airfields(mode_key, record_history=False)
@@ -756,30 +891,85 @@ def build_snapshot(snapshot_type: str, ident: str, profile_name: str, source: st
 
     write_json(SITE_DIR / "api" / "snapshots" / f"{snapshot_id}.json", snapshot)
     (SITE_DIR / "snapshot").mkdir(parents=True, exist_ok=True)
-    (SITE_DIR / "snapshot" / f"{snapshot_id}.html").write_text(render_snapshot_page(snapshot_id, mode_info), encoding="utf-8")
+    (SITE_DIR / "snapshot" / f"{snapshot_id}.html").write_text(
+        render_snapshot_page(snapshot_id, mode_info),
+        encoding="utf-8",
+    )
 
 
 def _style_css() -> str:
     return """
-:root { font-family: 'Inter', system-ui, sans-serif; color: #0f172a; }
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #0f172a;
+}
 body { margin: 0; background: #f8fafc; }
 header { background: #0f172a; color: #fff; padding: 20px; }
-nav a { color: #cbd5f5; margin-right: 16px; text-decoration: none; font-weight: 600; }
-nav a.active { color: #fff; border-bottom: 2px solid #38bdf8; padding-bottom: 4px; }
-.mode-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; flex-wrap: wrap; gap: 12px; }
-.mode-banner { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+nav a {
+  color: #cbd5f5;
+  margin-right: 16px;
+  text-decoration: none;
+  font-weight: 600;
+}
+nav a.active {
+  color: #fff;
+  border-bottom: 2px solid #38bdf8;
+  padding-bottom: 4px;
+}
+.mode-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.mode-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
 .mode-training { background: #e0f2fe; color: #0f172a; }
 .mode-live { background: #fee2e2; color: #991b1b; }
 .mode-select select { padding: 4px 6px; }
 .container { padding: 24px; max-width: 1200px; margin: 0 auto; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-.card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08); }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
 .card-header { display: flex; justify-content: space-between; align-items: center; }
 .card-header h3 { margin: 0; font-size: 1rem; }
 .badge-row { display: flex; gap: 8px; margin: 8px 0; }
-.badge { display: inline-block; background: #e2e8f0; color: #1e293b; padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.badge {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #1e293b;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
 .badge.night { background: #c7d2fe; }
-.pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
 .icon { font-size: 10px; }
 .status-ok { background: #e0f2fe; color: #0f172a; }
 .status-caution { background: #fef3c7; color: #92400e; }
@@ -787,14 +977,37 @@ nav a.active { color: #fff; border-bottom: 2px solid #38bdf8; padding-bottom: 4p
 .status-unknown { background: #e5e7eb; color: #374151; }
 .summary { background: #e0f2fe; border-radius: 12px; padding: 16px; }
 .table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-.table th, .table td { text-align: left; padding: 8px; border-bottom: 1px solid #e5e7eb; font-size: 14px; }
+.table th,
+.table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
 .section { margin-top: 24px; }
 .flag-list { margin: 8px 0; padding-left: 18px; }
 .note { font-size: 13px; color: #475569; }
-.result { margin-top: 12px; padding: 12px; background: #f1f5f9; border-radius: 8px; }
+.result {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f1f5f9;
+  border-radius: 8px;
+}
 footer { padding: 24px; text-align: center; font-size: 12px; color: #475569; }
-input, select { padding: 6px 8px; margin: 6px 8px 6px 0; max-width: 100%; }
-button { padding: 6px 10px; background: #0ea5e9; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+input,
+select {
+  padding: 6px 8px;
+  margin: 6px 8px 6px 0;
+  max-width: 100%;
+}
+button {
+  padding: 6px 10px;
+  background: #0ea5e9;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
 .urgency-amber { color: #b45309; font-weight: 700; }
 .urgency-red { color: #b91c1c; font-weight: 700; }
 .sparkline { width: 140px; height: 40px; }
@@ -833,14 +1046,17 @@ document.addEventListener('click', (event) => {
     const oat = toNumber('isa-oat');
     const isa = isaTemp(alt);
     const dev = (oat - isa).toFixed(1);
-    document.getElementById('isa-output').textContent = `ISA temp: ${isa.toFixed(1)}°C | ISA deviation: ${dev}°C`;
+    document.getElementById('isa-output').textContent =
+      `ISA temp: ${isa.toFixed(1)}°C | ISA deviation: ${dev}°C`;
   }
   if (action === 'calc-altimetry') {
     const elevM = toNumber('alt-elev');
     const qnh = toNumber('alt-qnh');
     const elevFt = elevM * 3.28084;
     const pressureAlt = elevFt + (1013.25 - qnh) * 30;
-    document.getElementById('alt-output').textContent = `Pressure altitude: ${pressureAlt.toFixed(0)} ft (${(pressureAlt/3.28084).toFixed(0)} m)`;
+    document.getElementById('alt-output').textContent =
+      `Pressure altitude: ${pressureAlt.toFixed(0)} ft `
+      + `(${(pressureAlt / 3.28084).toFixed(0)} m)`;
   }
   if (action === 'calc-da') {
     const elevM = toNumber('da-elev');
@@ -850,19 +1066,24 @@ document.addEventListener('click', (event) => {
     const pressureAlt = elevFt + (1013.25 - qnh) * 30;
     const isa = isaTemp(pressureAlt);
     const da = pressureAlt + 120 * (oat - isa);
-    document.getElementById('da-output').textContent = `Density altitude: ${da.toFixed(0)} ft (${(da/3.28084).toFixed(0)} m)`;
+    document.getElementById('da-output').textContent =
+      `Density altitude: ${da.toFixed(0)} ft `
+      + `(${(da / 3.28084).toFixed(0)} m)`;
   }
   if (action === 'calc-tas') {
     const ias = toNumber('tas-ias');
     const alt = toNumber('tas-alt');
     const dev = toNumber('tas-dev');
     const tas = ias * (1 + alt / 1000 * 0.02) * (1 + dev / 100);
-    document.getElementById('tas-output').textContent = `Estimated TAS: ${tas.toFixed(1)} kt (training approximation)`;
+    document.getElementById('tas-output').textContent =
+      `Estimated TAS: ${tas.toFixed(1)} kt (training approximation)`;
   }
   if (action === 'calc-hypoxia') {
     const alt = toNumber('hypoxia-alt');
     const index = Math.max(10, 100 - alt / 300);
-    document.getElementById('hypoxia-output').textContent = `Oxygen index: ${index.toFixed(1)} (training scale). Beware trapped gas at altitude.`;
+    document.getElementById('hypoxia-output').textContent =
+      `Oxygen index: ${index.toFixed(1)} (training scale). `
+      + 'Beware trapped gas at altitude.';
   }
   if (action === 'calc-press') {
     const cruise = toNumber('press-cruise');
@@ -870,7 +1091,9 @@ document.addEventListener('click', (event) => {
     const rate = toNumber('press-rate');
     const diff = toNumber('press-diff');
     const cabin = Math.min(cruise * 0.6, dest + diff * 2000);
-    document.getElementById('press-output').textContent = `Estimated cabin altitude: ${cabin.toFixed(0)} ft at ${rate} fpm (training only)`;
+    document.getElementById('press-output').textContent =
+      `Estimated cabin altitude: ${cabin.toFixed(0)} ft `
+      + `at ${rate} fpm (training only)`;
   }
   if (action === 'build-scenario') {
     buildScenarioCard();
@@ -915,10 +1138,13 @@ async function buildScenarioCard() {
   output.innerHTML = `
     <h4>${title}</h4>
     <p><strong>Profile:</strong> ${profile ? profile.name : ''}</p>
-    <p><strong>Aircraft:</strong> ${aircraftInfo ? aircraftInfo.type : ''} (${aircraftInfo ? aircraftInfo.demonstrated_crosswind_kt : ''} kt demo crosswind)</p>
+    <p><strong>Aircraft:</strong> ${aircraftInfo ? aircraftInfo.type : ''} `
+      + `(${aircraftInfo ? aircraftInfo.demonstrated_crosswind_kt : ''} `
+      + 'kt demo crosswind)</p>
     <p><strong>Density altitude:</strong> ${da} ft</p>
     <p><strong>Flags:</strong> ${flags.join(', ') || 'LOW_RISK'}</p>
-    <p><strong>Questions:</strong> How will crosswind/tailwind affect your performance? Are you within personal minima?</p>
+    <p><strong>Questions:</strong> How will crosswind/tailwind affect `
+      + 'your performance? Are you within personal minima?</p>
   `;
 }
 
@@ -946,7 +1172,11 @@ async function populateAircraft() {
   const container = document.getElementById('aircraft-list');
   if (!container) return;
   const aircraft = await fetch(`${basePath}api/aircraft.json`).then(r => r.json());
-  container.innerHTML = aircraft.map(a => `<div class="card"><h4>${a.type}</h4><p>Demo crosswind: ${a.demonstrated_crosswind_kt} kt</p><p>${a.notes}</p></div>`).join('');
+  container.innerHTML = aircraft.map(a => (
+    `<div class="card"><h4>${a.type}</h4>`
+      + `<p>Demo crosswind: ${a.demonstrated_crosswind_kt} kt</p>`
+      + `<p>${a.notes}</p></div>`
+  )).join('');
 }
 
 populateAircraft();
@@ -964,7 +1194,13 @@ function renderSparkline() {
       const y = height - ((v - min) / (max - min || 1)) * height;
       return `${x},${y}`;
     }).join(' ');
-    el.innerHTML = `<svg width=\"${width}\" height=\"${height}\" viewBox=\"0 0 ${width} ${height}\"><polyline fill=\"none\" stroke=\"#0ea5e9\" stroke-width=\"2\" points=\"${points}\"/></svg>`;
+    el.innerHTML = (
+      `<svg width=\"${width}\" height=\"${height}\" `
+        + `viewBox=\"0 0 ${width} ${height}\">`
+        + `<polyline fill=\"none\" stroke=\"#0ea5e9\" `
+        + `stroke-width=\"2\" points=\"${points}\"/>`
+        + '</svg>'
+    );
   });
 }
 
@@ -974,7 +1210,12 @@ renderSparkline();
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", default="sample", choices=["sample", "auto", "live_beta"], help="Build mode")
+    parser.add_argument(
+        "--mode",
+        default="sample",
+        choices=["sample", "auto", "live_beta"],
+        help="Build mode",
+    )
     parser.add_argument("--snapshot", action="store_true", help="Create snapshot artifacts only")
     parser.add_argument("--snapshot-type", choices=["airfield", "route"], default="airfield")
     parser.add_argument("--snapshot-ident", default="")
@@ -988,6 +1229,12 @@ if __name__ == "__main__":
     args = parse_args()
     if args.snapshot:
         snap_id = args.snapshot_id or f"snap-{dt.datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
-        build_snapshot(args.snapshot_type, args.snapshot_ident, args.snapshot_profile, args.snapshot_source, snap_id)
+        build_snapshot(
+            args.snapshot_type,
+            args.snapshot_ident,
+            args.snapshot_profile,
+            args.snapshot_source,
+            snap_id,
+        )
     else:
         build_site(args.mode)

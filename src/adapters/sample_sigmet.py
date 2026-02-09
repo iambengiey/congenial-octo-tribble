@@ -8,4 +8,8 @@ class SampleSigmetAdapter:
         self.sigmet_path = sigmet_path
 
     def fetch(self) -> list[str]:
-        return [line.strip() for line in self.sigmet_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+        return [
+            line.strip()
+            for line in self.sigmet_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]

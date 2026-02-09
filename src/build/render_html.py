@@ -38,7 +38,9 @@ def page_wrapper(
       <a class="{_active(active_tab, 'tools')}" href="{prefix}tools/index.html">Tools</a>
     </nav>
     <div class="mode-row">
-      <span class="mode-banner {mode_info['class']}"><span class="icon">●</span>{mode_info['label']} — {mode_info['text']}</span>
+      <span class="mode-banner {mode_info['class']}">
+        <span class="icon">●</span>{mode_info['label']} — {mode_info['text']}
+      </span>
       <label class="mode-select">Mode
         <select disabled>
           <option selected>{mode_info['label']}</option>
@@ -82,10 +84,13 @@ def airfield_cards(airfields: Iterable[dict]) -> str:
                 <h3>{airfield['ident']} — {airfield.get('name','')}</h3>
                 <span class="pill {status_class}"><span class="icon">●</span>{status}</span>
               </div>
-              <p><strong>Updated:</strong> {airfield['metar']['observed_time_utc'] or 'Unknown'} ({airfield['metar']['source']})</p>
-              <p>Wind: {airfield['metar']['wind_dir_deg'] or 'VRB'}° {airfield['metar']['wind_speed_kt'] or '--'} kt</p>
+              <p><strong>Updated:</strong> {airfield['metar']['observed_time_utc'] or 'Unknown'}
+                ({airfield['metar']['source']})</p>
+              <p>Wind: {airfield['metar']['wind_dir_deg'] or 'VRB'}°
+                {airfield['metar']['wind_speed_kt'] or '--'} kt</p>
               <p>QNH: {airfield['metar']['qnh_hpa'] or '--'} hPa</p>
-              <p>Temp/Dew: {airfield['metar']['temp_c'] or '--'}°C / {airfield['metar']['dewpoint_c'] or '--'}°C</p>
+              <p>Temp/Dew: {airfield['metar']['temp_c'] or '--'}°C /
+                {airfield['metar']['dewpoint_c'] or '--'}°C</p>
               <p>DA: {airfield['computed']['density_altitude']['da_ft'] or '--'} ft</p>
               <p>Workload: {workload['category']} ({workload['score']})</p>
               <p>Stability: {stability['category']} ({stability['score']})</p>
@@ -115,7 +120,7 @@ def route_cards(routes: Iterable[dict]) -> str:
               </div>
               <p>{route['dep']} → {route['dest']}</p>
               <p>Corridor: {route['corridor_nm']} NM</p>
-              <p>Levels: {', '.join(str(l) for l in route['cruise_levels_ft'])}</p>
+              <p>Levels: {', '.join(str(level) for level in route['cruise_levels_ft'])}</p>
               <p><a href="route/{route['route_id']}.html">Open route pack</a></p>
             </div>
             """
@@ -132,26 +137,46 @@ def render_home(airfields: list[dict], profile_name: str, mode_info: dict) -> st
     </section>
     <section class="grid">{airfield_cards(airfields)}</section>
     """
-    return page_wrapper("METAR.oncloud.africa — Airfields", body, mode_info, active_tab="airfields", prefix="")
+    return page_wrapper(
+        "METAR.oncloud.africa — Airfields",
+        body,
+        mode_info,
+        active_tab="airfields",
+        prefix="",
+    )
 
 
 def render_routes_index(routes: list[dict], mode_info: dict) -> str:
     body = f"""
     <section class="summary">
       <h2>ATPL route packs</h2>
-      <p>Generated from sample data. Each pack includes METAR/TAF, NOTAM highlights, upper winds, SIGMET/AIRMET, and SIGWX charts.</p>
+      <p>Generated from sample data. Each pack includes METAR/TAF, NOTAM highlights,
+        upper winds, SIGMET/AIRMET, and SIGWX charts.</p>
       <input id="route-search" type="search" placeholder="Search routes..." />
     </section>
     <section class="grid">{route_cards(routes)}</section>
     """
-    return page_wrapper("METAR.oncloud.africa — Routes", body, mode_info, active_tab="routes", prefix="")
+    return page_wrapper(
+        "METAR.oncloud.africa — Routes",
+        body,
+        mode_info,
+        active_tab="routes",
+        prefix="",
+    )
 
 
 def render_airfield_page(airfield: dict, mode_info: dict) -> str:
     metar = airfield["metar"]
     taf = airfield["taf"]
     runways = "".join(
-        f"<tr><td>{c['runway']}</td><td>{c['headwind_kt']}</td><td>{c['crosswind_kt']} ({c['crosswind_side']})</td><td>{c['tailwind_kt']}</td></tr>"
+        (
+            "<tr>"
+            f"<td>{c['runway']}</td>"
+            f"<td>{c['headwind_kt']}</td>"
+            f"<td>{c['crosswind_kt']} ({c['crosswind_side']})</td>"
+            f"<td>{c['tailwind_kt']}</td>"
+            "</tr>"
+        )
         for c in airfield["computed"]["wind_components_per_runway"]
     )
     flags = airfield["computed"]["flags"] or ["LOW_RISK"]
@@ -173,13 +198,15 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
       <h2>{airfield['ident']} — {airfield.get('name','')}</h2>
       <p><strong>Raw METAR:</strong> {metar['raw']}</p>
       <p>Observed: {metar['observed_time_utc'] or 'Unknown'} ({metar['source']})</p>
-      <p>Fetch time: {metar.get('fetch_time_utc', '--')} | Latency: {metar.get('latency_min', '--')} min</p>
+      <p>Fetch time: {metar.get('fetch_time_utc', '--')} |
+        Latency: {metar.get('latency_min', '--')} min</p>
     </section>
 
     <section class="section">
       <h3>Decoded METAR</h3>
       <table class="table">
-        <tr><th>Wind</th><td>{metar['wind_dir_deg'] or 'VRB'}° {metar['wind_speed_kt'] or '--'} kt</td></tr>
+        <tr><th>Wind</th>
+          <td>{metar['wind_dir_deg'] or 'VRB'}° {metar['wind_speed_kt'] or '--'} kt</td></tr>
         <tr><th>Gust</th><td>{metar['gust_kt'] or '--'} kt</td></tr>
         <tr><th>Variable wind</th><td>{metar['variable_wind'] or '--'}</td></tr>
         <tr><th>Visibility</th><td>{metar['visibility_m'] or '--'} m</td></tr>
@@ -197,12 +224,14 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
       <p><strong>Raw TAF:</strong> {taf['raw']}</p>
       <p>Valid: {taf['summary']['valid_from']} → {taf['summary']['valid_to']}</p>
       <p>Key changes: {', '.join(taf['summary']['key_changes']) or 'None'}</p>
-      <p>Time to TAF expiry: <span class="urgency-{taf_expiry['urgency']}">{taf_expiry['hours'] or '--'} hours</span></p>
+      <p>Time to TAF expiry:
+        <span class="urgency-{taf_expiry['urgency']}">{taf_expiry['hours'] or '--'} hours</span></p>
     </section>
 
     <section class="section">
       <h3>Runway wind components</h3>
-      <p class="note">Why it matters: Crosswind, tailwind, and gust spread affect handling and performance. Headwind is generally helpful but not a limit.</p>
+      <p class="note">Why it matters: Crosswind, tailwind, and gust spread affect handling and
+        performance. Headwind is generally helpful but not a limit.</p>
       <table class="table">
         <tr><th>Runway</th><th>Headwind (kt)</th><th>Crosswind (kt)</th><th>Tailwind (kt)</th></tr>
         {runways}
@@ -213,7 +242,9 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
       <h3>Night operations</h3>
       <ul>
         <li>Night ops allowed: {night['night_ops_allowed']}</li>
-        <li>Lighting: RWY edge {night['lighting']['runway_edge']}, threshold {night['lighting']['threshold']}, taxiway {night['lighting']['taxiway']}, apron {night['lighting']['apron']}</li>
+        <li>Lighting: RWY edge {night['lighting']['runway_edge']},
+          threshold {night['lighting']['threshold']}, taxiway {night['lighting']['taxiway']},
+          apron {night['lighting']['apron']}</li>
         <li>PPR required: {night['ppr_required']}</li>
         <li>Ops hours: {night['ops_hours']}</li>
         <li>Notes: {night['notes']}</li>
@@ -226,7 +257,8 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
         <li>CTR: {airfield['airspace_context']['ctr']}</li>
         <li>TMA: {airfield['airspace_context']['tma']}</li>
         <li>Class: {airfield['airspace_context'].get('class', '--')}</li>
-        <li>Circuit: {airfield['circuit']['direction']} / {airfield['circuit']['height_ft_agl']} ft AGL</li>
+        <li>Circuit: {airfield['circuit']['direction']} /
+          {airfield['circuit']['height_ft_agl']} ft AGL</li>
         <li>Noise abatement: {airfield.get('noise_abatement_notes', '--')}</li>
       </ul>
     </section>
@@ -234,7 +266,8 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
     <section class="section">
       <h3>Time awareness</h3>
       <p>Sunrise: {sun['sunrise'] or '--'} | Sunset: {sun['sunset'] or '--'}</p>
-      <p>Civil twilight: {sun['civil_twilight_start'] or '--'} → {sun['civil_twilight_end'] or '--'}</p>
+      <p>Civil twilight: {sun['civil_twilight_start'] or '--'} →
+        {sun['civil_twilight_end'] or '--'}</p>
       <div class="timeline">
         <span>Now</span>
         <span>TAF ends {taf_expiry['hours'] or '--'}h</span>
@@ -250,12 +283,14 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
 
     <section class="section">
       <h3>Workload today</h3>
-      <p>{workload['category']} ({workload['score']}) — Top contributors: {', '.join(workload['top_contributors'])}</p>
+      <p>{workload['category']} ({workload['score']}) — Top contributors:
+        {', '.join(workload['top_contributors'])}</p>
     </section>
 
     <section class="section">
       <h3>Stability score</h3>
-      <p>{stability['category']} ({stability['score']}) — Drivers: {', '.join(stability['drivers'])}</p>
+      <p>{stability['category']} ({stability['score']}) — Drivers:
+        {', '.join(stability['drivers'])}</p>
     </section>
 
     <section class="section">
@@ -272,19 +307,41 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
       <div class="flag-list">{flags_html}</div>
     </section>
     """
-    return page_wrapper(f"{airfield['ident']} briefing", body, mode_info, active_tab="airfields", prefix="../")
+    return page_wrapper(
+        f"{airfield['ident']} briefing",
+        body,
+        mode_info,
+        active_tab="airfields",
+        prefix="../",
+    )
 
 
 def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
     metar_rows = "".join(
-        f"<tr><td>{item['ident']}</td><td>{item['metar']['raw']}</td><td>{item['taf']['raw']}</td></tr>"
+        (
+            "<tr>"
+            f"<td>{item['ident']}</td>"
+            f"<td>{item['metar']['raw']}</td>"
+            f"<td>{item['taf']['raw']}</td>"
+            "</tr>"
+        )
         for item in route["airfields"]
     )
     upper_rows = "".join(
-        f"<tr><td>{level['level_ft']}</td><td>{level['wind_dir_deg']}/{level['wind_speed_kt']} kt</td><td>{level['temp_c']} °C</td><td>{level['headwind_kt']}</td><td>{level['ground_speed_kt']}</td></tr>"
+        (
+            "<tr>"
+            f"<td>{level['level_ft']}</td>"
+            f"<td>{level['wind_dir_deg']}/{level['wind_speed_kt']} kt</td>"
+            f"<td>{level['temp_c']} °C</td>"
+            f"<td>{level['headwind_kt']}</td>"
+            f"<td>{level['ground_speed_kt']}</td>"
+            "</tr>"
+        )
         for level in route["upper_winds"]
     )
-    sigmet_cards = "".join(f"<div class='card'><p>{line}</p></div>" for line in route["sigmet_lines"])
+    sigmet_cards = "".join(
+        f"<div class='card'><p>{line}</p></div>" for line in route["sigmet_lines"]
+    )
     notam_cards = "".join(
         f"<div class='card'><strong>{ident}</strong><p>{'<br/>'.join(lines)}</p></div>"
         for ident, lines in route["notams"].items()
@@ -294,9 +351,13 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
     <section class="summary">
       <h2>{route['route_id']} — {route['dep']} → {route['dest']}</h2>
       <p>Track: {route['track_deg'] or 'Unknown'}° | Corridor: {route['corridor_nm']} NM</p>
-      <div class="badge-row">{''.join(f'<span class="badge">{flag}</span>' for flag in route['summary']['flags'])}</div>
-      <p>Workload: {route['summary']['workload']['category']} ({route['summary']['workload']['score']})</p>
-      <p>Stability: {route['summary']['stability']['category']} ({route['summary']['stability']['score']})</p>
+      <div class="badge-row">
+        {''.join(f'<span class="badge">{flag}</span>' for flag in route['summary']['flags'])}
+      </div>
+      <p>Workload: {route['summary']['workload']['category']}
+        ({route['summary']['workload']['score']})</p>
+      <p>Stability: {route['summary']['stability']['category']}
+        ({route['summary']['stability']['score']})</p>
     </section>
 
     <section class="section">
@@ -305,7 +366,8 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
         <tr><th>Aerodrome</th><th>METAR</th><th>TAF</th></tr>
         {metar_rows}
       </table>
-      <p>TAF expiry: Dep {route['taf_time_to_expiry']['dep']['hours'] or '--'}h | Dest {route['taf_time_to_expiry']['dest']['hours'] or '--'}h</p>
+      <p>TAF expiry: Dep {route['taf_time_to_expiry']['dep']['hours'] or '--'}h |
+        Dest {route['taf_time_to_expiry']['dest']['hours'] or '--'}h</p>
     </section>
 
     <section class="section">
@@ -316,7 +378,8 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
     <section class="section">
       <h3>Upper winds & temperatures</h3>
       <table class="table">
-        <tr><th>Level (ft)</th><th>Wind</th><th>Temp</th><th>Headwind (kt)</th><th>Ground speed (kt)</th></tr>
+        <tr><th>Level (ft)</th><th>Wind</th><th>Temp</th><th>Headwind (kt)</th>
+          <th>Ground speed (kt)</th></tr>
         {upper_rows}
       </table>
       <p>Freezing level estimate: {route['freezing_level_ft'] or 'Unknown'} ft</p>
@@ -331,40 +394,59 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
     <section class="section">
       <h3>SIGWX charts</h3>
       <div class="grid">
-        <div class="card"><img src="../assets/{sigwx_paths['low']}" alt="Low-level SIGWX sample" /></div>
-        <div class="card"><img src="../assets/{sigwx_paths['high']}" alt="High-level SIGWX sample" /></div>
+        <div class="card"><img src="../assets/{sigwx_paths['low']}"
+          alt="Low-level SIGWX sample" /></div>
+        <div class="card"><img src="../assets/{sigwx_paths['high']}"
+          alt="High-level SIGWX sample" /></div>
       </div>
       <p class="note">For training reference only.</p>
     </section>
     """
-    return page_wrapper(f"{route['route_id']} route pack", body, mode_info, active_tab="routes", prefix="../")
+    return page_wrapper(
+        f"{route['route_id']} route pack",
+        body,
+        mode_info,
+        active_tab="routes",
+        prefix="../",
+    )
 
 
 def render_tools_index(mode_info: dict) -> str:
     body = """
     <section class="summary">
       <h2>Training Tools</h2>
-      <p>Interactive calculators for ISA, density altitude, TAS, hypoxia, pressurisation, and scenario building.</p>
+      <p>Interactive calculators for ISA, density altitude, TAS, hypoxia, pressurisation,
+        and scenario building.</p>
     </section>
     <section class="grid">
       <div class="card"><h3>ISA</h3><p><a href="isa.html">Open tool</a></p></div>
       <div class="card"><h3>Altimetry</h3><p><a href="altimetry.html">Open tool</a></p></div>
-      <div class="card"><h3>Density Altitude</h3><p><a href="density-altitude.html">Open tool</a></p></div>
+      <div class="card"><h3>Density Altitude</h3>
+        <p><a href="density-altitude.html">Open tool</a></p></div>
       <div class="card"><h3>IAS → TAS</h3><p><a href="tas.html">Open tool</a></p></div>
       <div class="card"><h3>Gas Laws & Hypoxia</h3><p><a href="hypoxia.html">Open tool</a></p></div>
-      <div class="card"><h3>Pressurisation</h3><p><a href="pressurisation.html">Open tool</a></p></div>
-      <div class="card"><h3>Aircraft Reference</h3><p><a href="aircraft.html">Open tool</a></p></div>
+      <div class="card"><h3>Pressurisation</h3>
+        <p><a href="pressurisation.html">Open tool</a></p></div>
+      <div class="card"><h3>Aircraft Reference</h3>
+        <p><a href="aircraft.html">Open tool</a></p></div>
       <div class="card"><h3>Scenario Builder</h3><p><a href="scenario.html">Open tool</a></p></div>
     </section>
     """
-    return page_wrapper("METAR.oncloud.africa — Tools", body, mode_info, active_tab="tools", prefix="../")
+    return page_wrapper(
+        "METAR.oncloud.africa — Tools",
+        body,
+        mode_info,
+        active_tab="tools",
+        prefix="../",
+    )
 
 
 def render_tool_page(title: str, content: str, mode_info: dict) -> str:
     body = f"""
     <section class="summary">
       <h2>{title}</h2>
-      <p class="note">Training-only, simplified models. Always verify with official sources and POH/AFM.</p>
+      <p class="note">Training-only, simplified models. Always verify with official sources
+        and POH/AFM.</p>
     </section>
     <section class="section">{content}</section>
     """
