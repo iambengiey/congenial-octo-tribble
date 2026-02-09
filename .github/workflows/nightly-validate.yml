@@ -1,0 +1,26 @@
+name: nightly-validate
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Lint
+        run: ruff check src tests
+      - name: Format check
+        run: black --check src tests
+      - name: Schema validation
+        run: python -m src.build.schema_validate
+      - name: Run tests
+        run: pytest
