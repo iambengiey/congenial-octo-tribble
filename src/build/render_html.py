@@ -66,6 +66,30 @@ def _active(active: str, tab: str) -> str:
     return "active" if active == tab else ""
 
 
+def _format_variable_wind(variable: dict | None) -> str:
+    if not variable:
+        return "--"
+    return f"{variable.get('from', '--')}°–{variable.get('to', '--')}°"
+
+
+def _format_cloud_layers(layers: list[dict]) -> str:
+    if not layers:
+        return "--"
+    return ", ".join(
+        f"{layer['cover']} {layer['base_ft']} ft"
+        for layer in layers
+        if layer.get("cover") and layer.get("base_ft") is not None
+    )
+
+
+def _format_ceiling(ceiling_ft: int | None, layers: list[dict]) -> str:
+    if ceiling_ft is not None:
+        return f"{ceiling_ft} ft"
+    if layers:
+        return "None (no BKN/OVC)"
+    return "--"
+
+
 def airfield_cards(airfields: Iterable[dict]) -> str:
     cards = []
     for airfield in airfields:
@@ -168,6 +192,9 @@ def render_routes_index(routes: list[dict], mode_info: dict) -> str:
 def render_airfield_page(airfield: dict, mode_info: dict) -> str:
     metar = airfield["metar"]
     taf = airfield["taf"]
+    cloud_layers = _format_cloud_layers(metar.get("cloud_layers", []))
+    ceiling = _format_ceiling(metar.get("ceiling_ft"), metar.get("cloud_layers", []))
+    variable_wind = _format_variable_wind(metar.get("variable_wind"))
     runways = "".join(
         (
             "<tr>"
@@ -198,6 +225,7 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
       <h2>{airfield['ident']} — {airfield.get('name','')}</h2>
       <p><strong>Raw METAR:</strong> {metar['raw']}</p>
       <p>Observed: {metar['observed_time_utc'] or 'Unknown'} ({metar['source']})</p>
+      <p>Data source: {metar.get('source_detail', 'Unknown')}</p>
       <p>Fetch time: {metar.get('fetch_time_utc', '--')} |
         Latency: {metar.get('latency_min', '--')} min</p>
     </section>
@@ -208,11 +236,11 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
         <tr><th>Wind</th>
           <td>{metar['wind_dir_deg'] or 'VRB'}° {metar['wind_speed_kt'] or '--'} kt</td></tr>
         <tr><th>Gust</th><td>{metar['gust_kt'] or '--'} kt</td></tr>
-        <tr><th>Variable wind</th><td>{metar['variable_wind'] or '--'}</td></tr>
+        <tr><th>Variable wind</th><td>{variable_wind}</td></tr>
         <tr><th>Visibility</th><td>{metar['visibility_m'] or '--'} m</td></tr>
         <tr><th>Weather</th><td>{', '.join(metar['weather_codes']) or '--'}</td></tr>
-        <tr><th>Clouds</th><td>{metar['cloud_layers'] or '--'}</td></tr>
-        <tr><th>Ceiling</th><td>{metar['ceiling_ft'] or '--'} ft</td></tr>
+        <tr><th>Clouds</th><td>{cloud_layers}</td></tr>
+        <tr><th>Ceiling</th><td>{ceiling}</td></tr>
         <tr><th>Temperature</th><td>{metar['temp_c'] or '--'} °C</td></tr>
         <tr><th>Dewpoint</th><td>{metar['dewpoint_c'] or '--'} °C</td></tr>
         <tr><th>QNH</th><td>{metar['qnh_hpa'] or '--'} hPa</td></tr>

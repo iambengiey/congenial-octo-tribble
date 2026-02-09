@@ -281,6 +281,14 @@ def _build_metar_taf_adapter(mode: str) -> tuple[SampleMetarTafAdapter, LiveMeta
     return sample, None
 
 
+def _source_detail(label: str) -> str:
+    if label == "LIVE_BETA":
+        return "AviationWeather.gov (NOAA)"
+    if label == "SAMPLE_FALLBACK":
+        return "Bundled training samples"
+    return "Bundled training samples"
+
+
 def _fetch_with_fallback(
     ident: str,
     adapter: LiveMetarTafAdapter | None,
@@ -482,8 +490,10 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
                     "notes": airfield["notes"],
                 },
                 "night_ready": night_ready(airfield),
-                "metar": metar_decoded | {"source": metar_source},
-                "taf": taf_decoded | {"source": taf_source},
+                "metar": metar_decoded
+                | {"source": metar_source, "source_detail": _source_detail(metar_source)},
+                "taf": taf_decoded
+                | {"source": taf_source, "source_detail": _source_detail(taf_source)},
                 "computed": {
                     "wind_components_per_runway": components,
                     "density_altitude": da,
