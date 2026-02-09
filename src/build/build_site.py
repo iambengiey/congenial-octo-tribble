@@ -115,12 +115,17 @@ def parse_taf_valid_to(valid_to: str, reference: dt.datetime) -> dt.datetime | N
         return None
     day = int(valid_to[:2])
     hour = int(valid_to[2:])
+    if hour > 24:
+        return None
     month = reference.month
     year = reference.year
     if day < reference.day:
         month = month + 1 if month < 12 else 1
         year = year + 1 if month == 1 else year
-    return dt.datetime(year, month, day, hour, 0, tzinfo=dt.timezone.utc)
+    base = dt.datetime(year, month, day, 0, 0, tzinfo=dt.timezone.utc)
+    if hour == 24:
+        return base + dt.timedelta(days=1)
+    return base.replace(hour=hour)
 
 
 def time_to_expiry(end_time: dt.datetime | None, now: dt.datetime) -> dict:
