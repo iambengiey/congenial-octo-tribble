@@ -1,0 +1,12 @@
+{
+  "levels": [
+    {"level_ft": 3000, "wind_dir_deg": 40, "wind_speed_kt": 12, "temp_c": 20},
+    {"level_ft": 6000, "wind_dir_deg": 60, "wind_speed_kt": 18, "temp_c": 14},
+    {"level_ft": 9000, "wind_dir_deg": 80, "wind_speed_kt": 25, "temp_c": 8},
+    {"level_ft": 12000, "wind_dir_deg": 90, "wind_speed_kt": 30, "temp_c": 2},
+    {"level_ft": 18000, "wind_dir_deg": 110, "wind_speed_kt": 35, "temp_c": -8},
+    {"level_ft": 24000, "wind_dir_deg": 130, "wind_speed_kt": 45, "temp_c": -20},
+    {"level_ft": 30000, "wind_dir_deg": 150, "wind_speed_kt": 60, "temp_c": -35}
+  ],
+  "source": "SAMPLE"
+}

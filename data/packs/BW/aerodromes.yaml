@@ -1,0 +1,34 @@
+country: BW
+reference_note: "Training/reference data. Verify with AIP/AD charts."
+aerodromes:
+  - ident: FBSK
+    name: Sir Seretse Khama Intl
+    elevation_m: 1005
+    latitude_deg: -24.5552
+    longitude_deg: 25.9182
+    night_ops_allowed: yes
+    lighting:
+      runway_edge: yes
+      threshold: yes
+      taxiway: yes
+      apron: yes
+    ppr_required: no
+    ops_hours: "H24"
+    notes: "Reference only."
+    airspace_context:
+      ctr: no
+      tma: no
+      class: "G"
+    circuit:
+      direction: L
+      height_ft_agl: 1000
+    noise_abatement_notes: "Training reference only."
+    runways:
+      - designator: "08"
+        magnetic_heading_deg: 080
+        length_m: 3000
+        surface: ASPH
+      - designator: "26"
+        magnetic_heading_deg: 260
+        length_m: 3000
+        surface: ASPH
