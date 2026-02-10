@@ -831,6 +831,13 @@ def render_snapshot_page(snapshot_id: str, mode_info: dict) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="base-path" content="../" />
   <title>Snapshot {snapshot_id}</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MJGMR2GD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-M3MJGMR2GD');
+  </script>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
