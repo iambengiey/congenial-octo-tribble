@@ -9,13 +9,19 @@ const setText = (id, text) => {
   const el = document.getElementById(id);
   if (el) el.textContent = text;
 };
-const basePath = document.querySelector('meta[name="base-path"]')?.getAttribute('content') || '';
+const baseMeta = document.querySelector('meta[name="base-path"]');
+const basePath = baseMeta ? baseMeta.getAttribute('content') || '' : '';
 
 function isaTemp(altFt) { return 15 - 2 * (altFt / 1000); }
 
 document.addEventListener('click', (event) => {
-  const actionEl = event.target.closest('[data-action]');
-  const action = actionEl?.getAttribute('data-action');
+  const target = event.target && event.target.nodeType === 1
+    ? event.target
+    : event.target && event.target.parentElement
+      ? event.target.parentElement
+      : null;
+  const actionEl = target ? target.closest('[data-action]') : null;
+  const action = actionEl ? actionEl.getAttribute('data-action') : null;
   if (!action) return;
 
   if (action === 'calc-isa') {
