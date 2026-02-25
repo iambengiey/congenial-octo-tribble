@@ -831,6 +831,13 @@ def render_snapshot_page(snapshot_id: str, mode_info: dict) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="base-path" content="../" />
   <title>Snapshot {snapshot_id}</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MJGMR2GD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-M3MJGMR2GD');
+  </script>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -1047,13 +1054,23 @@ button {
 
 def _app_js() -> str:
     return """
-const toNumber = (id) => parseFloat(document.getElementById(id).value || 0);
-const basePath = document.querySelector('meta[name=\"base-path\"]')?.getAttribute('content') || '';
+const toNumber = (id) => {
+  const input = document.getElementById(id);
+  if (!input) return 0;
+  const value = parseFloat(input.value);
+  return Number.isFinite(value) ? value : 0;
+};
+const setText = (id, text) => {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+};
+const basePath = document.querySelector('meta[name="base-path"]')?.getAttribute('content') || '';
 
 function isaTemp(altFt) { return 15 - 2 * (altFt / 1000); }
 
 document.addEventListener('click', (event) => {
-  const action = event.target.getAttribute('data-action');
+  const actionEl = event.target.closest('[data-action]');
+  const action = actionEl?.getAttribute('data-action');
   if (!action) return;
 
   if (action === 'calc-isa') {
@@ -1061,17 +1078,15 @@ document.addEventListener('click', (event) => {
     const oat = toNumber('isa-oat');
     const isa = isaTemp(alt);
     const dev = (oat - isa).toFixed(1);
-    document.getElementById('isa-output').textContent =
-      `ISA temp: ${isa.toFixed(1)}°C | ISA deviation: ${dev}°C`;
+    setText('isa-output', `ISA temp: ${isa.toFixed(1)}°C | ISA deviation: ${dev}°C`);
   }
   if (action === 'calc-altimetry') {
     const elevM = toNumber('alt-elev');
     const qnh = toNumber('alt-qnh');
     const elevFt = elevM * 3.28084;
     const pressureAlt = elevFt + (1013.25 - qnh) * 30;
-    document.getElementById('alt-output').textContent =
-      `Pressure altitude: ${pressureAlt.toFixed(0)} ft `
-      + `(${(pressureAlt / 3.28084).toFixed(0)} m)`;
+    setText('alt-output', `Pressure altitude: ${pressureAlt.toFixed(0)} ft `
+      + `(${(pressureAlt / 3.28084).toFixed(0)} m)`);
   }
   if (action === 'calc-da') {
     const elevM = toNumber('da-elev');
@@ -1081,24 +1096,21 @@ document.addEventListener('click', (event) => {
     const pressureAlt = elevFt + (1013.25 - qnh) * 30;
     const isa = isaTemp(pressureAlt);
     const da = pressureAlt + 120 * (oat - isa);
-    document.getElementById('da-output').textContent =
-      `Density altitude: ${da.toFixed(0)} ft `
-      + `(${(da / 3.28084).toFixed(0)} m)`;
+    setText('da-output', `Density altitude: ${da.toFixed(0)} ft `
+      + `(${(da / 3.28084).toFixed(0)} m)`);
   }
   if (action === 'calc-tas') {
     const ias = toNumber('tas-ias');
     const alt = toNumber('tas-alt');
     const dev = toNumber('tas-dev');
     const tas = ias * (1 + alt / 1000 * 0.02) * (1 + dev / 100);
-    document.getElementById('tas-output').textContent =
-      `Estimated TAS: ${tas.toFixed(1)} kt (training approximation)`;
+    setText('tas-output', `Estimated TAS: ${tas.toFixed(1)} kt (training approximation)`);
   }
   if (action === 'calc-hypoxia') {
     const alt = toNumber('hypoxia-alt');
     const index = Math.max(10, 100 - alt / 300);
-    document.getElementById('hypoxia-output').textContent =
-      `Oxygen index: ${index.toFixed(1)} (training scale). `
-      + 'Beware trapped gas at altitude.';
+    setText('hypoxia-output', `Oxygen index: ${index.toFixed(1)} (training scale). `
+      + 'Beware trapped gas at altitude.');
   }
   if (action === 'calc-press') {
     const cruise = toNumber('press-cruise');
@@ -1106,9 +1118,8 @@ document.addEventListener('click', (event) => {
     const rate = toNumber('press-rate');
     const diff = toNumber('press-diff');
     const cabin = Math.min(cruise * 0.6, dest + diff * 2000);
-    document.getElementById('press-output').textContent =
-      `Estimated cabin altitude: ${cabin.toFixed(0)} ft `
-      + `at ${rate} fpm (training only)`;
+    setText('press-output', `Estimated cabin altitude: ${cabin.toFixed(0)} ft `
+      + `at ${rate} fpm (training only)`);
   }
   if (action === 'build-scenario') {
     buildScenarioCard();
