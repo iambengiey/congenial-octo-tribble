@@ -1213,17 +1213,16 @@ async function buildScenarioCard() {
   const flags = route ? route.summary.flags : airfield.computed.flags;
   const da = airfield ? airfield.computed.density_altitude.da_ft : '—';
 
-  const aircraftText = aircraftInfo
-    ? `${aircraftInfo.type} (${aircraftInfo.demonstrated_crosswind_kt} kt demo crosswind)`
-    : '';
   output.innerHTML = `
     <h4>${title}</h4>
     <p><strong>Profile:</strong> ${profile ? profile.name : ''}</p>
-    <p><strong>Aircraft:</strong> ${aircraftText}</p>
+    <p><strong>Aircraft:</strong> ${aircraftInfo ? aircraftInfo.type : ''} `
+      + `(${aircraftInfo ? aircraftInfo.demonstrated_crosswind_kt : ''} `
+      + 'kt demo crosswind)</p>
     <p><strong>Density altitude:</strong> ${da} ft</p>
     <p><strong>Flags:</strong> ${flags.join(', ') || 'LOW_RISK'}</p>
-    <p><strong>Questions:</strong> How will crosswind/tailwind affect your performance?
-      Are you within personal minima?</p>
+    <p><strong>Questions:</strong> How will crosswind/tailwind affect `
+      + 'your performance? Are you within personal minima?</p>
   `;
 }
 
