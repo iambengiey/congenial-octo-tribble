@@ -1,0 +1,34 @@
+name: azure-bootstrap
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'db/migrations/**'
+      - '.github/workflows/azure-bootstrap.yml'
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Provision infrastructure (placeholder)
+        run: |
+          echo "Provision Azure SQL, Storage, Functions, Key Vault, Monitoring, and identities here."
+
+      - name: Apply SQL schema migration
+        run: |
+          sqlcmd -S "${{ secrets.AZURE_SQL_SERVER }}" -d "${{ secrets.AZURE_SQL_DATABASE }}" \
+            -U "${{ secrets.AZURE_SQL_USER }}" -P "${{ secrets.AZURE_SQL_PASSWORD }}" \
+            -i db/migrations/V1__uts_coordination_hub_schema.sql
+
+      - name: Seed base demo data (placeholder)
+        run: |
+          echo "Insert demo complex + default templates when absent."

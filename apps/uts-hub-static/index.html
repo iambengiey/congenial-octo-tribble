@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UTS Coordination Hub</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header>
+    <h1>UTS Coordination Hub</h1>
+    <p>Complex/Estate governance platform for Body Corporate operations.</p>
+  </header>
+
+  <nav>
+    <a href="#maintenance">Maintenance</a>
+    <a href="#approvals">Infrastructure & Alterations (Approvals)</a>
+    <a href="#moves">Move-in / Move-out</a>
+    <a href="#vendors">Vendors</a>
+    <a href="#audit">Audit Log</a>
+    <a href="#settings">Settings (Admin)</a>
+  </nav>
+
+  <main>
+    <section id="maintenance"><h2>Maintenance</h2><p>Decision-tree based governance workflows with impact mapping and immutable audit events.</p></section>
+    <section id="approvals"><h2>Infrastructure & Alterations</h2><p>Supports fibre, borehole, solar, tanks, pumps, structural changes, and security systems.</p></section>
+    <section id="moves"><h2>Move-in / Move-out</h2><p>Rule-profile aware move workflows with retention-safe historical records.</p></section>
+    <section id="vendors"><h2>Vendors</h2><p>Complex-scoped vendor controls and service-level governance.</p></section>
+    <section id="audit"><h2>Audit Log</h2><p>Append-only event history for all state changes.</p></section>
+    <section id="settings"><h2>Settings</h2><p>Admin-only module for rule profiles, templates, decision trees, and approval matrices.</p></section>
+
+    <section>
+      <h2>Auth + MFA policy</h2>
+      <ul>
+        <li>Azure AD B2C login by mobile/email.</li>
+        <li>MFA enforced before complex list/data access.</li>
+        <li>TOTP required for trustees/managing agents/admins; OTP fallback optional for low privilege roles.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

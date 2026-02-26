@@ -58,3 +58,13 @@ See [docs/DISCLAIMER.md](docs/DISCLAIMER.md). Data sources are described in [doc
 - Snapshots are generated via GitHub Actions workflow_dispatch and stored under `/site/api/snapshots` with a matching `/site/snapshot/<id>.html`.
 
 Workload and stability scores are training aids only; see `docs/DATA_MODEL.md` for details.
+
+## UTS Coordination Hub scaffold
+
+A baseline scaffold for the UTS Coordination Hub architecture is included:
+
+- `apps/uts-hub-static/` static frontend navigation baseline
+- `backend/functions/` Azure Function stubs for email intake and CSV import
+- `db/migrations/V1__uts_coordination_hub_schema.sql` Azure SQL schema baseline
+- `.github/workflows/azure-bootstrap.yml` and `.github/workflows/azure-backups.yml`
+- `docs/UTS_COORDINATION_HUB.md` implementation blueprint

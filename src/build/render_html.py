@@ -26,6 +26,13 @@ def page_wrapper(
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="base-path" content="{prefix}" />
   <title>{title}</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MJGMR2GD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-M3MJGMR2GD');
+  </script>
   <link rel="stylesheet" href="{prefix}assets/style.css" />
 </head>
 <body>
