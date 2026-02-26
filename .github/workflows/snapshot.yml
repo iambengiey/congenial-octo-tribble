@@ -1,0 +1,62 @@
+name: snapshot
+
+on:
+  workflow_dispatch:
+    inputs:
+      snapshot_type:
+        description: "airfield or route"
+        required: true
+        default: "airfield"
+      ident:
+        description: "Airfield ident or route_id"
+        required: true
+      profile:
+        description: "Profile name"
+        required: true
+        default: "PPL"
+      source:
+        description: "sample or live_beta"
+        required: true
+        default: "sample"
+      snapshot_id:
+        description: "Optional snapshot ID"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Build snapshot
+        run: |
+          SNAPSHOT_ID_FLAG=""
+          if [ -n "${{ inputs.snapshot_id }}" ]; then
+            SNAPSHOT_ID_FLAG="--snapshot-id ${{ inputs.snapshot_id }}"
+          fi
+          python -m src.build.build_site \
+            --snapshot \
+            --snapshot-type "${{ inputs.snapshot_type }}" \
+            --snapshot-ident "${{ inputs.ident }}" \
+            --snapshot-profile "${{ inputs.profile }}" \
+            --snapshot-source "${{ inputs.source }}" \
+            $SNAPSHOT_ID_FLAG
+      - name: Commit snapshot artifacts
+        run: |
+          if git status --porcelain | grep -E '^( M|??) (site/api/snapshots/|site/snapshot/)'; then
+            git config user.name "github-actions"
+            git config user.email "github-actions@users.noreply.github.com"
+            git add site/api/snapshots site/snapshot
+            git commit -m "Add snapshot ${GITHUB_RUN_ID}"
+            git push
+          else
+            echo "No snapshot artifacts to commit"
+          fi
