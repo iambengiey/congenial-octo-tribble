@@ -1,19 +1,20 @@
 {
-  "route_id": "FAOR-FAPN",
+  "route_id": "FAOR-FABB",
   "dep": "FAOR",
-  "dest": "FAPN",
+  "dest": "FABB",
   "alternates": [
     "FALA",
     "FABL"
   ],
-  "corridor_nm": 50,
+  "corridor_nm": 35,
   "cruise_levels_ft": [
-    3000,
-    6000,
+    5000,
+    7000,
     9000,
-    12000,
-    18000,
-    24000
+    11000,
+    13000,
+    15000,
+    17000
   ],
   "airfields": [
     {
@@ -299,20 +300,20 @@
       }
     },
     {
-      "ident": "FAPN",
-      "name": "Pilanesberg Intl",
-      "elevation_m": 1033,
-      "latitude_deg": -25.3336,
-      "longitude_deg": 27.1734,
-      "night_ops_allowed": "yes",
+      "ident": "FABB",
+      "name": "Brakpan",
+      "elevation_m": 1641,
+      "latitude_deg": -26.2544,
+      "longitude_deg": 28.3442,
+      "night_ops_allowed": "no",
       "lighting": {
-        "runway_edge": "yes",
-        "threshold": "yes",
-        "taxiway": "yes",
-        "apron": "yes"
+        "runway_edge": "no",
+        "threshold": "no",
+        "taxiway": "no",
+        "apron": "no"
       },
-      "ppr_required": "no",
-      "ops_hours": "H24",
+      "ppr_required": "yes",
+      "ops_hours": "Daylight",
       "notes": "Reference only.",
       "airspace_context": {
         "ctr": "no",
@@ -326,61 +327,63 @@
       "noise_abatement_notes": "Training reference only.",
       "runways": [
         {
-          "designator": "05",
-          "magnetic_heading_deg": 50,
-          "length_m": 3600,
-          "surface": "ASPH"
+          "designator": "18",
+          "magnetic_heading_deg": 182,
+          "length_m": 900,
+          "surface": "TAR"
         },
         {
-          "designator": "23",
-          "magnetic_heading_deg": 230,
-          "length_m": 3600,
-          "surface": "ASPH"
+          "designator": "36",
+          "magnetic_heading_deg": 2,
+          "length_m": 900,
+          "surface": "TAR"
         }
       ],
       "night_ops": {
-        "night_ops_allowed": "yes",
+        "night_ops_allowed": "no",
         "lighting": {
-          "runway_edge": "yes",
-          "threshold": "yes",
-          "taxiway": "yes",
-          "apron": "yes"
+          "runway_edge": "no",
+          "threshold": "no",
+          "taxiway": "no",
+          "apron": "no"
         },
-        "ppr_required": "no",
-        "ops_hours": "H24",
+        "ppr_required": "yes",
+        "ops_hours": "Daylight",
         "notes": "Reference only."
       },
-      "night_ready": true,
+      "night_ready": false,
       "metar": {
-        "raw": "FAPN 121100Z 09015KT 9999 FEW025 19/08 Q1015",
+        "raw": "FABB 121100Z VRB03KT 5000 BR SCT008 16/14 Q1017",
         "observed_time_utc": "2026-02-12T11:00:00Z",
-        "wind_dir_deg": 90,
-        "wind_speed_kt": 15,
+        "wind_dir_deg": null,
+        "wind_speed_kt": 3,
         "gust_kt": null,
         "variable_wind": null,
-        "visibility_m": 9999,
-        "weather_codes": [],
+        "visibility_m": 5000,
+        "weather_codes": [
+          "BR"
+        ],
         "cloud_layers": [
           {
-            "cover": "FEW",
-            "base_ft": 2500
+            "cover": "SCT",
+            "base_ft": 800
           }
         ],
         "ceiling_ft": null,
-        "temp_c": 19,
-        "dewpoint_c": 8,
-        "qnh_hpa": 1015,
+        "temp_c": 16,
+        "dewpoint_c": 14,
+        "qnh_hpa": 1017,
         "remarks": "",
         "source": "SAMPLE_FALLBACK",
         "source_detail": "Bundled training samples"
       },
       "taf": {
-        "raw": "TAF FAPN 121100Z 1212/1312 10012KT 9999 SCT025 BECMG 1304/1306 13015KT 7000 TSRA BKN020CB",
+        "raw": "TAF FABB 121100Z 1212/1312 VRB05KT 6000 BR BKN010 TEMPO 1218/1222 3000 DZ BKN008",
         "summary": {
           "valid_from": "1212",
           "valid_to": "1312",
           "key_changes": [
-            "BECMG"
+            "TEMPO"
           ]
         },
         "source": "SAMPLE_FALLBACK",
@@ -388,61 +391,49 @@
       },
       "notams": [
         {
-          "id": "D7777/24",
-          "text": "FAPN APRON LIMITED PARKING. MARSHALLER REQUIRED."
+          "id": "C0001/24",
+          "text": "FABB AD CLOSED 1800-0400 UTC."
         }
       ],
       "computed": {
         "wind_components_per_runway": [
           {
-            "runway": "05",
-            "headwind_kt": 11.5,
-            "crosswind_kt": 9.6,
-            "tailwind_kt": 0.0,
-            "crosswind_side": "R"
+            "runway": "18",
+            "headwind_kt": null,
+            "crosswind_kt": null,
+            "tailwind_kt": null,
+            "crosswind_side": null
           },
           {
-            "runway": "23",
-            "headwind_kt": 0.0,
-            "crosswind_kt": 9.6,
-            "tailwind_kt": 11.5,
-            "crosswind_side": "L"
+            "runway": "36",
+            "headwind_kt": null,
+            "crosswind_kt": null,
+            "tailwind_kt": null,
+            "crosswind_side": null
           }
         ],
         "runway_surface_conditions": [
           {
-            "runway": "05",
-            "surface": "ASPH",
-            "condition": "Not reported"
+            "runway": "18",
+            "surface": "TAR",
+            "condition": "Closed"
           },
           {
-            "runway": "23",
-            "surface": "ASPH",
+            "runway": "36",
+            "surface": "TAR",
             "condition": "Not reported"
           }
         ],
         "density_altitude": {
-          "da_ft": 4621,
-          "da_m": 1408
+          "da_ft": 6651,
+          "da_m": 2027
         },
         "qnh_trend": "steady",
-        "flags": [
-          "TAILWIND"
-        ],
-        "flag_explanations": {
-          "TAILWIND": {
-            "input": "90/15kt",
-            "runway": "23",
-            "tailwind_kt": 11.5,
-            "threshold_kt": 5,
-            "note": "Tailwind reduces performance and increases landing distance."
-          }
-        },
+        "flags": [],
+        "flag_explanations": {},
         "severity": {
-          "level": "CAUTION",
-          "flags": [
-            "TAILWIND"
-          ]
+          "level": "OK",
+          "flags": []
         },
         "changes": {
           "summary": "Minimal changes",
@@ -452,8 +443,8 @@
             "qnh_change_hpa": 0,
             "temp_dewpoint_spread_change": 0,
             "ceiling_category": {
-              "from": "normal",
-              "to": "normal"
+              "from": "marginal",
+              "to": "marginal"
             },
             "visibility_category": {
               "from": "normal",
@@ -467,68 +458,64 @@
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:56",
-          "sunset": "16:38",
-          "civil_twilight_start": "03:33",
-          "civil_twilight_end": "17:01",
+          "sunrise": "03:51",
+          "sunset": "16:34",
+          "civil_twilight_start": "03:27",
+          "civil_twilight_end": "16:57",
           "is_night": false
         },
         "workload": {
-          "score": 47.6,
-          "category": "Medium",
+          "score": 16.6,
+          "category": "Low",
           "top_contributors": [
-            "convective",
-            "crosswind_ratio",
             "da_ratio"
           ]
         },
         "stability": {
-          "score": 80.0,
+          "score": 100.0,
           "category": "Stable",
-          "drivers": [
-            "metar_taf_mismatch"
-          ]
+          "drivers": []
         },
         "trends": {
           "wind_speed": [
-            15,
-            15,
-            15,
-            15,
-            15,
-            15
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
           ],
           "qnh": [
-            1015,
-            1015,
-            1015,
-            1015,
-            1015,
-            1015
+            1017,
+            1017,
+            1017,
+            1017,
+            1017,
+            1017
           ],
           "temp": [
-            19,
-            19,
-            19,
-            19,
-            19,
-            19
+            16,
+            16,
+            16,
+            16,
+            16,
+            16
           ],
           "dewpoint": [
-            8,
-            8,
-            8,
-            8,
-            8,
-            8
+            14,
+            14,
+            14,
+            14,
+            14,
+            14
           ],
           "visibility": [
-            9999,
-            9999,
-            9999,
-            9999,
-            9999,
-            9999
+            5000,
+            5000,
+            5000,
+            5000,
+            5000,
+            5000
           ]
         }
       }
@@ -998,55 +985,15 @@
       }
     }
   ],
-  "track_deg": 309.5868024722644,
+  "track_deg": 142.61032131750136,
   "upper_winds": [
-    {
-      "level_ft": 3000,
-      "wind_dir_deg": 40,
-      "wind_speed_kt": 12,
-      "temp_c": 20,
-      "headwind_kt": -0.1,
-      "ground_speed_kt": 120.1
-    },
-    {
-      "level_ft": 6000,
-      "wind_dir_deg": 60,
-      "wind_speed_kt": 18,
-      "temp_c": 14,
-      "headwind_kt": -6.3,
-      "ground_speed_kt": 126.3
-    },
     {
       "level_ft": 9000,
       "wind_dir_deg": 80,
       "wind_speed_kt": 25,
       "temp_c": 8,
-      "headwind_kt": -16.2,
-      "ground_speed_kt": 136.2
-    },
-    {
-      "level_ft": 12000,
-      "wind_dir_deg": 90,
-      "wind_speed_kt": 30,
-      "temp_c": 2,
-      "headwind_kt": -23.1,
-      "ground_speed_kt": 143.1
-    },
-    {
-      "level_ft": 18000,
-      "wind_dir_deg": 110,
-      "wind_speed_kt": 35,
-      "temp_c": -8,
-      "headwind_kt": -33.0,
-      "ground_speed_kt": 153.0
-    },
-    {
-      "level_ft": 24000,
-      "wind_dir_deg": 130,
-      "wind_speed_kt": 45,
-      "temp_c": -20,
-      "headwind_kt": -45.0,
-      "ground_speed_kt": 165.0
+      "headwind_kt": 11.5,
+      "ground_speed_kt": 108.5
     }
   ],
   "freezing_level_ft": 18000,
@@ -1064,8 +1011,8 @@
       "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP.",
       "FAOR TWY B CLSD BETWEEN B3-B7."
     ],
-    "FAPN": [
-      "FAPN APRON LIMITED PARKING. MARSHALLER REQUIRED."
+    "FABB": [
+      "FABB AD CLOSED 1800-0400 UTC."
     ]
   },
   "taf_time_to_expiry": {
@@ -1081,15 +1028,13 @@
   "summary": {
     "flags": [
       "CONVECTIVE_RISK_HIGH",
-      "TURB_POSSIBLE (TRAINING)",
-      "ICING_POSSIBLE (TRAINING)"
+      "TURB_POSSIBLE (TRAINING)"
     ],
     "severity": {
       "level": "OK",
       "flags": [
         "CONVECTIVE_RISK_HIGH",
-        "TURB_POSSIBLE (TRAINING)",
-        "ICING_POSSIBLE (TRAINING)"
+        "TURB_POSSIBLE (TRAINING)"
       ]
     },
     "workload": {

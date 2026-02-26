@@ -18,7 +18,9 @@
       <a class="" href="../tools/index.html">Tools</a>
     </nav>
     <div class="mode-row">
-      <span class="mode-banner mode-training"><span class="icon">●</span>TRAINING (Sample) — Reproducible training data</span>
+      <span class="mode-banner mode-training">
+        <span class="icon">●</span>TRAINING (Sample) — Reproducible training data
+      </span>
       <label class="mode-select">Mode
         <select disabled>
           <option selected>TRAINING (Sample)</option>
@@ -33,19 +35,22 @@
       <h2>FAMM — Mmabatho Intl</h2>
       <p><strong>Raw METAR:</strong> FAMM 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG</p>
       <p>Observed: 2026-02-01T00:00:00Z (SAMPLE_FALLBACK)</p>
-      <p>Fetch time: -- | Latency: -- min</p>
+      <p>Data source: Bundled training samples</p>
+      <p>Fetch time: -- |
+        Latency: -- min</p>
     </section>
 
     <section class="section">
       <h3>Decoded METAR</h3>
       <table class="table">
-        <tr><th>Wind</th><td>VRB° -- kt</td></tr>
+        <tr><th>Wind</th>
+          <td>VRB° -- kt</td></tr>
         <tr><th>Gust</th><td>-- kt</td></tr>
         <tr><th>Variable wind</th><td>--</td></tr>
         <tr><th>Visibility</th><td>-- m</td></tr>
         <tr><th>Weather</th><td>--</td></tr>
         <tr><th>Clouds</th><td>--</td></tr>
-        <tr><th>Ceiling</th><td>-- ft</td></tr>
+        <tr><th>Ceiling</th><td>--</td></tr>
         <tr><th>Temperature</th><td>20 °C</td></tr>
         <tr><th>Dewpoint</th><td>10 °C</td></tr>
         <tr><th>QNH</th><td>1013 hPa</td></tr>
@@ -57,12 +62,14 @@
       <p><strong>Raw TAF:</strong> FAMM 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG</p>
       <p>Valid:  → </p>
       <p>Key changes: None</p>
-      <p>Time to TAF expiry: <span class="urgency-unknown">-- hours</span></p>
+      <p>Time to TAF expiry:
+        <span class="urgency-unknown">-- hours</span></p>
     </section>
 
     <section class="section">
       <h3>Runway wind components</h3>
-      <p class="note">Why it matters: Crosswind, tailwind, and gust spread affect handling and performance. Headwind is generally helpful but not a limit.</p>
+      <p class="note">Why it matters: Crosswind, tailwind, and gust spread affect handling and
+        performance. Headwind is generally helpful but not a limit.</p>
       <table class="table">
         <tr><th>Runway</th><th>Headwind (kt)</th><th>Crosswind (kt)</th><th>Tailwind (kt)</th></tr>
         <tr><td>13</td><td>-0.0</td><td>0.0 (L)</td><td>0.0</td></tr><tr><td>31</td><td>0.0</td><td>0.0 (L)</td><td>0.0</td></tr>
@@ -70,10 +77,56 @@
     </section>
 
     <section class="section">
+      <h3>Runway surface condition</h3>
+      <table class="table">
+        <tr><th>Runway</th><th>Surface</th><th>Condition</th></tr>
+        <tr><td>13</td><td>ASPH</td><td>Not reported</td></tr><tr><td>31</td><td>ASPH</td><td>Not reported</td></tr>
+      </table>
+      <p class="note">Condition is inferred from sample NOTAM wording when available.</p>
+    </section>
+
+    <section class="section">
+      <h3>NOTAM highlights</h3>
+      <ul><li>No NOTAM sample available.</li></ul>
+    </section>
+
+    <section class="section">
+      <h3>Carb icing risk chart (quick-look)</h3>
+      <p><strong>Current risk:</strong> Low</p>
+      <p class="note">Light icing possible in prolonged low-power ops.</p>
+      <table class="table">
+        <tr><th>Temp/Dew spread</th><th>Typical risk</th></tr>
+        <tr><td>≤ 3°C</td><td>High (with suitable temp range)</td></tr>
+        <tr><td>4–6°C</td><td>Moderate</td></tr>
+        <tr><td>7–10°C</td><td>Low</td></tr>
+        <tr><td>&gt; 10°C</td><td>Minimal</td></tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <h3>Profile-based go/no-go (training aid)</h3>
+      <label>Profile
+        <select id="profile-select"></select>
+      </label>
+      <label>Aircraft
+        <select id="aircraft-select"></select>
+      </label>
+      <div
+        id="go-no-go-output"
+        class="result"
+        data-airfield="FAMM"
+      >Loading profile assessment…</div>
+      <p class="note">Advisory only. Always apply licence privileges, company SOPs,
+        and POH/AFM limits.</p>
+    </section>
+
+    <section class="section">
       <h3>Night operations</h3>
       <ul>
         <li>Night ops allowed: yes</li>
-        <li>Lighting: RWY edge yes, threshold yes, taxiway yes, apron yes</li>
+        <li>Lighting: RWY edge yes,
+          threshold yes, taxiway yes,
+          apron yes</li>
         <li>PPR required: no</li>
         <li>Ops hours: H24</li>
         <li>Notes: Reference only.</li>
@@ -86,19 +139,21 @@
         <li>CTR: no</li>
         <li>TMA: no</li>
         <li>Class: G</li>
-        <li>Circuit: L / 1000 ft AGL</li>
+        <li>Circuit: L /
+          1000 ft AGL</li>
         <li>Noise abatement: Training reference only.</li>
       </ul>
     </section>
 
     <section class="section">
       <h3>Time awareness</h3>
-      <p>Sunrise: 03:48 | Sunset: 16:55</p>
-      <p>Civil twilight: 03:24 → 17:20</p>
+      <p>Sunrise: 04:03 | Sunset: 16:44</p>
+      <p>Civil twilight: 03:39 →
+        17:08</p>
       <div class="timeline">
         <span>Now</span>
         <span>TAF ends --h</span>
-        <span>Sunset 16:55</span>
+        <span>Sunset 16:44</span>
       </div>
     </section>
 
@@ -110,12 +165,14 @@
 
     <section class="section">
       <h3>Workload today</h3>
-      <p>Low (14.4) — Top contributors: da_ratio</p>
+      <p>Low (14.4) — Top contributors:
+        da_ratio</p>
     </section>
 
     <section class="section">
       <h3>Stability score</h3>
-      <p>Stable (100.0) — Drivers: </p>
+      <p>Stable (100.0) — Drivers:
+        </p>
     </section>
 
     <section class="section">

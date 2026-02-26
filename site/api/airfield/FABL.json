@@ -71,7 +71,8 @@
     "dewpoint_c": 9,
     "qnh_hpa": 1013,
     "remarks": "",
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
   "taf": {
     "raw": "TAF FABL 121100Z 1212/1312 14010KT 9999 SCT030 BECMG 1304/1306 17012KT 7000 SHRA BKN020",
@@ -82,8 +83,15 @@
         "BECMG"
       ]
     },
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
+  "notams": [
+    {
+      "id": "E2222/24",
+      "text": "FABL TWY C CLSD."
+    }
+  ],
   "computed": {
     "wind_components_per_runway": [
       {
@@ -99,6 +107,18 @@
         "crosswind_kt": 10.4,
         "tailwind_kt": 0.0,
         "crosswind_side": "L"
+      }
+    ],
+    "runway_surface_conditions": [
+      {
+        "runway": "02",
+        "surface": "ASPH",
+        "condition": "Not reported"
+      },
+      {
+        "runway": "20",
+        "surface": "ASPH",
+        "condition": "Not reported"
       }
     ],
     "density_altitude": {
@@ -143,14 +163,14 @@
     },
     "qnh_change_rate_hpa_per_hr": null,
     "taf_time_to_expiry": {
-      "hours": 122.7,
+      "hours": 356.1,
       "urgency": "ok"
     },
     "sun": {
-      "sunrise": "03:40",
-      "sunset": "16:57",
-      "civil_twilight_start": "03:15",
-      "civil_twilight_end": "17:22",
+      "sunrise": "03:57",
+      "sunset": "16:44",
+      "civil_twilight_start": "03:33",
+      "civil_twilight_end": "17:08",
       "is_night": false
     },
     "workload": {

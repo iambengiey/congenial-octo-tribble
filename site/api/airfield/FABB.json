@@ -73,7 +73,8 @@
     "dewpoint_c": 14,
     "qnh_hpa": 1017,
     "remarks": "",
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
   "taf": {
     "raw": "TAF FABB 121100Z 1212/1312 VRB05KT 6000 BR BKN010 TEMPO 1218/1222 3000 DZ BKN008",
@@ -84,8 +85,15 @@
         "TEMPO"
       ]
     },
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
+  "notams": [
+    {
+      "id": "C0001/24",
+      "text": "FABB AD CLOSED 1800-0400 UTC."
+    }
+  ],
   "computed": {
     "wind_components_per_runway": [
       {
@@ -101,6 +109,18 @@
         "crosswind_kt": null,
         "tailwind_kt": null,
         "crosswind_side": null
+      }
+    ],
+    "runway_surface_conditions": [
+      {
+        "runway": "18",
+        "surface": "TAR",
+        "condition": "Closed"
+      },
+      {
+        "runway": "36",
+        "surface": "TAR",
+        "condition": "Not reported"
       }
     ],
     "density_altitude": {
@@ -133,14 +153,14 @@
     },
     "qnh_change_rate_hpa_per_hr": null,
     "taf_time_to_expiry": {
-      "hours": 122.7,
+      "hours": 356.1,
       "urgency": "ok"
     },
     "sun": {
-      "sunrise": "03:36",
-      "sunset": "16:45",
-      "civil_twilight_start": "03:12",
-      "civil_twilight_end": "17:09",
+      "sunrise": "03:51",
+      "sunset": "16:34",
+      "civil_twilight_start": "03:27",
+      "civil_twilight_end": "16:57",
       "is_night": false
     },
     "workload": {
