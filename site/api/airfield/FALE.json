@@ -66,7 +66,8 @@
     "dewpoint_c": 10,
     "qnh_hpa": 1013,
     "remarks": "",
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
   "taf": {
     "raw": "FALE 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
@@ -75,8 +76,10 @@
       "valid_to": "",
       "key_changes": []
     },
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
+  "notams": [],
   "computed": {
     "wind_components_per_runway": [
       {
@@ -92,6 +95,18 @@
         "crosswind_kt": 0.0,
         "tailwind_kt": 0.0,
         "crosswind_side": "L"
+      }
+    ],
+    "runway_surface_conditions": [
+      {
+        "runway": "06",
+        "surface": "ASPH",
+        "condition": "Not reported"
+      },
+      {
+        "runway": "24",
+        "surface": "ASPH",
+        "condition": "Not reported"
       }
     ],
     "density_altitude": {
@@ -128,10 +143,10 @@
       "urgency": "unknown"
     },
     "sun": {
-      "sunrise": "03:20",
-      "sunset": "16:39",
-      "civil_twilight_start": "02:55",
-      "civil_twilight_end": "17:04",
+      "sunrise": "03:37",
+      "sunset": "16:25",
+      "civil_twilight_start": "03:13",
+      "civil_twilight_end": "16:50",
       "is_night": false
     },
     "workload": {
