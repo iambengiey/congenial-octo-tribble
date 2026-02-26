@@ -45,6 +45,10 @@ SITE_DIR = ROOT / "site"
 HISTORY_DIR = DATA_DIR / "history"
 
 
+def utc_now() -> dt.datetime:
+    return dt.datetime.now(dt.timezone.utc)
+
+
 def load_yaml_file(path: Path) -> dict:
     return load_yaml(path.read_text(encoding="utf-8"))
 
@@ -138,16 +142,30 @@ def hours_between(prev_ts: str | None, curr_ts: str | None) -> float | None:
 
 
 def parse_taf_valid_to(valid_to: str, reference: dt.datetime) -> dt.datetime | None:
-    if not valid_to or len(valid_to) != 4:
+    if not valid_to or len(valid_to) != 4 or not valid_to.isdigit():
         return None
+
     day = int(valid_to[:2])
     hour = int(valid_to[2:])
+    if day < 1 or day > 31 or hour < 0 or hour > 24:
+        return None
+
     month = reference.month
     year = reference.year
     if day < reference.day:
         month = month + 1 if month < 12 else 1
         year = year + 1 if month == 1 else year
-    return dt.datetime(year, month, day, hour, 0, tzinfo=dt.timezone.utc)
+
+    if hour == 24:
+        hour = 0
+        day += 1
+
+    try:
+        valid_dt = dt.datetime(year, month, day, hour, 0, tzinfo=dt.timezone.utc)
+    except ValueError:
+        return None
+
+    return valid_dt
 
 
 def time_to_expiry(end_time: dt.datetime | None, now: dt.datetime) -> dict:
@@ -364,7 +382,7 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
     notam_adapter = SampleNotamAdapter(SAMPLES_DIR / "notam")
 
     airfields = []
-    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+    now = utc_now()
     for airfield in aerodromes:
         ident = airfield["ident"]
         metar_raw, metar_source = _fetch_with_fallback(ident, live_adapter, sample_adapter, "metar")
@@ -598,7 +616,7 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
     sigmet_adapter = SampleSigmetAdapter(SAMPLES_DIR / "sigmet" / "sigmet.txt")
     winds_adapter = SampleWindsTempsAdapter(SAMPLES_DIR / "winds_temps" / "winds_temps.json")
 
-    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+    now = utc_now()
     sigmet_lines = sigmet_adapter.fetch()
     sigmet_decoded = decode_sigmet(sigmet_lines)
     winds = winds_adapter.fetch()
@@ -970,7 +988,7 @@ def build_snapshot(
 
     snapshot = {
         "id": snapshot_id,
-        "generated_at": dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc).isoformat(),
+        "generated_at": utc_now().isoformat(),
         "mode": mode_info,
         "profile": profile,
         "payload": payload,
@@ -1401,7 +1419,7 @@ def parse_args() -> argparse.Namespace:
 if __name__ == "__main__":
     args = parse_args()
     if args.snapshot:
-        snap_id = args.snapshot_id or f"snap-{dt.datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+        snap_id = args.snapshot_id or f"snap-{utc_now().strftime('%Y%m%d%H%M%S')}"
         build_snapshot(
             args.snapshot_type,
             args.snapshot_ident,
