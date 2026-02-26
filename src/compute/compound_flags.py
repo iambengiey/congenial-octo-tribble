@@ -1,7 +1,13 @@
 from __future__ import annotations
 
 
-def compound_flags(flags: list[str], runway_short: bool, night_ops: bool, taf_deteriorating: bool, rapid_qnh_fall: bool) -> list[str]:
+def compound_flags(
+    flags: list[str],
+    runway_short: bool,
+    night_ops: bool,
+    taf_deteriorating: bool,
+    rapid_qnh_fall: bool,
+) -> list[str]:
     compounds = []
     if "HIGH_DA" in flags and runway_short:
         compounds.append("HIGH_DA_SHORT_RWY")

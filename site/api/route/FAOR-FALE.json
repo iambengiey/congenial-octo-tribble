@@ -1,0 +1,995 @@
+{
+  "route_id": "FAOR-FALE",
+  "dep": "FAOR",
+  "dest": "FALE",
+  "alternates": [
+    "FAPE",
+    "FAEL"
+  ],
+  "corridor_nm": 55,
+  "cruise_levels_ft": [
+    9000,
+    11000,
+    13000,
+    15000,
+    17000,
+    19000,
+    21000,
+    23000,
+    25000,
+    27000,
+    29000,
+    31000
+  ],
+  "airfields": [
+    {
+      "ident": "FAOR",
+      "name": "OR Tambo Intl",
+      "elevation_m": 1694,
+      "latitude_deg": -26.1392,
+      "longitude_deg": 28.246,
+      "night_ops_allowed": "yes",
+      "lighting": {
+        "runway_edge": "yes",
+        "threshold": "yes",
+        "taxiway": "yes",
+        "apron": "yes"
+      },
+      "ppr_required": "no",
+      "ops_hours": "H24",
+      "notes": "Reference only.",
+      "airspace_context": {
+        "ctr": "no",
+        "tma": "no",
+        "class": "G"
+      },
+      "circuit": {
+        "direction": "L",
+        "height_ft_agl": 1000
+      },
+      "noise_abatement_notes": "Training reference only.",
+      "runways": [
+        {
+          "designator": "03L",
+          "magnetic_heading_deg": 34,
+          "length_m": 4400,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "03R",
+          "magnetic_heading_deg": 34,
+          "length_m": 3400,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "21L",
+          "magnetic_heading_deg": 214,
+          "length_m": 3400,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "21R",
+          "magnetic_heading_deg": 214,
+          "length_m": 4400,
+          "surface": "ASPH"
+        }
+      ],
+      "night_ops": {
+        "night_ops_allowed": "yes",
+        "lighting": {
+          "runway_edge": "yes",
+          "threshold": "yes",
+          "taxiway": "yes",
+          "apron": "yes"
+        },
+        "ppr_required": "no",
+        "ops_hours": "H24",
+        "notes": "Reference only."
+      },
+      "night_ready": true,
+      "metar": {
+        "raw": "FAOR 121100Z 03012G20KT 8000 -RA FEW020 BKN035 18/12 Q1016 NOSIG",
+        "observed_time_utc": "2026-02-12T11:00:00Z",
+        "wind_dir_deg": 30,
+        "wind_speed_kt": 12,
+        "gust_kt": 20,
+        "variable_wind": null,
+        "visibility_m": 8000,
+        "weather_codes": [
+          "-RA"
+        ],
+        "cloud_layers": [
+          {
+            "cover": "FEW",
+            "base_ft": 2000
+          },
+          {
+            "cover": "BKN",
+            "base_ft": 3500
+          }
+        ],
+        "ceiling_ft": 3500,
+        "temp_c": 18,
+        "dewpoint_c": 12,
+        "qnh_hpa": 1016,
+        "remarks": "",
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
+      },
+      "taf": {
+        "raw": "TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030",
+        "summary": {
+          "valid_from": "1212",
+          "valid_to": "1318",
+          "key_changes": [
+            "TEMPO",
+            "BECMG"
+          ]
+        },
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
+      },
+      "notams": [
+        {
+          "id": "A1234/24",
+          "text": "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP."
+        },
+        {
+          "id": "A5678/24",
+          "text": "FAOR TWY B CLSD BETWEEN B3-B7."
+        }
+      ],
+      "computed": {
+        "wind_components_per_runway": [
+          {
+            "runway": "03L",
+            "headwind_kt": 12.0,
+            "crosswind_kt": 0.8,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          },
+          {
+            "runway": "03R",
+            "headwind_kt": 12.0,
+            "crosswind_kt": 0.8,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          },
+          {
+            "runway": "21L",
+            "headwind_kt": 0.0,
+            "crosswind_kt": 0.8,
+            "tailwind_kt": 12.0,
+            "crosswind_side": "R"
+          },
+          {
+            "runway": "21R",
+            "headwind_kt": 0.0,
+            "crosswind_kt": 0.8,
+            "tailwind_kt": 12.0,
+            "crosswind_side": "R"
+          }
+        ],
+        "runway_surface_conditions": [
+          {
+            "runway": "03L",
+            "surface": "ASPH",
+            "condition": "Closed"
+          },
+          {
+            "runway": "03R",
+            "surface": "ASPH",
+            "condition": "Closed"
+          },
+          {
+            "runway": "21L",
+            "surface": "ASPH",
+            "condition": "Closed"
+          },
+          {
+            "runway": "21R",
+            "surface": "ASPH",
+            "condition": "Closed"
+          }
+        ],
+        "density_altitude": {
+          "da_ft": 7155,
+          "da_m": 2181
+        },
+        "qnh_trend": "steady",
+        "flags": [
+          "TAILWIND"
+        ],
+        "flag_explanations": {
+          "TAILWIND": {
+            "input": "30/12kt",
+            "runway": "21L",
+            "tailwind_kt": 12.0,
+            "threshold_kt": 5,
+            "note": "Tailwind reduces performance and increases landing distance."
+          }
+        },
+        "severity": {
+          "level": "CAUTION",
+          "flags": [
+            "TAILWIND"
+          ]
+        },
+        "changes": {
+          "summary": "Minimal changes",
+          "details": {
+            "wind_speed_delta_kt": 0,
+            "wind_dir_shift_deg": 0,
+            "qnh_change_hpa": 0,
+            "temp_dewpoint_spread_change": 0,
+            "ceiling_category": {
+              "from": "normal",
+              "to": "normal"
+            },
+            "visibility_category": {
+              "from": "normal",
+              "to": "normal"
+            }
+          }
+        },
+        "qnh_change_rate_hpa_per_hr": null,
+        "taf_time_to_expiry": {
+          "hours": 361.7,
+          "urgency": "ok"
+        },
+        "sun": {
+          "sunrise": "03:51",
+          "sunset": "16:34",
+          "civil_twilight_start": "03:28",
+          "civil_twilight_end": "16:57",
+          "is_night": false
+        },
+        "workload": {
+          "score": 29.2,
+          "category": "Low",
+          "top_contributors": [
+            "da_ratio",
+            "gust_ratio",
+            "crosswind_ratio"
+          ]
+        },
+        "stability": {
+          "score": 86.7,
+          "category": "Stable",
+          "drivers": [
+            "gust_spread"
+          ]
+        },
+        "trends": {
+          "wind_speed": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "qnh": [
+            1016,
+            1016,
+            1016,
+            1016,
+            1016,
+            1016
+          ],
+          "temp": [
+            18,
+            18,
+            18,
+            18,
+            18,
+            18
+          ],
+          "dewpoint": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "visibility": [
+            8000,
+            8000,
+            8000,
+            8000,
+            8000,
+            8000
+          ]
+        }
+      }
+    },
+    {
+      "ident": "FALE",
+      "name": "King Shaka Intl",
+      "elevation_m": 90,
+      "latitude_deg": -29.614,
+      "longitude_deg": 31.1197,
+      "night_ops_allowed": "yes",
+      "lighting": {
+        "runway_edge": "yes",
+        "threshold": "yes",
+        "taxiway": "yes",
+        "apron": "yes"
+      },
+      "ppr_required": "no",
+      "ops_hours": "H24",
+      "notes": "Reference only.",
+      "airspace_context": {
+        "ctr": "no",
+        "tma": "no",
+        "class": "G"
+      },
+      "circuit": {
+        "direction": "L",
+        "height_ft_agl": 1000
+      },
+      "noise_abatement_notes": "Training reference only.",
+      "runways": [
+        {
+          "designator": "06",
+          "magnetic_heading_deg": 60,
+          "length_m": 3700,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "24",
+          "magnetic_heading_deg": 240,
+          "length_m": 3700,
+          "surface": "ASPH"
+        }
+      ],
+      "night_ops": {
+        "night_ops_allowed": "yes",
+        "lighting": {
+          "runway_edge": "yes",
+          "threshold": "yes",
+          "taxiway": "yes",
+          "apron": "yes"
+        },
+        "ppr_required": "no",
+        "ops_hours": "H24",
+        "notes": "Reference only."
+      },
+      "night_ready": true,
+      "metar": {
+        "raw": "FALE 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+        "observed_time_utc": "2026-02-01T00:00:00Z",
+        "wind_dir_deg": 0,
+        "wind_speed_kt": 0,
+        "gust_kt": null,
+        "variable_wind": null,
+        "visibility_m": null,
+        "weather_codes": [],
+        "cloud_layers": [],
+        "ceiling_ft": null,
+        "temp_c": 20,
+        "dewpoint_c": 10,
+        "qnh_hpa": 1013,
+        "remarks": "",
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
+      },
+      "taf": {
+        "raw": "FALE 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+        "summary": {
+          "valid_from": "",
+          "valid_to": "",
+          "key_changes": []
+        },
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
+      },
+      "notams": [],
+      "computed": {
+        "wind_components_per_runway": [
+          {
+            "runway": "06",
+            "headwind_kt": 0.0,
+            "crosswind_kt": 0.0,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          },
+          {
+            "runway": "24",
+            "headwind_kt": -0.0,
+            "crosswind_kt": 0.0,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          }
+        ],
+        "runway_surface_conditions": [
+          {
+            "runway": "06",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          },
+          {
+            "runway": "24",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          }
+        ],
+        "density_altitude": {
+          "da_ft": 975,
+          "da_m": 297
+        },
+        "qnh_trend": "steady",
+        "flags": [],
+        "flag_explanations": {},
+        "severity": {
+          "level": "OK",
+          "flags": []
+        },
+        "changes": {
+          "summary": "Minimal changes",
+          "details": {
+            "wind_speed_delta_kt": 0,
+            "wind_dir_shift_deg": 0,
+            "qnh_change_hpa": 0,
+            "temp_dewpoint_spread_change": 0,
+            "ceiling_category": {
+              "from": "normal",
+              "to": "normal"
+            },
+            "visibility_category": {
+              "from": "unknown",
+              "to": "unknown"
+            }
+          }
+        },
+        "qnh_change_rate_hpa_per_hr": null,
+        "taf_time_to_expiry": {
+          "hours": null,
+          "urgency": "unknown"
+        },
+        "sun": {
+          "sunrise": "03:37",
+          "sunset": "16:25",
+          "civil_twilight_start": "03:13",
+          "civil_twilight_end": "16:50",
+          "is_night": false
+        },
+        "workload": {
+          "score": 2.4,
+          "category": "Low",
+          "top_contributors": [
+            "da_ratio"
+          ]
+        },
+        "stability": {
+          "score": 100.0,
+          "category": "Stable",
+          "drivers": []
+        },
+        "trends": {
+          "wind_speed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "qnh": [
+            1013,
+            1013,
+            1013,
+            1013,
+            1013,
+            1013
+          ],
+          "temp": [
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          "dewpoint": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          "visibility": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "ident": "FAPE",
+      "name": "Gqeberha",
+      "elevation_m": 69,
+      "latitude_deg": -33.9849,
+      "longitude_deg": 25.6173,
+      "night_ops_allowed": "yes",
+      "lighting": {
+        "runway_edge": "yes",
+        "threshold": "yes",
+        "taxiway": "yes",
+        "apron": "yes"
+      },
+      "ppr_required": "no",
+      "ops_hours": "H24",
+      "notes": "Reference only.",
+      "airspace_context": {
+        "ctr": "no",
+        "tma": "no",
+        "class": "G"
+      },
+      "circuit": {
+        "direction": "L",
+        "height_ft_agl": 1000
+      },
+      "noise_abatement_notes": "Training reference only.",
+      "runways": [
+        {
+          "designator": "08",
+          "magnetic_heading_deg": 80,
+          "length_m": 1980,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "26",
+          "magnetic_heading_deg": 260,
+          "length_m": 1980,
+          "surface": "ASPH"
+        }
+      ],
+      "night_ops": {
+        "night_ops_allowed": "yes",
+        "lighting": {
+          "runway_edge": "yes",
+          "threshold": "yes",
+          "taxiway": "yes",
+          "apron": "yes"
+        },
+        "ppr_required": "no",
+        "ops_hours": "H24",
+        "notes": "Reference only."
+      },
+      "night_ready": true,
+      "metar": {
+        "raw": "FAPE 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+        "observed_time_utc": "2026-02-01T00:00:00Z",
+        "wind_dir_deg": 0,
+        "wind_speed_kt": 0,
+        "gust_kt": null,
+        "variable_wind": null,
+        "visibility_m": null,
+        "weather_codes": [],
+        "cloud_layers": [],
+        "ceiling_ft": null,
+        "temp_c": 20,
+        "dewpoint_c": 10,
+        "qnh_hpa": 1013,
+        "remarks": "",
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
+      },
+      "taf": {
+        "raw": "FAPE 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+        "summary": {
+          "valid_from": "",
+          "valid_to": "",
+          "key_changes": []
+        },
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
+      },
+      "notams": [],
+      "computed": {
+        "wind_components_per_runway": [
+          {
+            "runway": "08",
+            "headwind_kt": 0.0,
+            "crosswind_kt": 0.0,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          },
+          {
+            "runway": "26",
+            "headwind_kt": -0.0,
+            "crosswind_kt": 0.0,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          }
+        ],
+        "runway_surface_conditions": [
+          {
+            "runway": "08",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          },
+          {
+            "runway": "26",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          }
+        ],
+        "density_altitude": {
+          "da_ft": 894,
+          "da_m": 272
+        },
+        "qnh_trend": "steady",
+        "flags": [],
+        "flag_explanations": {},
+        "severity": {
+          "level": "OK",
+          "flags": []
+        },
+        "changes": {
+          "summary": "Minimal changes",
+          "details": {
+            "wind_speed_delta_kt": 0,
+            "wind_dir_shift_deg": 0,
+            "qnh_change_hpa": 0,
+            "temp_dewpoint_spread_change": 0,
+            "ceiling_category": {
+              "from": "normal",
+              "to": "normal"
+            },
+            "visibility_category": {
+              "from": "unknown",
+              "to": "unknown"
+            }
+          }
+        },
+        "qnh_change_rate_hpa_per_hr": null,
+        "taf_time_to_expiry": {
+          "hours": null,
+          "urgency": "unknown"
+        },
+        "sun": {
+          "sunrise": "03:55",
+          "sunset": "16:51",
+          "civil_twilight_start": "03:30",
+          "civil_twilight_end": "17:17",
+          "is_night": false
+        },
+        "workload": {
+          "score": 2.2,
+          "category": "Low",
+          "top_contributors": [
+            "da_ratio"
+          ]
+        },
+        "stability": {
+          "score": 100.0,
+          "category": "Stable",
+          "drivers": []
+        },
+        "trends": {
+          "wind_speed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "qnh": [
+            1013,
+            1013,
+            1013,
+            1013,
+            1013,
+            1013
+          ],
+          "temp": [
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          "dewpoint": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          "visibility": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "ident": "FAEL",
+      "name": "East London",
+      "elevation_m": 133,
+      "latitude_deg": -33.0356,
+      "longitude_deg": 27.8259,
+      "night_ops_allowed": "yes",
+      "lighting": {
+        "runway_edge": "yes",
+        "threshold": "yes",
+        "taxiway": "yes",
+        "apron": "yes"
+      },
+      "ppr_required": "no",
+      "ops_hours": "H24",
+      "notes": "Reference only.",
+      "airspace_context": {
+        "ctr": "no",
+        "tma": "no",
+        "class": "G"
+      },
+      "circuit": {
+        "direction": "L",
+        "height_ft_agl": 1000
+      },
+      "noise_abatement_notes": "Training reference only.",
+      "runways": [
+        {
+          "designator": "11",
+          "magnetic_heading_deg": 110,
+          "length_m": 1960,
+          "surface": "ASPH"
+        },
+        {
+          "designator": "29",
+          "magnetic_heading_deg": 290,
+          "length_m": 1960,
+          "surface": "ASPH"
+        }
+      ],
+      "night_ops": {
+        "night_ops_allowed": "yes",
+        "lighting": {
+          "runway_edge": "yes",
+          "threshold": "yes",
+          "taxiway": "yes",
+          "apron": "yes"
+        },
+        "ppr_required": "no",
+        "ops_hours": "H24",
+        "notes": "Reference only."
+      },
+      "night_ready": true,
+      "metar": {
+        "raw": "FAEL 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+        "observed_time_utc": "2026-02-01T00:00:00Z",
+        "wind_dir_deg": 0,
+        "wind_speed_kt": 0,
+        "gust_kt": null,
+        "variable_wind": null,
+        "visibility_m": null,
+        "weather_codes": [],
+        "cloud_layers": [],
+        "ceiling_ft": null,
+        "temp_c": 20,
+        "dewpoint_c": 10,
+        "qnh_hpa": 1013,
+        "remarks": "",
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
+      },
+      "taf": {
+        "raw": "FAEL 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+        "summary": {
+          "valid_from": "",
+          "valid_to": "",
+          "key_changes": []
+        },
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
+      },
+      "notams": [],
+      "computed": {
+        "wind_components_per_runway": [
+          {
+            "runway": "11",
+            "headwind_kt": -0.0,
+            "crosswind_kt": 0.0,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          },
+          {
+            "runway": "29",
+            "headwind_kt": 0.0,
+            "crosswind_kt": 0.0,
+            "tailwind_kt": 0.0,
+            "crosswind_side": "L"
+          }
+        ],
+        "runway_surface_conditions": [
+          {
+            "runway": "11",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          },
+          {
+            "runway": "29",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          }
+        ],
+        "density_altitude": {
+          "da_ft": 1152,
+          "da_m": 351
+        },
+        "qnh_trend": "steady",
+        "flags": [],
+        "flag_explanations": {},
+        "severity": {
+          "level": "OK",
+          "flags": []
+        },
+        "changes": {
+          "summary": "Minimal changes",
+          "details": {
+            "wind_speed_delta_kt": 0,
+            "wind_dir_shift_deg": 0,
+            "qnh_change_hpa": 0,
+            "temp_dewpoint_spread_change": 0,
+            "ceiling_category": {
+              "from": "normal",
+              "to": "normal"
+            },
+            "visibility_category": {
+              "from": "unknown",
+              "to": "unknown"
+            }
+          }
+        },
+        "qnh_change_rate_hpa_per_hr": null,
+        "taf_time_to_expiry": {
+          "hours": null,
+          "urgency": "unknown"
+        },
+        "sun": {
+          "sunrise": "03:47",
+          "sunset": "16:41",
+          "civil_twilight_start": "03:22",
+          "civil_twilight_end": "17:07",
+          "is_night": false
+        },
+        "workload": {
+          "score": 2.9,
+          "category": "Low",
+          "top_contributors": [
+            "da_ratio"
+          ]
+        },
+        "stability": {
+          "score": 100.0,
+          "category": "Stable",
+          "drivers": []
+        },
+        "trends": {
+          "wind_speed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "qnh": [
+            1013,
+            1013,
+            1013,
+            1013,
+            1013,
+            1013
+          ],
+          "temp": [
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
+          ],
+          "dewpoint": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ],
+          "visibility": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      }
+    }
+  ],
+  "track_deg": 144.49394977032307,
+  "upper_winds": [
+    {
+      "level_ft": 9000,
+      "wind_dir_deg": 80,
+      "wind_speed_kt": 25,
+      "temp_c": 8,
+      "headwind_kt": 10.8,
+      "ground_speed_kt": 109.2
+    }
+  ],
+  "freezing_level_ft": 18000,
+  "sigmet_lines": [
+    "SIGMET 1 ZFWG JOHANNESBURG FIR MOD TURB FL080-FL180 MOV NE",
+    "SIGMET 2 ZFWG JOHANNESBURG FIR ISOL TS FL100-FL200 MOV NE",
+    "AIRMET 1 ZFWG JOHANNESBURG FIR ICE MOD FL090-FL150"
+  ],
+  "sigmet_time_to_expiry": {
+    "hours": null,
+    "urgency": "unknown"
+  },
+  "notams": {
+    "FAOR": [
+      "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP.",
+      "FAOR TWY B CLSD BETWEEN B3-B7."
+    ],
+    "FALE": []
+  },
+  "taf_time_to_expiry": {
+    "dep": {
+      "hours": 361.7,
+      "urgency": "ok"
+    },
+    "dest": {
+      "hours": null,
+      "urgency": "unknown"
+    }
+  },
+  "summary": {
+    "flags": [
+      "CONVECTIVE_RISK_HIGH",
+      "TURB_POSSIBLE (TRAINING)"
+    ],
+    "severity": {
+      "level": "OK",
+      "flags": [
+        "CONVECTIVE_RISK_HIGH",
+        "TURB_POSSIBLE (TRAINING)"
+      ]
+    },
+    "workload": {
+      "score": 30.0,
+      "category": "Low",
+      "top_contributors": [
+        "convective",
+        "rapid_change"
+      ]
+    },
+    "stability": {
+      "score": 80.0,
+      "category": "Stable",
+      "drivers": [
+        "metar_taf_mismatch"
+      ]
+    }
+  }
+}

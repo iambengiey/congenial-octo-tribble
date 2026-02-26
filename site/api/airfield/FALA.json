@@ -71,7 +71,8 @@
     "dewpoint_c": 10,
     "qnh_hpa": 1018,
     "remarks": "",
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
   "taf": {
     "raw": "TAF FALA 121100Z 1212/1312 06008KT 9999 SCT020 BECMG 1302/1304 09012KT 7000 BKN020",
@@ -82,8 +83,15 @@
         "BECMG"
       ]
     },
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
+  "notams": [
+    {
+      "id": "B1234/24",
+      "text": "FALA RWY 07/25 WIP. EXPECT DELAYS."
+    }
+  ],
   "computed": {
     "wind_components_per_runway": [
       {
@@ -99,6 +107,18 @@
         "crosswind_kt": 3.3,
         "tailwind_kt": 7.3,
         "crosswind_side": "R"
+      }
+    ],
+    "runway_surface_conditions": [
+      {
+        "runway": "07",
+        "surface": "ASPH",
+        "condition": "Not reported"
+      },
+      {
+        "runway": "25",
+        "surface": "ASPH",
+        "condition": "Not reported"
       }
     ],
     "density_altitude": {
@@ -143,14 +163,14 @@
     },
     "qnh_change_rate_hpa_per_hr": null,
     "taf_time_to_expiry": {
-      "hours": 122.7,
+      "hours": 355.7,
       "urgency": "ok"
     },
     "sun": {
-      "sunrise": "03:38",
-      "sunset": "16:46",
-      "civil_twilight_start": "03:14",
-      "civil_twilight_end": "17:10",
+      "sunrise": "03:53",
+      "sunset": "16:35",
+      "civil_twilight_start": "03:29",
+      "civil_twilight_end": "16:58",
       "is_night": false
     },
     "workload": {

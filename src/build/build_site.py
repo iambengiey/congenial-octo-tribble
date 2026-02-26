@@ -25,12 +25,12 @@ from src.compute.change_detection import detect_changes
 from src.compute.cloud_base import cloud_base_ft
 from src.compute.compound_flags import compound_flags
 from src.compute.density_altitude import density_altitude
-from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.risk_flags import flag_severity
+from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.stability import stability_score
 from src.compute.sun import civil_twilight, is_night, sun_times
-from src.compute.workload import workload_score
 from src.compute.wind_components import wind_components
+from src.compute.workload import workload_score
 from src.parsers.metar import decode_metar
 from src.parsers.notam import decode_notam
 from src.parsers.sigmet import decode_sigmet
@@ -45,13 +45,17 @@ SITE_DIR = ROOT / "site"
 HISTORY_DIR = DATA_DIR / "history"
 
 
+def utc_now() -> dt.datetime:
+    return dt.datetime.now(dt.timezone.utc)
+
+
 def load_yaml_file(path: Path) -> dict:
     return load_yaml(path.read_text(encoding="utf-8"))
 
 
 def load_packs() -> tuple[list[dict], list[dict]]:
     aerodromes: dict[str, dict] = {}
-    routes: list[dict] = []
+    routes: dict[str, dict] = {}
 
     for pack_path in sorted(PACKS_DIR.glob("*/aerodromes.yaml")):
         data = load_yaml_file(pack_path)
@@ -60,7 +64,8 @@ def load_packs() -> tuple[list[dict], list[dict]]:
 
     for route_path in sorted(PACKS_DIR.glob("*/routes.yaml")):
         data = load_yaml_file(route_path)
-        routes.extend(data.get("routes", []))
+        for route in data.get("routes", []):
+            routes[route["route_id"]] = route
 
     if (DATA_DIR / "aerodromes.yaml").exists():
         data = load_yaml_file(DATA_DIR / "aerodromes.yaml")
@@ -69,9 +74,10 @@ def load_packs() -> tuple[list[dict], list[dict]]:
 
     if (DATA_DIR / "routes.yaml").exists():
         data = load_yaml_file(DATA_DIR / "routes.yaml")
-        routes.extend(data.get("routes", []))
+        for route in data.get("routes", []):
+            routes.setdefault(route["route_id"], route)
 
-    return list(aerodromes.values()), routes
+    return list(aerodromes.values()), list(routes.values())
 
 
 def load_profiles() -> list[dict]:
@@ -95,6 +101,31 @@ def save_history(ident: str, history: list[dict]) -> None:
     path.write_text(json.dumps(history[-200:], indent=2), encoding="utf-8")
 
 
+def append_history_entry(history: list[dict], entry: dict) -> list[dict]:
+    """Append a METAR-derived history entry only when it changes.
+
+    This keeps repeated sample builds idempotent by avoiding duplicate points
+    with identical observation timestamps and values.
+    """
+    if not history:
+        return [entry]
+
+    latest = history[-1]
+    keys = (
+        "timestamp",
+        "wind_speed_kt",
+        "wind_dir_deg",
+        "qnh_hpa",
+        "temp_c",
+        "dewpoint_c",
+        "visibility_m",
+        "ceiling_ft_est",
+    )
+    if all(latest.get(key) == entry.get(key) for key in keys):
+        return history
+    return [*history, entry]
+
+
 def _parse_iso(ts: str | None) -> dt.datetime | None:
     if not ts:
         return None
@@ -111,16 +142,30 @@ def hours_between(prev_ts: str | None, curr_ts: str | None) -> float | None:
 
 
 def parse_taf_valid_to(valid_to: str, reference: dt.datetime) -> dt.datetime | None:
-    if not valid_to or len(valid_to) != 4:
+    if not valid_to or len(valid_to) != 4 or not valid_to.isdigit():
         return None
+
     day = int(valid_to[:2])
     hour = int(valid_to[2:])
+    if day < 1 or day > 31 or hour < 0 or hour > 24:
+        return None
+
     month = reference.month
     year = reference.year
     if day < reference.day:
         month = month + 1 if month < 12 else 1
         year = year + 1 if month == 1 else year
-    return dt.datetime(year, month, day, hour, 0, tzinfo=dt.timezone.utc)
+
+    if hour == 24:
+        hour = 0
+        day += 1
+
+    try:
+        valid_dt = dt.datetime(year, month, day, hour, 0, tzinfo=dt.timezone.utc)
+    except ValueError:
+        return None
+
+    return valid_dt
 
 
 def time_to_expiry(end_time: dt.datetime | None, now: dt.datetime) -> dict:
@@ -337,7 +382,7 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
     notam_adapter = SampleNotamAdapter(SAMPLES_DIR / "notam")
 
     airfields = []
-    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+    now = utc_now()
     for airfield in aerodromes:
         ident = airfield["ident"]
         metar_raw, metar_source = _fetch_with_fallback(ident, live_adapter, sample_adapter, "metar")
@@ -386,18 +431,17 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
 
         history = load_history(ident)
         previous = history[-1] if history else None
-        history.append(
-            {
-                "timestamp": metar_decoded["observed_time_utc"],
-                "wind_speed_kt": metar_decoded["wind_speed_kt"],
-                "wind_dir_deg": metar_decoded["wind_dir_deg"],
-                "qnh_hpa": metar_decoded["qnh_hpa"],
-                "temp_c": metar_decoded["temp_c"],
-                "dewpoint_c": metar_decoded["dewpoint_c"],
-                "visibility_m": metar_decoded["visibility_m"],
-                "ceiling_ft_est": ceiling_est,
-            }
-        )
+        new_history_entry = {
+            "timestamp": metar_decoded["observed_time_utc"],
+            "wind_speed_kt": metar_decoded["wind_speed_kt"],
+            "wind_dir_deg": metar_decoded["wind_dir_deg"],
+            "qnh_hpa": metar_decoded["qnh_hpa"],
+            "temp_c": metar_decoded["temp_c"],
+            "dewpoint_c": metar_decoded["dewpoint_c"],
+            "visibility_m": metar_decoded["visibility_m"],
+            "ceiling_ft_est": ceiling_est,
+        }
+        history = append_history_entry(history, new_history_entry)
         if record_history:
             save_history(ident, history)
 
@@ -572,7 +616,7 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
     sigmet_adapter = SampleSigmetAdapter(SAMPLES_DIR / "sigmet" / "sigmet.txt")
     winds_adapter = SampleWindsTempsAdapter(SAMPLES_DIR / "winds_temps" / "winds_temps.json")
 
-    now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
+    now = utc_now()
     sigmet_lines = sigmet_adapter.fetch()
     sigmet_decoded = decode_sigmet(sigmet_lines)
     winds = winds_adapter.fetch()
@@ -627,9 +671,15 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
 
         severity = flag_severity(flags, profile.get("severity", {}))
 
+        def _route_notams(ident: str) -> list[dict]:
+            try:
+                return decode_notam(notam_adapter.fetch(ident).lines)
+            except FileNotFoundError:
+                return []
+
         notams = {
-            route["dep"]: decode_notam(notam_adapter.fetch(route["dep"]).lines),
-            route["dest"]: decode_notam(notam_adapter.fetch(route["dest"]).lines),
+            route["dep"]: _route_notams(route["dep"]),
+            route["dest"]: _route_notams(route["dest"]),
         }
 
         route_workload = workload_score(
@@ -944,7 +994,7 @@ def build_snapshot(
 
     snapshot = {
         "id": snapshot_id,
-        "generated_at": dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc).isoformat(),
+        "generated_at": utc_now().isoformat(),
         "mode": mode_info,
         "profile": profile,
         "payload": payload,
@@ -1216,13 +1266,14 @@ async function buildScenarioCard() {
   output.innerHTML = `
     <h4>${title}</h4>
     <p><strong>Profile:</strong> ${profile ? profile.name : ''}</p>
-    <p><strong>Aircraft:</strong> ${aircraftInfo ? aircraftInfo.type : ''} `
-      + `(${aircraftInfo ? aircraftInfo.demonstrated_crosswind_kt : ''} `
-      + 'kt demo crosswind)</p>
+    <p><strong>Aircraft:</strong>
+      ${aircraftInfo ? aircraftInfo.type : ''}
+      (${aircraftInfo ? aircraftInfo.demonstrated_crosswind_kt : ''} kt demo crosswind)</p>
     <p><strong>Density altitude:</strong> ${da} ft</p>
     <p><strong>Flags:</strong> ${flags.join(', ') || 'LOW_RISK'}</p>
-    <p><strong>Questions:</strong> How will crosswind/tailwind affect `
-      + 'your performance? Are you within personal minima?</p>
+    <p><strong>Questions:</strong>
+      How will crosswind/tailwind affect your performance?
+      Are you within personal minima?</p>
   `;
 }
 
@@ -1374,7 +1425,7 @@ def parse_args() -> argparse.Namespace:
 if __name__ == "__main__":
     args = parse_args()
     if args.snapshot:
-        snap_id = args.snapshot_id or f"snap-{dt.datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+        snap_id = args.snapshot_id or f"snap-{utc_now().strftime('%Y%m%d%H%M%S')}"
         build_snapshot(
             args.snapshot_type,
             args.snapshot_ident,

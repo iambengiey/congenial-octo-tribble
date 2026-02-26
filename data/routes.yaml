@@ -19,3 +19,53 @@ routes:
     alternates: [FAOR]
     corridor_nm: 25
     cruise_levels_ft: [3000, 6000, 9000, 12000]
+
+  - route_id: FAOR-FABB
+    dep: FAOR
+    dest: FABB
+    alternates: [FALA, FABL]
+    corridor_nm: 35
+    cruise_levels_ft: [5000, 7000, 9000, 11000, 13000, 15000, 17000]
+
+  - route_id: FAOR-FABL
+    dep: FAOR
+    dest: FABL
+    alternates: [FALA, FABB]
+    corridor_nm: 45
+    cruise_levels_ft: [5000, 7000, 9000, 11000, 13000, 15000, 17000]
+
+  - route_id: FABB-FAPN
+    dep: FABB
+    dest: FAPN
+    alternates: [FAOR, FABL]
+    corridor_nm: 45
+    cruise_levels_ft: [5000, 7000, 9000, 11000, 13000, 15000]
+
+  - route_id: FABL-FALA
+    dep: FABL
+    dest: FALA
+    alternates: [FAOR, FABB]
+    corridor_nm: 35
+    cruise_levels_ft: [5000, 7000, 9000, 11000, 13000]
+
+  - route_id: FAPN-FALA
+    dep: FAPN
+    dest: FALA
+    alternates: [FAOR, FABL]
+    corridor_nm: 35
+    cruise_levels_ft: [5000, 7000, 9000, 11000, 13000]
+
+  - route_id: FAOR-FACT
+    dep: FAOR
+    dest: FACT
+    alternates: [FALA, FAPE]
+    corridor_nm: 60
+    cruise_levels_ft: [9000, 11000, 13000, 15000, 17000, 19000, 21000, 23000, 25000, 27000, 29000, 31000]
+
+  - route_id: FAOR-FALE
+    dep: FAOR
+    dest: FALE
+    alternates: [FAPE, FAEL]
+    corridor_nm: 55
+    cruise_levels_ft: [9000, 11000, 13000, 15000, 17000, 19000, 21000, 23000, 25000, 27000, 29000, 31000]
+

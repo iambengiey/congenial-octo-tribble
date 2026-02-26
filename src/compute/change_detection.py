@@ -26,8 +26,10 @@ def detect_changes(previous: dict | None, current: dict) -> dict:
         return {"summary": "No prior data", "details": {}}
 
     details = {
-        "wind_speed_delta_kt": (current.get("wind_speed_kt") or 0) - (previous.get("wind_speed_kt") or 0),
-        "wind_dir_shift_deg": (current.get("wind_dir_deg") or 0) - (previous.get("wind_dir_deg") or 0),
+        "wind_speed_delta_kt": (current.get("wind_speed_kt") or 0)
+        - (previous.get("wind_speed_kt") or 0),
+        "wind_dir_shift_deg": (current.get("wind_dir_deg") or 0)
+        - (previous.get("wind_dir_deg") or 0),
         "qnh_change_hpa": (current.get("qnh_hpa") or 0) - (previous.get("qnh_hpa") or 0),
         "temp_dewpoint_spread_change": (
             (current.get("temp_c") or 0) - (current.get("dewpoint_c") or 0)
@@ -42,5 +44,9 @@ def detect_changes(previous: dict | None, current: dict) -> dict:
             "to": _category_vis(current.get("visibility_m")),
         },
     }
-    summary = "Wind/QNH changes detected" if details["wind_speed_delta_kt"] or details["qnh_change_hpa"] else "Minimal changes"
+    summary = (
+        "Wind/QNH changes detected"
+        if details["wind_speed_delta_kt"] or details["qnh_change_hpa"]
+        else "Minimal changes"
+    )
     return {"summary": summary, "details": details}

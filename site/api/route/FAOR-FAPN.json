@@ -107,7 +107,8 @@
         "dewpoint_c": 12,
         "qnh_hpa": 1016,
         "remarks": "",
-        "source": "SAMPLE_FALLBACK"
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
       },
       "taf": {
         "raw": "TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030",
@@ -119,8 +120,19 @@
             "BECMG"
           ]
         },
-        "source": "SAMPLE_FALLBACK"
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
       },
+      "notams": [
+        {
+          "id": "A1234/24",
+          "text": "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP."
+        },
+        {
+          "id": "A5678/24",
+          "text": "FAOR TWY B CLSD BETWEEN B3-B7."
+        }
+      ],
       "computed": {
         "wind_components_per_runway": [
           {
@@ -150,6 +162,28 @@
             "crosswind_kt": 0.8,
             "tailwind_kt": 12.0,
             "crosswind_side": "R"
+          }
+        ],
+        "runway_surface_conditions": [
+          {
+            "runway": "03L",
+            "surface": "ASPH",
+            "condition": "Closed"
+          },
+          {
+            "runway": "03R",
+            "surface": "ASPH",
+            "condition": "Closed"
+          },
+          {
+            "runway": "21L",
+            "surface": "ASPH",
+            "condition": "Closed"
+          },
+          {
+            "runway": "21R",
+            "surface": "ASPH",
+            "condition": "Closed"
           }
         ],
         "density_altitude": {
@@ -194,14 +228,14 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 128.7,
+          "hours": 361.7,
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:37",
-          "sunset": "16:45",
-          "civil_twilight_start": "03:12",
-          "civil_twilight_end": "17:09",
+          "sunrise": "03:51",
+          "sunset": "16:34",
+          "civil_twilight_start": "03:28",
+          "civil_twilight_end": "16:57",
           "is_night": false
         },
         "workload": {
@@ -337,7 +371,8 @@
         "dewpoint_c": 8,
         "qnh_hpa": 1015,
         "remarks": "",
-        "source": "SAMPLE_FALLBACK"
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
       },
       "taf": {
         "raw": "TAF FAPN 121100Z 1212/1312 10012KT 9999 SCT025 BECMG 1304/1306 13015KT 7000 TSRA BKN020CB",
@@ -348,8 +383,15 @@
             "BECMG"
           ]
         },
-        "source": "SAMPLE_FALLBACK"
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
       },
+      "notams": [
+        {
+          "id": "D7777/24",
+          "text": "FAPN APRON LIMITED PARKING. MARSHALLER REQUIRED."
+        }
+      ],
       "computed": {
         "wind_components_per_runway": [
           {
@@ -365,6 +407,18 @@
             "crosswind_kt": 9.6,
             "tailwind_kt": 11.5,
             "crosswind_side": "L"
+          }
+        ],
+        "runway_surface_conditions": [
+          {
+            "runway": "05",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          },
+          {
+            "runway": "23",
+            "surface": "ASPH",
+            "condition": "Not reported"
           }
         ],
         "density_altitude": {
@@ -409,14 +463,14 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 122.7,
+          "hours": 355.7,
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:42",
-          "sunset": "16:48",
-          "civil_twilight_start": "03:18",
-          "civil_twilight_end": "17:12",
+          "sunrise": "03:56",
+          "sunset": "16:38",
+          "civil_twilight_start": "03:33",
+          "civil_twilight_end": "17:01",
           "is_night": false
         },
         "workload": {
@@ -552,7 +606,8 @@
         "dewpoint_c": 10,
         "qnh_hpa": 1018,
         "remarks": "",
-        "source": "SAMPLE_FALLBACK"
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
       },
       "taf": {
         "raw": "TAF FALA 121100Z 1212/1312 06008KT 9999 SCT020 BECMG 1302/1304 09012KT 7000 BKN020",
@@ -563,8 +618,15 @@
             "BECMG"
           ]
         },
-        "source": "SAMPLE_FALLBACK"
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
       },
+      "notams": [
+        {
+          "id": "B1234/24",
+          "text": "FALA RWY 07/25 WIP. EXPECT DELAYS."
+        }
+      ],
       "computed": {
         "wind_components_per_runway": [
           {
@@ -580,6 +642,18 @@
             "crosswind_kt": 3.3,
             "tailwind_kt": 7.3,
             "crosswind_side": "R"
+          }
+        ],
+        "runway_surface_conditions": [
+          {
+            "runway": "07",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          },
+          {
+            "runway": "25",
+            "surface": "ASPH",
+            "condition": "Not reported"
           }
         ],
         "density_altitude": {
@@ -624,14 +698,14 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 122.7,
+          "hours": 355.7,
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:38",
-          "sunset": "16:46",
-          "civil_twilight_start": "03:14",
-          "civil_twilight_end": "17:10",
+          "sunrise": "03:53",
+          "sunset": "16:35",
+          "civil_twilight_start": "03:29",
+          "civil_twilight_end": "16:58",
           "is_night": false
         },
         "workload": {
@@ -764,7 +838,8 @@
         "dewpoint_c": 9,
         "qnh_hpa": 1013,
         "remarks": "",
-        "source": "SAMPLE_FALLBACK"
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
       },
       "taf": {
         "raw": "TAF FABL 121100Z 1212/1312 14010KT 9999 SCT030 BECMG 1304/1306 17012KT 7000 SHRA BKN020",
@@ -775,8 +850,15 @@
             "BECMG"
           ]
         },
-        "source": "SAMPLE_FALLBACK"
+        "source": "SAMPLE_FALLBACK",
+        "source_detail": "Bundled training samples"
       },
+      "notams": [
+        {
+          "id": "E2222/24",
+          "text": "FABL TWY C CLSD."
+        }
+      ],
       "computed": {
         "wind_components_per_runway": [
           {
@@ -792,6 +874,18 @@
             "crosswind_kt": 10.4,
             "tailwind_kt": 0.0,
             "crosswind_side": "L"
+          }
+        ],
+        "runway_surface_conditions": [
+          {
+            "runway": "02",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          },
+          {
+            "runway": "20",
+            "surface": "ASPH",
+            "condition": "Not reported"
           }
         ],
         "density_altitude": {
@@ -836,14 +930,14 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 122.7,
+          "hours": 355.7,
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:40",
-          "sunset": "16:57",
-          "civil_twilight_start": "03:15",
-          "civil_twilight_end": "17:22",
+          "sunrise": "03:57",
+          "sunset": "16:44",
+          "civil_twilight_start": "03:33",
+          "civil_twilight_end": "17:08",
           "is_night": false
         },
         "workload": {
@@ -976,11 +1070,11 @@
   },
   "taf_time_to_expiry": {
     "dep": {
-      "hours": 128.7,
+      "hours": 361.7,
       "urgency": "ok"
     },
     "dest": {
-      "hours": 122.7,
+      "hours": 355.7,
       "urgency": "ok"
     }
   },

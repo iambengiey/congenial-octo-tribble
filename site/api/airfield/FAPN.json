@@ -71,7 +71,8 @@
     "dewpoint_c": 8,
     "qnh_hpa": 1015,
     "remarks": "",
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
   "taf": {
     "raw": "TAF FAPN 121100Z 1212/1312 10012KT 9999 SCT025 BECMG 1304/1306 13015KT 7000 TSRA BKN020CB",
@@ -82,8 +83,15 @@
         "BECMG"
       ]
     },
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
+  "notams": [
+    {
+      "id": "D7777/24",
+      "text": "FAPN APRON LIMITED PARKING. MARSHALLER REQUIRED."
+    }
+  ],
   "computed": {
     "wind_components_per_runway": [
       {
@@ -99,6 +107,18 @@
         "crosswind_kt": 9.6,
         "tailwind_kt": 11.5,
         "crosswind_side": "L"
+      }
+    ],
+    "runway_surface_conditions": [
+      {
+        "runway": "05",
+        "surface": "ASPH",
+        "condition": "Not reported"
+      },
+      {
+        "runway": "23",
+        "surface": "ASPH",
+        "condition": "Not reported"
       }
     ],
     "density_altitude": {
@@ -143,14 +163,14 @@
     },
     "qnh_change_rate_hpa_per_hr": null,
     "taf_time_to_expiry": {
-      "hours": 122.7,
+      "hours": 355.7,
       "urgency": "ok"
     },
     "sun": {
-      "sunrise": "03:42",
-      "sunset": "16:48",
-      "civil_twilight_start": "03:18",
-      "civil_twilight_end": "17:12",
+      "sunrise": "03:56",
+      "sunset": "16:38",
+      "civil_twilight_start": "03:33",
+      "civil_twilight_end": "17:01",
       "is_night": false
     },
     "workload": {
