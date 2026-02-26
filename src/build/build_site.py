@@ -25,12 +25,12 @@ from src.compute.change_detection import detect_changes
 from src.compute.cloud_base import cloud_base_ft
 from src.compute.compound_flags import compound_flags
 from src.compute.density_altitude import density_altitude
-from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.risk_flags import flag_severity
+from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.stability import stability_score
 from src.compute.sun import civil_twilight, is_night, sun_times
-from src.compute.workload import workload_score
 from src.compute.wind_components import wind_components
+from src.compute.workload import workload_score
 from src.parsers.metar import decode_metar
 from src.parsers.notam import decode_notam
 from src.parsers.sigmet import decode_sigmet

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import Iterable
 
-
 COLOR_CLASSES = {
     "OK": "status-ok",
     "CAUTION": "status-caution",

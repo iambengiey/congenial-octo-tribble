@@ -18,23 +18,43 @@ def _require_keys(item: dict, keys: list[str], label: str) -> None:
 def validate_aerodromes(path: Path) -> None:
     data = load_yaml(path.read_text(encoding="utf-8"))
     for item in data.get("aerodromes", []):
-        _require_keys(item, ["ident", "elevation_m", "latitude_deg", "longitude_deg", "runways"], "aerodrome")
-        _require_keys(item, ["night_ops_allowed", "lighting", "ppr_required", "ops_hours", "notes"], "night ops")
+        _require_keys(
+            item,
+            ["ident", "elevation_m", "latitude_deg", "longitude_deg", "runways"],
+            "aerodrome",
+        )
+        _require_keys(
+            item,
+            ["night_ops_allowed", "lighting", "ppr_required", "ops_hours", "notes"],
+            "night ops",
+        )
         _require_keys(item, ["airspace_context", "circuit"], "airspace/circuit")
         for runway in item["runways"]:
-            _require_keys(runway, ["designator", "magnetic_heading_deg", "length_m", "surface"], "runway")
+            _require_keys(
+                runway,
+                ["designator", "magnetic_heading_deg", "length_m", "surface"],
+                "runway",
+            )
 
 
 def validate_routes(path: Path) -> None:
     data = load_yaml(path.read_text(encoding="utf-8"))
     for route in data.get("routes", []):
-        _require_keys(route, ["route_id", "dep", "dest", "alternates", "corridor_nm", "cruise_levels_ft"], "route")
+        _require_keys(
+            route,
+            ["route_id", "dep", "dest", "alternates", "corridor_nm", "cruise_levels_ft"],
+            "route",
+        )
 
 
 def validate_profiles(path: Path) -> None:
     data = load_yaml(path.read_text(encoding="utf-8"))
     for profile in data.get("profiles", []):
-        _require_keys(profile, ["name", "licence_tier", "ratings", "operation_context", "thresholds"], "profile")
+        _require_keys(
+            profile,
+            ["name", "licence_tier", "ratings", "operation_context", "thresholds"],
+            "profile",
+        )
         _require_keys(
             profile["thresholds"],
             [
