@@ -51,7 +51,7 @@ def load_yaml_file(path: Path) -> dict:
 
 def load_packs() -> tuple[list[dict], list[dict]]:
     aerodromes: dict[str, dict] = {}
-    routes: list[dict] = []
+    routes: dict[str, dict] = {}
 
     for pack_path in sorted(PACKS_DIR.glob("*/aerodromes.yaml")):
         data = load_yaml_file(pack_path)
@@ -60,7 +60,8 @@ def load_packs() -> tuple[list[dict], list[dict]]:
 
     for route_path in sorted(PACKS_DIR.glob("*/routes.yaml")):
         data = load_yaml_file(route_path)
-        routes.extend(data.get("routes", []))
+        for route in data.get("routes", []):
+            routes[route["route_id"]] = route
 
     if (DATA_DIR / "aerodromes.yaml").exists():
         data = load_yaml_file(DATA_DIR / "aerodromes.yaml")
@@ -69,9 +70,10 @@ def load_packs() -> tuple[list[dict], list[dict]]:
 
     if (DATA_DIR / "routes.yaml").exists():
         data = load_yaml_file(DATA_DIR / "routes.yaml")
-        routes.extend(data.get("routes", []))
+        for route in data.get("routes", []):
+            routes.setdefault(route["route_id"], route)
 
-    return list(aerodromes.values()), routes
+    return list(aerodromes.values()), list(routes.values())
 
 
 def load_profiles() -> list[dict]:
