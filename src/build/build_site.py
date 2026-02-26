@@ -95,6 +95,31 @@ def save_history(ident: str, history: list[dict]) -> None:
     path.write_text(json.dumps(history[-200:], indent=2), encoding="utf-8")
 
 
+def append_history_entry(history: list[dict], entry: dict) -> list[dict]:
+    """Append a METAR-derived history entry only when it changes.
+
+    This keeps repeated sample builds idempotent by avoiding duplicate points
+    with identical observation timestamps and values.
+    """
+    if not history:
+        return [entry]
+
+    latest = history[-1]
+    keys = (
+        "timestamp",
+        "wind_speed_kt",
+        "wind_dir_deg",
+        "qnh_hpa",
+        "temp_c",
+        "dewpoint_c",
+        "visibility_m",
+        "ceiling_ft_est",
+    )
+    if all(latest.get(key) == entry.get(key) for key in keys):
+        return history
+    return [*history, entry]
+
+
 def _parse_iso(ts: str | None) -> dt.datetime | None:
     if not ts:
         return None
@@ -386,18 +411,17 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
 
         history = load_history(ident)
         previous = history[-1] if history else None
-        history.append(
-            {
-                "timestamp": metar_decoded["observed_time_utc"],
-                "wind_speed_kt": metar_decoded["wind_speed_kt"],
-                "wind_dir_deg": metar_decoded["wind_dir_deg"],
-                "qnh_hpa": metar_decoded["qnh_hpa"],
-                "temp_c": metar_decoded["temp_c"],
-                "dewpoint_c": metar_decoded["dewpoint_c"],
-                "visibility_m": metar_decoded["visibility_m"],
-                "ceiling_ft_est": ceiling_est,
-            }
-        )
+        new_history_entry = {
+            "timestamp": metar_decoded["observed_time_utc"],
+            "wind_speed_kt": metar_decoded["wind_speed_kt"],
+            "wind_dir_deg": metar_decoded["wind_dir_deg"],
+            "qnh_hpa": metar_decoded["qnh_hpa"],
+            "temp_c": metar_decoded["temp_c"],
+            "dewpoint_c": metar_decoded["dewpoint_c"],
+            "visibility_m": metar_decoded["visibility_m"],
+            "ceiling_ft_est": ceiling_est,
+        }
+        history = append_history_entry(history, new_history_entry)
         if record_history:
             save_history(ident, history)
 
