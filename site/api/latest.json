@@ -6544,6 +6544,18 @@
             "condition": "Not reported"
           }
         ],
+        "runway_surface_conditions": [
+          {
+            "runway": "05",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          },
+          {
+            "runway": "23",
+            "surface": "ASPH",
+            "condition": "Not reported"
+          }
+        ],
         "density_altitude": {
           "da_ft": 6672,
           "da_m": 2034
@@ -10346,6 +10358,18 @@
                 "condition": "Not reported"
               }
             ],
+            "runway_surface_conditions": [
+              {
+                "runway": "18",
+                "surface": "TAR",
+                "condition": "Closed"
+              },
+              {
+                "runway": "36",
+                "surface": "TAR",
+                "condition": "Not reported"
+              }
+            ],
             "density_altitude": {
               "da_ft": 6585,
               "da_m": 2007
@@ -11412,6 +11436,18 @@
               {
                 "runway": "36",
                 "surface": "TAR",
+                "condition": "Not reported"
+              }
+            ],
+            "runway_surface_conditions": [
+              {
+                "runway": "02",
+                "surface": "ASPH",
+                "condition": "Not reported"
+              },
+              {
+                "runway": "20",
+                "surface": "ASPH",
                 "condition": "Not reported"
               }
             ],
@@ -14345,6 +14381,18 @@
                 "condition": "Closed"
               }
             ],
+            "runway_surface_conditions": [
+              {
+                "runway": "18",
+                "surface": "TAR",
+                "condition": "Closed"
+              },
+              {
+                "runway": "36",
+                "surface": "TAR",
+                "condition": "Not reported"
+              }
+            ],
             "density_altitude": {
               "da_ft": 7155,
               "da_m": 2181
@@ -14578,6 +14626,28 @@
                 "runway": "20",
                 "surface": "ASPH",
                 "condition": "Not reported"
+              }
+            ],
+            "runway_surface_conditions": [
+              {
+                "runway": "03L",
+                "surface": "ASPH",
+                "condition": "Closed"
+              },
+              {
+                "runway": "03R",
+                "surface": "ASPH",
+                "condition": "Closed"
+              },
+              {
+                "runway": "21L",
+                "surface": "ASPH",
+                "condition": "Closed"
+              },
+              {
+                "runway": "21R",
+                "surface": "ASPH",
+                "condition": "Closed"
               }
             ],
             "density_altitude": {
