@@ -26,7 +26,11 @@ def _parse_scalar(value: str) -> Any:
 
 
 def load_yaml(text: str) -> Any:
-    lines = [line.rstrip("\n") for line in text.splitlines() if line.strip() and not line.lstrip().startswith("#")]
+    lines = [
+        line.rstrip("\n")
+        for line in text.splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
 
     def parse_block(start: int, indent: int) -> tuple[Any, int]:
         if start >= len(lines):

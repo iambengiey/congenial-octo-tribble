@@ -25,12 +25,12 @@ from src.compute.change_detection import detect_changes
 from src.compute.cloud_base import cloud_base_ft
 from src.compute.compound_flags import compound_flags
 from src.compute.density_altitude import density_altitude
-from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.risk_flags import flag_severity
+from src.compute.route import bearing_deg, ground_speed_estimate, headwind_component
 from src.compute.stability import stability_score
 from src.compute.sun import civil_twilight, is_night, sun_times
-from src.compute.workload import workload_score
 from src.compute.wind_components import wind_components
+from src.compute.workload import workload_score
 from src.parsers.metar import decode_metar
 from src.parsers.notam import decode_notam
 from src.parsers.sigmet import decode_sigmet
@@ -93,6 +93,31 @@ def save_history(ident: str, history: list[dict]) -> None:
     HISTORY_DIR.mkdir(parents=True, exist_ok=True)
     path = HISTORY_DIR / f"{ident}.json"
     path.write_text(json.dumps(history[-200:], indent=2), encoding="utf-8")
+
+
+def append_history_entry(history: list[dict], entry: dict) -> list[dict]:
+    """Append a METAR-derived history entry only when it changes.
+
+    This keeps repeated sample builds idempotent by avoiding duplicate points
+    with identical observation timestamps and values.
+    """
+    if not history:
+        return [entry]
+
+    latest = history[-1]
+    keys = (
+        "timestamp",
+        "wind_speed_kt",
+        "wind_dir_deg",
+        "qnh_hpa",
+        "temp_c",
+        "dewpoint_c",
+        "visibility_m",
+        "ceiling_ft_est",
+    )
+    if all(latest.get(key) == entry.get(key) for key in keys):
+        return history
+    return [*history, entry]
 
 
 def _parse_iso(ts: str | None) -> dt.datetime | None:
@@ -386,18 +411,17 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
 
         history = load_history(ident)
         previous = history[-1] if history else None
-        history.append(
-            {
-                "timestamp": metar_decoded["observed_time_utc"],
-                "wind_speed_kt": metar_decoded["wind_speed_kt"],
-                "wind_dir_deg": metar_decoded["wind_dir_deg"],
-                "qnh_hpa": metar_decoded["qnh_hpa"],
-                "temp_c": metar_decoded["temp_c"],
-                "dewpoint_c": metar_decoded["dewpoint_c"],
-                "visibility_m": metar_decoded["visibility_m"],
-                "ceiling_ft_est": ceiling_est,
-            }
-        )
+        new_history_entry = {
+            "timestamp": metar_decoded["observed_time_utc"],
+            "wind_speed_kt": metar_decoded["wind_speed_kt"],
+            "wind_dir_deg": metar_decoded["wind_dir_deg"],
+            "qnh_hpa": metar_decoded["qnh_hpa"],
+            "temp_c": metar_decoded["temp_c"],
+            "dewpoint_c": metar_decoded["dewpoint_c"],
+            "visibility_m": metar_decoded["visibility_m"],
+            "ceiling_ft_est": ceiling_est,
+        }
+        history = append_history_entry(history, new_history_entry)
         if record_history:
             save_history(ident, history)
 
