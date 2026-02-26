@@ -1,0 +1,192 @@
+{
+  "ident": "FAPE",
+  "name": "Gqeberha",
+  "elevation_m": 69,
+  "latitude_deg": -33.9849,
+  "longitude_deg": 25.6173,
+  "night_ops_allowed": "yes",
+  "lighting": {
+    "runway_edge": "yes",
+    "threshold": "yes",
+    "taxiway": "yes",
+    "apron": "yes"
+  },
+  "ppr_required": "no",
+  "ops_hours": "H24",
+  "notes": "Reference only.",
+  "airspace_context": {
+    "ctr": "no",
+    "tma": "no",
+    "class": "G"
+  },
+  "circuit": {
+    "direction": "L",
+    "height_ft_agl": 1000
+  },
+  "noise_abatement_notes": "Training reference only.",
+  "runways": [
+    {
+      "designator": "08",
+      "magnetic_heading_deg": 80,
+      "length_m": 1980,
+      "surface": "ASPH"
+    },
+    {
+      "designator": "26",
+      "magnetic_heading_deg": 260,
+      "length_m": 1980,
+      "surface": "ASPH"
+    }
+  ],
+  "night_ops": {
+    "night_ops_allowed": "yes",
+    "lighting": {
+      "runway_edge": "yes",
+      "threshold": "yes",
+      "taxiway": "yes",
+      "apron": "yes"
+    },
+    "ppr_required": "no",
+    "ops_hours": "H24",
+    "notes": "Reference only."
+  },
+  "night_ready": true,
+  "metar": {
+    "raw": "FAPE 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+    "observed_time_utc": "2026-02-01T00:00:00Z",
+    "wind_dir_deg": 0,
+    "wind_speed_kt": 0,
+    "gust_kt": null,
+    "variable_wind": null,
+    "visibility_m": null,
+    "weather_codes": [],
+    "cloud_layers": [],
+    "ceiling_ft": null,
+    "temp_c": 20,
+    "dewpoint_c": 10,
+    "qnh_hpa": 1013,
+    "remarks": "",
+    "source": "SAMPLE_FALLBACK"
+  },
+  "taf": {
+    "raw": "FAPE 010000Z 00000KT CAVOK 20/10 Q1013 NOSIG",
+    "summary": {
+      "valid_from": "",
+      "valid_to": "",
+      "key_changes": []
+    },
+    "source": "SAMPLE_FALLBACK"
+  },
+  "computed": {
+    "wind_components_per_runway": [
+      {
+        "runway": "08",
+        "headwind_kt": 0.0,
+        "crosswind_kt": 0.0,
+        "tailwind_kt": 0.0,
+        "crosswind_side": "L"
+      },
+      {
+        "runway": "26",
+        "headwind_kt": -0.0,
+        "crosswind_kt": 0.0,
+        "tailwind_kt": 0.0,
+        "crosswind_side": "L"
+      }
+    ],
+    "density_altitude": {
+      "da_ft": 894,
+      "da_m": 272
+    },
+    "qnh_trend": "steady",
+    "flags": [],
+    "flag_explanations": {},
+    "severity": {
+      "level": "OK",
+      "flags": []
+    },
+    "changes": {
+      "summary": "Minimal changes",
+      "details": {
+        "wind_speed_delta_kt": 0,
+        "wind_dir_shift_deg": 0,
+        "qnh_change_hpa": 0,
+        "temp_dewpoint_spread_change": 0,
+        "ceiling_category": {
+          "from": "normal",
+          "to": "normal"
+        },
+        "visibility_category": {
+          "from": "unknown",
+          "to": "unknown"
+        }
+      }
+    },
+    "qnh_change_rate_hpa_per_hr": null,
+    "taf_time_to_expiry": {
+      "hours": null,
+      "urgency": "unknown"
+    },
+    "sun": {
+      "sunrise": "03:35",
+      "sunset": "17:08",
+      "civil_twilight_start": "03:09",
+      "civil_twilight_end": "17:34",
+      "is_night": false
+    },
+    "workload": {
+      "score": 2.2,
+      "category": "Low",
+      "top_contributors": [
+        "da_ratio"
+      ]
+    },
+    "stability": {
+      "score": 100.0,
+      "category": "Stable",
+      "drivers": []
+    },
+    "trends": {
+      "wind_speed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "qnh": [
+        1013,
+        1013,
+        1013,
+        1013,
+        1013,
+        1013
+      ],
+      "temp": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "dewpoint": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "visibility": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  }
+}
