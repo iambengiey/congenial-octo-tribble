@@ -23,5 +23,30 @@
     "type": "DA40",
     "demonstrated_crosswind_kt": 20,
     "notes": "Diamond DA40 training reference."
+  },
+  {
+    "type": "B737-800",
+    "demonstrated_crosswind_kt": 33,
+    "notes": "Common in ZS commercial operations. Use operator SOP and AFM limits."
+  },
+  {
+    "type": "A320-200",
+    "demonstrated_crosswind_kt": 38,
+    "notes": "Common in ZS commercial operations. Use operator SOP and AFM limits."
+  },
+  {
+    "type": "E190",
+    "demonstrated_crosswind_kt": 30,
+    "notes": "Common in ZS regional operations. Use operator SOP and AFM limits."
+  },
+  {
+    "type": "ATR 72-600",
+    "demonstrated_crosswind_kt": 35,
+    "notes": "Common in ZS regional operations. Use operator SOP and AFM limits."
+  },
+  {
+    "type": "CRJ900",
+    "demonstrated_crosswind_kt": 32,
+    "notes": "Common in ZS regional operations. Use operator SOP and AFM limits."
   }
 ]
