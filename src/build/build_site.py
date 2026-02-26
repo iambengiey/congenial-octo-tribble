@@ -115,17 +115,12 @@ def parse_taf_valid_to(valid_to: str, reference: dt.datetime) -> dt.datetime | N
         return None
     day = int(valid_to[:2])
     hour = int(valid_to[2:])
-    if hour > 24:
-        return None
     month = reference.month
     year = reference.year
     if day < reference.day:
         month = month + 1 if month < 12 else 1
         year = year + 1 if month == 1 else year
-    base = dt.datetime(year, month, day, 0, 0, tzinfo=dt.timezone.utc)
-    if hour == 24:
-        return base + dt.timedelta(days=1)
-    return base.replace(hour=hour)
+    return dt.datetime(year, month, day, hour, 0, tzinfo=dt.timezone.utc)
 
 
 def time_to_expiry(end_time: dt.datetime | None, now: dt.datetime) -> dict:
@@ -294,6 +289,27 @@ def _source_detail(label: str) -> str:
     return "Bundled training samples"
 
 
+def _runway_condition_from_notams(runway_ident: str, notam_lines: list[str]) -> str:
+    text = " ".join(notam_lines).upper()
+    runway_key = runway_ident.upper().replace(" ", "")
+    runway_scope = runway_key in text
+
+    condition_keywords = [
+        ("CLOSED", "Closed"),
+        ("CLSD", "Closed"),
+        ("WET", "Wet"),
+        ("WATER", "Standing water reported"),
+        ("SNOW", "Contaminated (snow)"),
+        ("ICE", "Icy"),
+        ("RUBBER", "Rubber deposits reported"),
+        ("BRAKING ACTION", "Braking action advisory"),
+    ]
+    for keyword, label in condition_keywords:
+        if keyword in text and (runway_scope or "RWY" in text or "RUNWAY" in text):
+            return label
+    return "Not reported"
+
+
 def _fetch_with_fallback(
     ident: str,
     adapter: LiveMetarTafAdapter | None,
@@ -318,6 +334,7 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
 
     aerodromes, _ = load_packs()
     sample_adapter, live_adapter = _build_metar_taf_adapter(mode)
+    notam_adapter = SampleNotamAdapter(SAMPLES_DIR / "notam")
 
     airfields = []
     now = dt.datetime.utcnow().replace(tzinfo=dt.timezone.utc)
@@ -325,6 +342,11 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
         ident = airfield["ident"]
         metar_raw, metar_source = _fetch_with_fallback(ident, live_adapter, sample_adapter, "metar")
         taf_raw, taf_source = _fetch_with_fallback(ident, live_adapter, sample_adapter, "taf")
+        try:
+            notam_entries = decode_notam(notam_adapter.fetch(ident).lines)
+        except FileNotFoundError:
+            notam_entries = []
+        notam_lines = [entry["text"] for entry in notam_entries]
         metar_decoded = decode_metar(metar_raw.raw)
         if mode == "live_beta":
             fetch_time = now.isoformat().replace("+00:00", "Z")
@@ -335,6 +357,7 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
         taf_decoded = decode_taf(taf_raw.raw)
 
         components = []
+        runway_surface_conditions = []
         for runway in airfield["runways"]:
             comp = wind_components(
                 metar_decoded["wind_dir_deg"],
@@ -342,6 +365,13 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
                 runway["magnetic_heading_deg"],
             )
             components.append({"runway": runway["designator"], **comp})
+            runway_surface_conditions.append(
+                {
+                    "runway": runway["designator"],
+                    "surface": runway.get("surface", "--"),
+                    "condition": _runway_condition_from_notams(runway["designator"], notam_lines),
+                }
+            )
 
         crosswind = max((c["crosswind_kt"] or 0 for c in components), default=0)
         da = density_altitude(
@@ -499,8 +529,10 @@ def build_airfields(mode: str, record_history: bool = True) -> tuple[list[dict],
                 | {"source": metar_source, "source_detail": _source_detail(metar_source)},
                 "taf": taf_decoded
                 | {"source": taf_source, "source_detail": _source_detail(taf_source)},
+                "notams": notam_entries,
                 "computed": {
                     "wind_components_per_runway": components,
+                    "runway_surface_conditions": runway_surface_conditions,
                     "density_altitude": da,
                     "qnh_trend": qnh_trend(history),
                     "flags": all_flags,
@@ -831,13 +863,6 @@ def render_snapshot_page(snapshot_id: str, mode_info: dict) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="base-path" content="../" />
   <title>Snapshot {snapshot_id}</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MJGMR2GD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){{dataLayer.push(arguments);}}
-    gtag('js', new Date());
-    gtag('config', 'G-M3MJGMR2GD');
-  </script>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -1054,29 +1079,13 @@ button {
 
 def _app_js() -> str:
     return """
-const toNumber = (id) => {
-  const input = document.getElementById(id);
-  if (!input) return 0;
-  const value = parseFloat(input.value);
-  return Number.isFinite(value) ? value : 0;
-};
-const setText = (id, text) => {
-  const el = document.getElementById(id);
-  if (el) el.textContent = text;
-};
-const baseMeta = document.querySelector('meta[name=\"base-path\"]');
-const basePath = baseMeta ? baseMeta.getAttribute('content') || '' : '';
+const toNumber = (id) => parseFloat(document.getElementById(id).value || 0);
+const basePath = document.querySelector('meta[name=\"base-path\"]')?.getAttribute('content') || '';
 
 function isaTemp(altFt) { return 15 - 2 * (altFt / 1000); }
 
 document.addEventListener('click', (event) => {
-  const target = event.target && event.target.nodeType === 1
-    ? event.target
-    : event.target && event.target.parentElement
-      ? event.target.parentElement
-      : null;
-  const actionEl = target ? target.closest('[data-action]') : null;
-  const action = actionEl ? actionEl.getAttribute('data-action') : null;
+  const action = event.target.getAttribute('data-action');
   if (!action) return;
 
   if (action === 'calc-isa') {
@@ -1084,15 +1093,17 @@ document.addEventListener('click', (event) => {
     const oat = toNumber('isa-oat');
     const isa = isaTemp(alt);
     const dev = (oat - isa).toFixed(1);
-    setText('isa-output', `ISA temp: ${isa.toFixed(1)}°C | ISA deviation: ${dev}°C`);
+    document.getElementById('isa-output').textContent =
+      `ISA temp: ${isa.toFixed(1)}°C | ISA deviation: ${dev}°C`;
   }
   if (action === 'calc-altimetry') {
     const elevM = toNumber('alt-elev');
     const qnh = toNumber('alt-qnh');
     const elevFt = elevM * 3.28084;
     const pressureAlt = elevFt + (1013.25 - qnh) * 30;
-    setText('alt-output', `Pressure altitude: ${pressureAlt.toFixed(0)} ft `
-      + `(${(pressureAlt / 3.28084).toFixed(0)} m)`);
+    document.getElementById('alt-output').textContent =
+      `Pressure altitude: ${pressureAlt.toFixed(0)} ft `
+      + `(${(pressureAlt / 3.28084).toFixed(0)} m)`;
   }
   if (action === 'calc-da') {
     const elevM = toNumber('da-elev');
@@ -1102,21 +1113,24 @@ document.addEventListener('click', (event) => {
     const pressureAlt = elevFt + (1013.25 - qnh) * 30;
     const isa = isaTemp(pressureAlt);
     const da = pressureAlt + 120 * (oat - isa);
-    setText('da-output', `Density altitude: ${da.toFixed(0)} ft `
-      + `(${(da / 3.28084).toFixed(0)} m)`);
+    document.getElementById('da-output').textContent =
+      `Density altitude: ${da.toFixed(0)} ft `
+      + `(${(da / 3.28084).toFixed(0)} m)`;
   }
   if (action === 'calc-tas') {
     const ias = toNumber('tas-ias');
     const alt = toNumber('tas-alt');
     const dev = toNumber('tas-dev');
     const tas = ias * (1 + alt / 1000 * 0.02) * (1 + dev / 100);
-    setText('tas-output', `Estimated TAS: ${tas.toFixed(1)} kt (training approximation)`);
+    document.getElementById('tas-output').textContent =
+      `Estimated TAS: ${tas.toFixed(1)} kt (training approximation)`;
   }
   if (action === 'calc-hypoxia') {
     const alt = toNumber('hypoxia-alt');
     const index = Math.max(10, 100 - alt / 300);
-    setText('hypoxia-output', `Oxygen index: ${index.toFixed(1)} (training scale). `
-      + 'Beware trapped gas at altitude.');
+    document.getElementById('hypoxia-output').textContent =
+      `Oxygen index: ${index.toFixed(1)} (training scale). `
+      + 'Beware trapped gas at altitude.';
   }
   if (action === 'calc-press') {
     const cruise = toNumber('press-cruise');
@@ -1124,8 +1138,9 @@ document.addEventListener('click', (event) => {
     const rate = toNumber('press-rate');
     const diff = toNumber('press-diff');
     const cabin = Math.min(cruise * 0.6, dest + diff * 2000);
-    setText('press-output', `Estimated cabin altitude: ${cabin.toFixed(0)} ft `
-      + `at ${rate} fpm (training only)`);
+    document.getElementById('press-output').textContent =
+      `Estimated cabin altitude: ${cabin.toFixed(0)} ft `
+      + `at ${rate} fpm (training only)`;
   }
   if (action === 'build-scenario') {
     buildScenarioCard();
@@ -1198,7 +1213,75 @@ async function populateScenario() {
   }
 }
 
+async function initGoNoGo() {
+  const output = document.getElementById('go-no-go-output');
+  const profileSelect = document.getElementById('profile-select');
+  const aircraftSelect = document.getElementById('aircraft-select');
+  if (!output || !profileSelect || !aircraftSelect) return;
+
+  const latest = await fetch(`${basePath}api/latest.json`).then(r => r.json());
+  const profiles = await fetch(`${basePath}api/profiles.json`).then(r => r.json());
+  const aircraft = await fetch(`${basePath}api/aircraft.json`).then(r => r.json());
+  const ident = output.getAttribute('data-airfield');
+  const airfield = latest.airfields.find(a => a.ident === ident);
+  if (!airfield) {
+    output.textContent = 'Unable to load selected airfield.';
+    return;
+  }
+
+  profiles.forEach(p => profileSelect.add(new Option(p.name, p.name)));
+  aircraft.forEach(a => aircraftSelect.add(new Option(a.type, a.type)));
+
+  const evaluate = () => {
+    const profile = profiles.find(p => p.name === profileSelect.value) || profiles[0];
+    const selectedAircraft = aircraft.find(a => a.type === aircraftSelect.value) || aircraft[0];
+    const limits = profile.thresholds;
+    const maxCrosswind = Math.min(
+      limits.max_crosswind_kt || 0,
+      selectedAircraft.demonstrated_crosswind_kt || limits.max_crosswind_kt || 0,
+    );
+    const metar = airfield.metar;
+    const densityAltitude = airfield.computed.density_altitude.da_ft || 0;
+    const maxCrosswindSeen = Math.max(
+      ...airfield.computed.wind_components_per_runway.map(c => c.crosswind_kt || 0),
+      0,
+    );
+    const reasons = [];
+
+    if (maxCrosswindSeen > maxCrosswind) {
+      reasons.push(`Crosswind ${maxCrosswindSeen} kt > limit ${maxCrosswind} kt`);
+    }
+    if ((metar.visibility_m || 99999) < (limits.min_vis_m || 0)) {
+      reasons.push(`Visibility ${metar.visibility_m} m < profile min ${limits.min_vis_m} m`);
+    }
+    if (metar.ceiling_ft !== null && metar.ceiling_ft < (limits.min_ceiling_ft || 0)) {
+      reasons.push(`Ceiling ${metar.ceiling_ft} ft < profile min ${limits.min_ceiling_ft} ft`);
+    }
+    if ((densityAltitude || 0) > (limits.max_da_ft || 99999)) {
+      reasons.push(`DA ${densityAltitude} ft > profile max ${limits.max_da_ft} ft`);
+    }
+
+    const verdict = reasons.length ? 'NO-GO' : 'GO (training advisory)';
+    const mtowNote = selectedAircraft.notes || 'Verify actual MTOW and POH limits.';
+    output.innerHTML = `
+      <p><strong>Verdict:</strong> ${verdict}</p>
+      <p><strong>Profile:</strong> ${profile.name} (${profile.licence_tier})</p>
+      <p><strong>Aircraft:</strong> ${selectedAircraft.type}</p>
+      <p><strong>Crosswind limit used:</strong> ${maxCrosswind} kt</p>
+      <p><strong>Density altitude now:</strong> ${densityAltitude} ft</p>
+      <p><strong>MTOW/POH note:</strong> ${mtowNote}</p>
+      <p><strong>Reasons:</strong> ${reasons.join('; ')
+        || 'Within selected profile/aircraft limits.'}</p>
+    `;
+  };
+
+  profileSelect.addEventListener('change', evaluate);
+  aircraftSelect.addEventListener('change', evaluate);
+  evaluate();
+}
+
 populateScenario();
+initGoNoGo();
 
 async function populateAircraft() {
   const container = document.getElementById('aircraft-list');

@@ -26,13 +26,6 @@ def page_wrapper(
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="base-path" content="{prefix}" />
   <title>{title}</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MJGMR2GD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){{dataLayer.push(arguments);}}
-    gtag('js', new Date());
-    gtag('config', 'G-M3MJGMR2GD');
-  </script>
   <link rel="stylesheet" href="{prefix}assets/style.css" />
 </head>
 <body>
@@ -95,6 +88,19 @@ def _format_ceiling(ceiling_ft: int | None, layers: list[dict]) -> str:
     if layers:
         return "None (no BKN/OVC)"
     return "--"
+
+
+def _carb_icing_risk(temp_c: int | None, dewpoint_c: int | None) -> tuple[str, str]:
+    if temp_c is None or dewpoint_c is None:
+        return "Unknown", "Need temperature and dewpoint."
+    spread = temp_c - dewpoint_c
+    if -5 <= temp_c <= 30 and spread <= 3:
+        return "High", "Serious icing possible at descent/low power."
+    if -10 <= temp_c <= 35 and spread <= 6:
+        return "Moderate", "Icing possible; apply carb heat as per POH."
+    if -15 <= temp_c <= 40 and spread <= 10:
+        return "Low", "Light icing possible in prolonged low-power ops."
+    return "Minimal", "Unlikely in current temp/dewpoint envelope."
 
 
 def airfield_cards(airfields: Iterable[dict]) -> str:
@@ -202,6 +208,19 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
     cloud_layers = _format_cloud_layers(metar.get("cloud_layers", []))
     ceiling = _format_ceiling(metar.get("ceiling_ft"), metar.get("cloud_layers", []))
     variable_wind = _format_variable_wind(metar.get("variable_wind"))
+    carb_risk, carb_note = _carb_icing_risk(metar.get("temp_c"), metar.get("dewpoint_c"))
+    notam_items = "".join(
+        f"<li><strong>{item['id']}</strong> {item['text']}</li>"
+        for item in airfield.get("notams", [])
+    ) or "<li>No NOTAM sample available.</li>"
+    runway_surface_rows = "".join(
+        "<tr>"
+        f"<td>{item['runway']}</td>"
+        f"<td>{item['surface']}</td>"
+        f"<td>{item['condition']}</td>"
+        "</tr>"
+        for item in airfield["computed"].get("runway_surface_conditions", [])
+    )
     runways = "".join(
         (
             "<tr>"
@@ -271,6 +290,50 @@ def render_airfield_page(airfield: dict, mode_info: dict) -> str:
         <tr><th>Runway</th><th>Headwind (kt)</th><th>Crosswind (kt)</th><th>Tailwind (kt)</th></tr>
         {runways}
       </table>
+    </section>
+
+    <section class="section">
+      <h3>Runway surface condition</h3>
+      <table class="table">
+        <tr><th>Runway</th><th>Surface</th><th>Condition</th></tr>
+        {runway_surface_rows}
+      </table>
+      <p class="note">Condition is inferred from sample NOTAM wording when available.</p>
+    </section>
+
+    <section class="section">
+      <h3>NOTAM highlights</h3>
+      <ul>{notam_items}</ul>
+    </section>
+
+    <section class="section">
+      <h3>Carb icing risk chart (quick-look)</h3>
+      <p><strong>Current risk:</strong> {carb_risk}</p>
+      <p class="note">{carb_note}</p>
+      <table class="table">
+        <tr><th>Temp/Dew spread</th><th>Typical risk</th></tr>
+        <tr><td>≤ 3°C</td><td>High (with suitable temp range)</td></tr>
+        <tr><td>4–6°C</td><td>Moderate</td></tr>
+        <tr><td>7–10°C</td><td>Low</td></tr>
+        <tr><td>&gt; 10°C</td><td>Minimal</td></tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <h3>Profile-based go/no-go (training aid)</h3>
+      <label>Profile
+        <select id="profile-select"></select>
+      </label>
+      <label>Aircraft
+        <select id="aircraft-select"></select>
+      </label>
+      <div
+        id="go-no-go-output"
+        class="result"
+        data-airfield="{airfield['ident']}"
+      >Loading profile assessment…</div>
+      <p class="note">Advisory only. Always apply licence privileges, company SOPs,
+        and POH/AFM limits.</p>
     </section>
 
     <section class="section">
