@@ -26,13 +26,6 @@ def page_wrapper(
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="base-path" content="{prefix}" />
   <title>{title}</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MJGMR2GD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){{dataLayer.push(arguments);}}
-    gtag('js', new Date());
-    gtag('config', 'G-M3MJGMR2GD');
-  </script>
   <link rel="stylesheet" href="{prefix}assets/style.css" />
 </head>
 <body>
@@ -520,8 +513,8 @@ def render_tools_index(mode_info: dict) -> str:
     body = """
     <section class="summary">
       <h2>Training Tools</h2>
-      <p>Interactive calculators for ISA, density altitude, TAS, hypoxia, pressurisation,
-        and scenario building.</p>
+      <p>Interactive calculators for ISA, lapse rate, density altitude, TAS, hypoxia,
+        pressurisation, and scenario building.</p>
     </section>
     <section class="grid">
       <div class="card"><h3>ISA</h3><p><a href="isa.html">Open tool</a></p></div>
@@ -529,6 +522,7 @@ def render_tools_index(mode_info: dict) -> str:
       <div class="card"><h3>Density Altitude</h3>
         <p><a href="density-altitude.html">Open tool</a></p></div>
       <div class="card"><h3>IAS → TAS</h3><p><a href="tas.html">Open tool</a></p></div>
+      <div class="card"><h3>Lapse Rate</h3><p><a href="lapse-rate.html">Open tool</a></p></div>
       <div class="card"><h3>Gas Laws & Hypoxia</h3><p><a href="hypoxia.html">Open tool</a></p></div>
       <div class="card"><h3>Pressurisation</h3>
         <p><a href="pressurisation.html">Open tool</a></p></div>

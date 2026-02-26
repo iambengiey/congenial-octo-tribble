@@ -741,6 +741,16 @@ def build_tools_pages(mode_info: dict) -> None:
     <div id="tas-output" class="result"></div>
     """
 
+    lapse_rate_content = """
+    <label>Lower altitude (ft) <input id="lapse-alt-lower" type="number" value="2000" /></label>
+    <label>Upper altitude (ft) <input id="lapse-alt-upper" type="number" value="8000" /></label>
+    <label>Lower temp (°C) <input id="lapse-temp-lower" type="number" value="18" /></label>
+    <label>Upper temp (°C) <input id="lapse-temp-upper" type="number" value="5" /></label>
+    <button data-action="calc-lapse">Calculate</button>
+    <div id="lapse-output" class="result"></div>
+    <p class="note">Typical ISA average lapse rate is about 2°C per 1000 ft in the troposphere.</p>
+    """
+
     hypoxia_content = """
     <label>Altitude (ft) <input id="hypoxia-alt" type="number" value="12000" /></label>
     <button data-action="calc-hypoxia">Calculate</button>
@@ -784,6 +794,10 @@ def build_tools_pages(mode_info: dict) -> None:
     )
     (tools_dir / "tas.html").write_text(
         render_tool_page("IAS → TAS Tool", tas_content, mode_info),
+        encoding="utf-8",
+    )
+    (tools_dir / "lapse-rate.html").write_text(
+        render_tool_page("Lapse Rate Tool", lapse_rate_content, mode_info),
         encoding="utf-8",
     )
     (tools_dir / "hypoxia.html").write_text(
@@ -863,13 +877,6 @@ def render_snapshot_page(snapshot_id: str, mode_info: dict) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="base-path" content="../" />
   <title>Snapshot {snapshot_id}</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M3MJGMR2GD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){{dataLayer.push(arguments);}}
-    gtag('js', new Date());
-    gtag('config', 'G-M3MJGMR2GD');
-  </script>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -1086,29 +1093,13 @@ button {
 
 def _app_js() -> str:
     return """
-const toNumber = (id) => {
-  const input = document.getElementById(id);
-  if (!input) return 0;
-  const value = parseFloat(input.value);
-  return Number.isFinite(value) ? value : 0;
-};
-const setText = (id, text) => {
-  const el = document.getElementById(id);
-  if (el) el.textContent = text;
-};
-const baseMeta = document.querySelector('meta[name=\"base-path\"]');
-const basePath = baseMeta ? baseMeta.getAttribute('content') || '' : '';
+const toNumber = (id) => parseFloat(document.getElementById(id).value || 0);
+const basePath = document.querySelector('meta[name=\"base-path\"]')?.getAttribute('content') || '';
 
 function isaTemp(altFt) { return 15 - 2 * (altFt / 1000); }
 
 document.addEventListener('click', (event) => {
-  const target = event.target && event.target.nodeType === 1
-    ? event.target
-    : event.target && event.target.parentElement
-      ? event.target.parentElement
-      : null;
-  const actionEl = target ? target.closest('[data-action]') : null;
-  const action = actionEl ? actionEl.getAttribute('data-action') : null;
+  const action = event.target.getAttribute('data-action');
   if (!action) return;
 
   if (action === 'calc-isa') {
@@ -1116,15 +1107,17 @@ document.addEventListener('click', (event) => {
     const oat = toNumber('isa-oat');
     const isa = isaTemp(alt);
     const dev = (oat - isa).toFixed(1);
-    setText('isa-output', `ISA temp: ${isa.toFixed(1)}°C | ISA deviation: ${dev}°C`);
+    document.getElementById('isa-output').textContent =
+      `ISA temp: ${isa.toFixed(1)}°C | ISA deviation: ${dev}°C`;
   }
   if (action === 'calc-altimetry') {
     const elevM = toNumber('alt-elev');
     const qnh = toNumber('alt-qnh');
     const elevFt = elevM * 3.28084;
     const pressureAlt = elevFt + (1013.25 - qnh) * 30;
-    setText('alt-output', `Pressure altitude: ${pressureAlt.toFixed(0)} ft `
-      + `(${(pressureAlt / 3.28084).toFixed(0)} m)`);
+    document.getElementById('alt-output').textContent =
+      `Pressure altitude: ${pressureAlt.toFixed(0)} ft `
+      + `(${(pressureAlt / 3.28084).toFixed(0)} m)`;
   }
   if (action === 'calc-da') {
     const elevM = toNumber('da-elev');
@@ -1134,21 +1127,41 @@ document.addEventListener('click', (event) => {
     const pressureAlt = elevFt + (1013.25 - qnh) * 30;
     const isa = isaTemp(pressureAlt);
     const da = pressureAlt + 120 * (oat - isa);
-    setText('da-output', `Density altitude: ${da.toFixed(0)} ft `
-      + `(${(da / 3.28084).toFixed(0)} m)`);
+    document.getElementById('da-output').textContent =
+      `Density altitude: ${da.toFixed(0)} ft `
+      + `(${(da / 3.28084).toFixed(0)} m)`;
   }
   if (action === 'calc-tas') {
     const ias = toNumber('tas-ias');
     const alt = toNumber('tas-alt');
     const dev = toNumber('tas-dev');
     const tas = ias * (1 + alt / 1000 * 0.02) * (1 + dev / 100);
-    setText('tas-output', `Estimated TAS: ${tas.toFixed(1)} kt (training approximation)`);
+    document.getElementById('tas-output').textContent =
+      `Estimated TAS: ${tas.toFixed(1)} kt (training approximation)`;
+  }
+  if (action === 'calc-lapse') {
+    const lowerAlt = toNumber('lapse-alt-lower');
+    const upperAlt = toNumber('lapse-alt-upper');
+    const lowerTemp = toNumber('lapse-temp-lower');
+    const upperTemp = toNumber('lapse-temp-upper');
+    const altDelta = upperAlt - lowerAlt;
+    if (altDelta === 0) {
+      document.getElementById('lapse-output').textContent =
+        'Altitude difference must not be zero.';
+      return;
+    }
+    const tempDrop = lowerTemp - upperTemp;
+    const lapseRate = (tempDrop / altDelta) * 1000;
+    document.getElementById('lapse-output').textContent =
+      `Lapse rate: ${lapseRate.toFixed(2)}°C per 1000 ft `
+      + `(temperature change ${tempDrop.toFixed(1)}°C over ${altDelta.toFixed(0)} ft)`;
   }
   if (action === 'calc-hypoxia') {
     const alt = toNumber('hypoxia-alt');
     const index = Math.max(10, 100 - alt / 300);
-    setText('hypoxia-output', `Oxygen index: ${index.toFixed(1)} (training scale). `
-      + 'Beware trapped gas at altitude.');
+    document.getElementById('hypoxia-output').textContent =
+      `Oxygen index: ${index.toFixed(1)} (training scale). `
+      + 'Beware trapped gas at altitude.';
   }
   if (action === 'calc-press') {
     const cruise = toNumber('press-cruise');
@@ -1156,8 +1169,9 @@ document.addEventListener('click', (event) => {
     const rate = toNumber('press-rate');
     const diff = toNumber('press-diff');
     const cabin = Math.min(cruise * 0.6, dest + diff * 2000);
-    setText('press-output', `Estimated cabin altitude: ${cabin.toFixed(0)} ft `
-      + `at ${rate} fpm (training only)`);
+    document.getElementById('press-output').textContent =
+      `Estimated cabin altitude: ${cabin.toFixed(0)} ft `
+      + `at ${rate} fpm (training only)`;
   }
   if (action === 'build-scenario') {
     buildScenarioCard();
@@ -1199,16 +1213,17 @@ async function buildScenarioCard() {
   const flags = route ? route.summary.flags : airfield.computed.flags;
   const da = airfield ? airfield.computed.density_altitude.da_ft : '—';
 
+  const aircraftText = aircraftInfo
+    ? `${aircraftInfo.type} (${aircraftInfo.demonstrated_crosswind_kt} kt demo crosswind)`
+    : '';
   output.innerHTML = `
     <h4>${title}</h4>
     <p><strong>Profile:</strong> ${profile ? profile.name : ''}</p>
-    <p><strong>Aircraft:</strong> ${aircraftInfo ? aircraftInfo.type : ''} `
-      + `(${aircraftInfo ? aircraftInfo.demonstrated_crosswind_kt : ''} `
-      + 'kt demo crosswind)</p>
+    <p><strong>Aircraft:</strong> ${aircraftText}</p>
     <p><strong>Density altitude:</strong> ${da} ft</p>
     <p><strong>Flags:</strong> ${flags.join(', ') || 'LOW_RISK'}</p>
-    <p><strong>Questions:</strong> How will crosswind/tailwind affect `
-      + 'your performance? Are you within personal minima?</p>
+    <p><strong>Questions:</strong> How will crosswind/tailwind affect your performance?
+      Are you within personal minima?</p>
   `;
 }
 
