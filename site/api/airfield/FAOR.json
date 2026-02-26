@@ -89,7 +89,8 @@
     "dewpoint_c": 12,
     "qnh_hpa": 1016,
     "remarks": "",
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
   "taf": {
     "raw": "TAF FAOR 121100Z 1212/1318 02010KT 9999 SCT020 TEMPO 1212/1218 4000 SHRA BKN015 BECMG 1300/1302 01008KT 9999 SCT030",
@@ -101,8 +102,19 @@
         "BECMG"
       ]
     },
-    "source": "SAMPLE_FALLBACK"
+    "source": "SAMPLE_FALLBACK",
+    "source_detail": "Bundled training samples"
   },
+  "notams": [
+    {
+      "id": "A1234/24",
+      "text": "FAOR RWY 03L/21R CLSD 1200-1400 UTC DAILY DUE WIP."
+    },
+    {
+      "id": "A5678/24",
+      "text": "FAOR TWY B CLSD BETWEEN B3-B7."
+    }
+  ],
   "computed": {
     "wind_components_per_runway": [
       {
@@ -132,6 +144,28 @@
         "crosswind_kt": 0.8,
         "tailwind_kt": 12.0,
         "crosswind_side": "R"
+      }
+    ],
+    "runway_surface_conditions": [
+      {
+        "runway": "03L",
+        "surface": "ASPH",
+        "condition": "Closed"
+      },
+      {
+        "runway": "03R",
+        "surface": "ASPH",
+        "condition": "Closed"
+      },
+      {
+        "runway": "21L",
+        "surface": "ASPH",
+        "condition": "Closed"
+      },
+      {
+        "runway": "21R",
+        "surface": "ASPH",
+        "condition": "Closed"
       }
     ],
     "density_altitude": {
@@ -176,14 +210,14 @@
     },
     "qnh_change_rate_hpa_per_hr": null,
     "taf_time_to_expiry": {
-      "hours": 128.7,
+      "hours": 362.3,
       "urgency": "ok"
     },
     "sun": {
-      "sunrise": "03:37",
-      "sunset": "16:45",
-      "civil_twilight_start": "03:12",
-      "civil_twilight_end": "17:09",
+      "sunrise": "03:51",
+      "sunset": "16:34",
+      "civil_twilight_start": "03:28",
+      "civil_twilight_end": "16:57",
       "is_night": false
     },
     "workload": {
