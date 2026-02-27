@@ -229,13 +229,13 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 362.1,
+          "hours": 344.3,
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:51",
-          "sunset": "16:34",
-          "civil_twilight_start": "03:28",
+          "sunrise": "03:52",
+          "sunset": "16:33",
+          "civil_twilight_start": "03:29",
           "civil_twilight_end": "16:57",
           "is_night": false
         },
@@ -454,14 +454,14 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 356.1,
+          "hours": 338.3,
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:51",
-          "sunset": "16:34",
-          "civil_twilight_start": "03:27",
-          "civil_twilight_end": "16:57",
+          "sunrise": "03:52",
+          "sunset": "16:33",
+          "civil_twilight_start": "03:28",
+          "civil_twilight_end": "16:56",
           "is_night": false
         },
         "workload": {
@@ -685,13 +685,13 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 356.1,
+          "hours": 338.3,
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:53",
-          "sunset": "16:35",
-          "civil_twilight_start": "03:29",
+          "sunrise": "03:54",
+          "sunset": "16:34",
+          "civil_twilight_start": "03:30",
           "civil_twilight_end": "16:58",
           "is_night": false
         },
@@ -917,14 +917,14 @@
         },
         "qnh_change_rate_hpa_per_hr": null,
         "taf_time_to_expiry": {
-          "hours": 356.1,
+          "hours": 338.3,
           "urgency": "ok"
         },
         "sun": {
-          "sunrise": "03:57",
-          "sunset": "16:44",
-          "civil_twilight_start": "03:33",
-          "civil_twilight_end": "17:08",
+          "sunrise": "03:58",
+          "sunset": "16:43",
+          "civil_twilight_start": "03:34",
+          "civil_twilight_end": "17:07",
           "is_night": false
         },
         "workload": {
@@ -1017,11 +1017,11 @@
   },
   "taf_time_to_expiry": {
     "dep": {
-      "hours": 362.1,
+      "hours": 344.3,
       "urgency": "ok"
     },
     "dest": {
-      "hours": 356.1,
+      "hours": 338.3,
       "urgency": "ok"
     }
   },

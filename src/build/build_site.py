@@ -625,6 +625,8 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
     for route in routes:
         dep = airfield_map.get(route["dep"])
         dest = airfield_map.get(route["dest"])
+        via_idents = [ident for ident in route.get("via", []) if ident in airfield_map]
+        via_airfields = [airfield_map[ident] for ident in via_idents]
         alternates = [
             airfield_map[ident]
             for ident in route.get("alternates", [])
@@ -632,12 +634,14 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
         ]
 
         track = None
-        if dep and dest:
+        track_from = dep
+        track_to = via_airfields[0] if via_airfields else dest
+        if track_from and track_to:
             track = bearing_deg(
-                dep["latitude_deg"],
-                dep["longitude_deg"],
-                dest["latitude_deg"],
-                dest["longitude_deg"],
+                track_from["latitude_deg"],
+                track_from["longitude_deg"],
+                track_to["latitude_deg"],
+                track_to["longitude_deg"],
             )
 
         wind_levels = []
@@ -671,9 +675,10 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
 
         severity = flag_severity(flags, profile.get("severity", {}))
 
+        route_idents = [route["dep"], *via_idents, route["dest"]]
         notams = {
-            route["dep"]: decode_notam(notam_adapter.fetch(route["dep"]).lines),
-            route["dest"]: decode_notam(notam_adapter.fetch(route["dest"]).lines),
+            ident: decode_notam(notam_adapter.fetch(ident).lines)
+            for ident in dict.fromkeys(route_idents)
         }
 
         route_workload = workload_score(
@@ -705,7 +710,7 @@ def build_routes(airfields: list[dict], profile: dict) -> list[dict]:
         built_routes.append(
             {
                 **route,
-                "airfields": [item for item in [dep, dest, *alternates] if item],
+                "airfields": [item for item in [dep, *via_airfields, dest, *alternates] if item],
                 "track_deg": track,
                 "upper_winds": wind_levels,
                 "freezing_level_ft": freezing_level,

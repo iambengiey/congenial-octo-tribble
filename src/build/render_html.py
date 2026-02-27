@@ -147,6 +147,9 @@ def route_cards(routes: Iterable[dict]) -> str:
     for route in routes:
         status = route["summary"]["severity"]["level"]
         status_class = COLOR_CLASSES.get(status, "status-unknown")
+        via = route.get("via", [])
+        route_path = " → ".join([route["dep"], *via, route["dest"]])
+        aircraft = ", ".join(route.get("aircraft_types", [])) or "All"
         cards.append(
             f"""
             <div class="card" data-route="{route['route_id']}">
@@ -154,14 +157,16 @@ def route_cards(routes: Iterable[dict]) -> str:
                 <h3>{route['route_id']}</h3>
                 <span class="pill {status_class}"><span class="icon">●</span>{status}</span>
               </div>
-              <p>{route['dep']} → {route['dest']}</p>
+              <p>{route_path}</p>
               <p>Corridor: {route['corridor_nm']} NM</p>
               <p>Levels: {', '.join(str(level) for level in route['cruise_levels_ft'])}</p>
+              <p>Aircraft: {aircraft}</p>
               <p><a href="route/{route['route_id']}.html">Open route pack</a></p>
             </div>
             """
         )
     return "\n".join(cards)
+
 
 
 def render_home(airfields: list[dict], profile_name: str, mode_info: dict) -> str:
@@ -444,10 +449,13 @@ def render_route_page(route: dict, sigwx_paths: dict, mode_info: dict) -> str:
         for ident, lines in route["notams"].items()
     )
 
+    route_path = " → ".join([route["dep"], *route.get("via", []), route["dest"]])
+    aircraft = ", ".join(route.get("aircraft_types", [])) or "All"
     body = f"""
     <section class="summary">
-      <h2>{route['route_id']} — {route['dep']} → {route['dest']}</h2>
+      <h2>{route['route_id']} — {route_path}</h2>
       <p>Track: {route['track_deg'] or 'Unknown'}° | Corridor: {route['corridor_nm']} NM</p>
+      <p>Aircraft: {aircraft}</p>
       <div class="badge-row">
         {''.join(f'<span class="badge">{flag}</span>' for flag in route['summary']['flags'])}
       </div>

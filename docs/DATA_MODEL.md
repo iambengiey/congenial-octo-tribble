@@ -18,7 +18,7 @@
 - `computed.stability`: `score`, `category`, `drivers`
 
 ## Route JSON (`/site/api/route/<ROUTE_ID>.json`)
-- `route_id`, `dep`, `dest`, `alternates`, `corridor_nm`, `cruise_levels_ft`
+- `route_id`, `dep`, `dest`, `via?`, `alternates`, `corridor_nm`, `cruise_levels_ft`, `aircraft_types?`
 - `airfields[]` (embedded airfield summaries)
 - `track_deg`, `upper_winds[]`, `freezing_level_ft`
 - `sigmet_lines[]`, `notams{}`
