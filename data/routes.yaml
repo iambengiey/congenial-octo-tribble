@@ -54,3 +54,13 @@ routes:
     alternates: [FAOR, FABL]
     corridor_nm: 35
     cruise_levels_ft: [5000, 7000, 9000, 11000, 13000]
+
+
+  - route_id: FAWB-FAMB-FAWR-FAWB
+    dep: FAWB
+    dest: FAWB
+    via: [FAMB, FAWR]
+    alternates: [FALA, FAOR]
+    corridor_nm: 25
+    cruise_levels_ft: [6500, 8500]
+    aircraft_types: [C172]
